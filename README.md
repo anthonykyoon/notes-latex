@@ -1,4 +1,4 @@
-#Notes from Uchicago
+# Notes from Uchicago
 
 These are my notes that I typed up from my time at the University of Chicago. These include 
 
@@ -7,4 +7,7 @@ These are my notes that I typed up from my time at the University of Chicago. Th
 - STAT 24300 Numerical Linear Algebra
 - ECON 20110 Elements of Economic Analysis II 
 
-These will have a lot of typos, so be advised. You can also see how my style of notes have evolved overtime. 
+These will have a lot of typos, so be advised. You can also see how my style of notes have evolved overtime. These will also include the following PSETS
+
+- ECON 20010 Elements of Economic Analysis I 
+- Econ 20110 Elements of Economic Analysis II
