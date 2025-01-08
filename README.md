@@ -10,4 +10,4 @@ These are my notes that I typed up from my time at the University of Chicago. Th
 These will have a lot of typos, so be advised. You can also see how my style of notes have evolved overtime. These will also include the following PSETS
 
 - ECON 20010 Elements of Economic Analysis I 
-- Econ 20110 Elements of Economic Analysis II
+- ECON 20110 Elements of Economic Analysis II
