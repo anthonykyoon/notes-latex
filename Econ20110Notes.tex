@@ -45,9 +45,23 @@ but from now on, we cannot assume that as that is not representive of the real w
 \frac{\partial L}{\partial x_i} =  \frac{\partial U}{\partial x_i} - \lambda p_i \leq 0 \quad x_i \geq 0
 \] 
 \[
-\frac{\partial L}{\partial \lambda} = m - \sum_{x=1}^I p_i x_i \geq 0 \quad \lambda \geq 0 
+\frac{\partial L}{\partial \lambda} = m - \sum_{i=1} p_i x_i \geq 0 \quad \lambda \geq 0 
 \]
 where we introduce complementary slackness into each condition. Before we discuss what this means, we can introduce the idea of \emph{interior solutions}. When we do this, consider an interval $[a,b]$. Let $c \in [a,b]$. If $f'(c) = 0$, then it is a optimzer, but we can also consider the endpoints, $a,b$. If the endpoints contain the maximum/minimum value, we can see that there are actually the minimizer and maximumizer values themselves, but the values of the first order conditions can be positive or negative. Hence, we introduce complemntary slackness. We can consider $x_i \in [0, \infty)$ as denoted by the restriction. If $x_1 \in (0,\infty)$ then the first order condition must be strict equality. If $x_1 = 0$, then we know that the first order condition can include the case where the deriative may be negative. Note that these statements are if and only if statements. 
+
+
+From here, we can make educated guesses about what we think the intial conditions are. These can be any combination of $x_i > 0$, $x = 0$, $\mathbf{p} \cdot \mathbf{x} < m$ or $\mathbf{p} \cdot \mathbf{x} = m$ \footnote{Vector dot products mean that we really are doing $p_1 x_1 + p_2 x_2 + \dots p_n x_n$}. However, we can see that we already know that $\mathbf{p} \cdot \mathbf{x} = m$ as any consumer will derive more utility from increased consumption, so the consumer must spend all of their income. 
+
+
+However, what each $x_i$ should be is dependent on the mathematical and economic intuition. Consider the utility function
+\[
+U(x_1, x_2) = \ln(x_1) + \ln(x_2)
+\]
+we can see that 
+\[
+\frac{\partial u}{\partial x_1} = \frac{1}{x} 
+\]
+which is $\infty$ 
 \section{Competitive Equilbirum}
 Weeks 3,4,5
 \section{Imperfect Equilbrium}
