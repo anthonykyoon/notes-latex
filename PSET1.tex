@@ -297,18 +297,38 @@ Consider $\ln(u(x_1,x_2))$, as this will make calculations easier. We see that
 \[
 \ln(u(x_1, x_2)) = \frac{\sigma}{\sigma - 1} \ln \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)
 \] 
-We can clearly see that as $\sigma \to 1$, the function becomes undefined. So, let us consider L'Hopital's rule. First, we analyze the expression $\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)$. As $\sigma \to 1$, we clearly see that $\frac{\sigma - 1}{\sigma} \to 0$. Therefore, 
+We can clearly see that as $\sigma \to 1$, the function becomes undefined $(\frac{0}{0})$, as 
+\[
+\alpha x_1^{\frac{\sigma-1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma-1}{\sigma}} \to \alpha + 1-\alpha = 1
+\]
+We now differentiate both the numerator and denominator with respect to $\sigma$, getting that 
+\begin{align*}
+     & \frac{\partial }{\partial \sigma} \ln\left(\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma}\right) \\
+    &= \frac{\sigma \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma - 1} \frac{\partial }{\partial \sigma} \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma-1}{\sigma}}\right)}{\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)}\\
+    &= \frac{\sigma \frac{\partial }{\partial \sigma}\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)}{\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\frac{\sigma - 1}{\sigma}}}
+\end{align*}
+ Next, we analyze the expression $\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)$. As $\sigma \to 1$, we clearly see that $\frac{\sigma - 1}{\sigma} \to 0$. Therefore, 
 \[
 \lim_{\sigma \to 1} \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right) = 1
 \]
-We now differentiate both the numerator and denomintaor with respect to $\sigma$, getting that 
-\[
-\lim_{\sigma \to 1} = \frac{\partial }{\partial \sigma} \ln\left(\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma}\right)
-\]
-and 
+ The denominator obviously appraoches 1 as $\sigma \to 1$. Thus, we are interested in the computation of the numerator. We see for $i = 1,2 $, $x_i^{\frac{\sigma - 1}{\sigma}} = x_i^{1 - \frac{1}{\sigma}}$ Therefore, we can see that 
 \begin{align*}
-    \frac{\partial }{\partial \sigma} \ln\left(\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma}\right) &= \frac{\sigma \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma - 1} \frac{\partial }{\partial \sigma}}{}
+    \frac{\partial }{\partial \sigma} x_i^{1 - \frac{1}{\sigma}} &= \ln(x_i)\left( x_i^{1 - \frac{1}{\sigma}} \right) \left( \frac{\partial }{\partial \sigma} \left( 1 - \frac{1}{\sigma} \right) \right)\\
+    &= \frac{1}{\sigma^2}\left( \ln(x_i) x_i^{1 - \frac{1}{\sigma}} \right)
 \end{align*}
+Therefore, we see that 
+\[
+    \frac{\partial }{\partial \sigma} \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} =  \alpha(\ln(x_1) \left( x_1^{1-\frac{1}{\sigma}}\right) + (1-\alpha) \ln(x_2) \left( x_2^{1 - \frac{1}{\sigma}} \right) 
+\]
+Thus, we can see that as $\sigma \to 1$, 
+\[
+    \alpha(\ln(x_1) \left( x_1^{1-\frac{1}{\sigma}}\right) + (1-\alpha) \ln(x_2) \left( x_2^{1 - \frac{1}{\sigma}} \right) \to \alpha \ln(x_1) + (1-\alpha)\ln(x_2) = \ln(x_1^\alpha) + \ln(x_2^{1-\alpha})
+\]
+undoing the natural logarithm from the beginning yields
+\[
+u(x_1,x_2) = e^{\ln(u(x_1,x_2))} = e^{\ln(x_1^\alpha) + \ln(x_2^{1-\alpha})} = x_1^{\alpha} x_2^{1-\alpha}
+\]
+Thus, completing the proof \qed
 \section*{Q4}
 \section*{Q5}
 \end{document}
