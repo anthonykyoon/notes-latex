@@ -13,6 +13,7 @@
 \usepackage{amsthm}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{pgfplots}
 
 \newcommand{\st}{\text{s.t}}
 
@@ -365,8 +366,60 @@ See image below, we can see that graph shifts outward towards the right as $MP^*
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{16_1graph.jpeg}
-    \caption{caption}
+    \caption{Graph for this question}
     \label{fig:enter-label}
 \end{figure}
 \section*{Q5}
+\subsection*{a,b}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{16_2graph.jpeg}
+    \caption{Graph for this question}
+    \label{fig:enter-label1}
+\end{figure}
+\subsection*{c}
+To show that a function returns to scale graphically, given a set of inputs 
+\begin{center}
+    \begin{tabular}{c|c|c}
+        k & L & y\\
+        \hline
+        k & l & A\\
+        2k & 2l & 2A\\
+        3k & 3l & 3A\\
+        4k & 4l & 4A
+    \end{tabular}
+\end{center}
+and upon graphing, we see that 
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = {Input ($k, l$)},
+            ylabel = {Output ($y$)},
+            xmin = 0, xmax = 5,
+            ymin = 0, ymax = 5,
+            xtick = {1, 2, 3, 4},
+            ytick = {1, 2, 3, 4},
+            grid = both,
+        ]
+        % Linear plot points
+        \addplot[color=blue, mark=*] coordinates {
+            (0,0)
+            (1,1)
+            (2,2)
+            (3,3)
+            (4,4)
+        };
+        \end{axis}
+    \end{tikzpicture}
+\end{center}
+We see that the function exhibits return to scale constantly. 
+\subsection*{d}
+Let $\lambda \in \mathbb{R}$. We see that 
+\[
+A(\lambda L)^{0.5}(\lambda k)^{0.5} = \lambda A k L 
+\]
+which is directly proprotinal to that of the function with no scaled inputs. Therefore, this function returns to scale mathematically. 
+\subsection*{e}
+If we double our inputs into a firm, they will produce exactly double the amount. 
 \end{document}
