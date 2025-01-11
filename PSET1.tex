@@ -270,6 +270,45 @@ Now, we assume that the utility function is given by
 \[
 u(x_1, x_2) = \left( \alpha x_1^{\frac{\sigma-1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma -1}{\sigma}} \right)^{\frac{\sigma}{\sigma -1}}
 \]
+\subsection*{a}
+We begin by caclculating the MRS:
+\begin{align*}
+    \frac{\partial}{\partial x_1}\left( \alpha x_1^{\frac{\sigma-1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma -1}{\sigma}} \right)^{\frac{\sigma}{\sigma -1}} &= \left( \alpha x_1^{\frac{\sigma-1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma -1}{\sigma}} \right)^{\frac{\sigma}{\sigma -1} -1 } \cdot \alpha x_1^{-\frac{1}{\sigma}}\\
+    \frac{\partial}{\partial x_2}\left( \alpha x_1^{\frac{\sigma-1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma -1}{\sigma}} \right)^{\frac{\sigma}{\sigma -1}} &= \left( \alpha x_1^{\frac{\sigma-1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma -1}{\sigma}} \right)^{\frac{\sigma}{\sigma -1} -1} \cdot (1-\alpha) x_2^{-\frac{1}{\sigma}}
+\end{align*}
+And thus, 
+\[
+\text{MRS} = \frac{\frac{\partial U}{\partial x_1}}{\frac{\partial U}{\partial x_2}} = \frac{\alpha}{1-\alpha} \cdot \left( \frac{x_2}{x_1} \right)^{\frac{1}{\sigma}} 
+\]
+Taking the natural log of this yields:
+\[
+\ln \left( \frac{\alpha}{1-\alpha} \cdot \left( \frac{x_2}{x_1} \right)^{\frac{1}{\sigma}} \right) = \ln \left( \frac{\alpha}{1-\alpha} \right) + \frac{1}{\sigma} \ln \left( \frac{x_2}{x_1} \right) 
+\]
+and note that 
+\[
+\frac{d \ln \left( \frac{x_2}{x_1} \right)}{d \ln(\text{MRS})} = \left( \frac{\ln (\text{MRS})}{\ln \left( \frac{x_2}{x_1} \right)} \right)^{-1}
+\]
+Thus, 
+\[
+\frac{d \ln \left( \frac{x_2}{x_1} \right)}{d \ln(\text{MRS})} = \left( \frac{\ln (\text{MRS})}{\ln \left( \frac{x_2}{x_1} \right)} \right)^{-1} = (\sigma^{-1})^{-1} = \sigma
+\]
+\subsection*{b}
+Consider $\ln(u(x_1,x_2))$, as this will make calculations easier. We see that 
+\[
+\ln(u(x_1, x_2)) = \frac{\sigma}{\sigma - 1} \ln \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)
+\] 
+We can clearly see that as $\sigma \to 1$, the function becomes undefined. So, let us consider L'Hopital's rule. First, we analyze the expression $\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)$. As $\sigma \to 1$, we clearly see that $\frac{\sigma - 1}{\sigma} \to 0$. Therefore, 
+\[
+\lim_{\sigma \to 1} \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right) = 1
+\]
+We now differentiate both the numerator and denomintaor with respect to $\sigma$, getting that 
+\[
+\lim_{\sigma \to 1} = \frac{\partial }{\partial \sigma} \ln\left(\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma}\right)
+\]
+and 
+\begin{align*}
+    \frac{\partial }{\partial \sigma} \ln\left(\left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma}\right) &= \frac{\sigma \left( \alpha x_1^{\frac{\sigma -1}{\sigma}} + (1-\alpha)x_2^{\frac{\sigma - 1}{\sigma}} \right)^{\sigma - 1} \frac{\partial }{\partial \sigma}}{}
+\end{align*}
 \section*{Q4}
 \section*{Q5}
 \end{document}
