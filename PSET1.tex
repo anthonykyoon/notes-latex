@@ -332,5 +332,41 @@ u(x_1,x_2) = e^{\ln(u(x_1,x_2))} = e^{\ln(x_1^\alpha) + \ln(x_2^{1-\alpha})} = x
 \]
 Thus, completing the proof \qed
 \section*{Q4}
+We are given 
+\[
+y = Ak^\alpha L^{1-\alpha}
+\]
+\subsection*{a}
+\[
+MP_L(\mathbf{x}) = \frac{\partial y}{\partial L} = \frac{A k^\alpha(1-\alpha)}{L^{\alpha}}
+\]
+For all values of $\alpha$  this value stay positive. 
+\subsection*{b}
+If labor increases, then the value of $MP_L$ decreases. To see which $\alpha$ yields diminishing returns, let us look at the second derivative:
+\[
+    \frac{\partial MP_L}{\partial L} = (1-\alpha)(Ak^\alpha)(L^{-\alpha -1})(-\alpha) 
+\]
+We can see that for any value of $\alpha$ there exists diminishing returns. 
+\subsection*{c}
+See image below
+\subsection*{d}
+Since all values are assumed to be positive, we can see that if $k^* > k$,
+\[
+MP^*_L = A(1-\alpha)(k^*)^\alpha L^\alpha > A(1-\alpha)k^\alpha L^\alpha = MP_L
+\]
+\subsection*{e}
+\[
+\frac{\partial MP_L}{\partial k} = \frac{\alpha A k^{\alpha -1}(1-\alpha)}{L^\alpha} = f_{lk}
+\]
+since all values are assumed to be positive, which means that $f_{lk}$, this means that they are indeed edgeworth complements
+\subsection*{f}
+See image below, we can see that graph shifts outward towards the right as $MP^*_L > MP_L$, assuming ceteribus paribus conditions. 
+\subsection*{Graph for this problem}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{16_1graph.jpeg}
+    \caption{caption}
+    \label{fig:enter-label}
+\end{figure}
 \section*{Q5}
 \end{document}
