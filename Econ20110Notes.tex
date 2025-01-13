@@ -14,6 +14,7 @@
 
 
 \newcommand{\st}{\text{s.t}}
+\newcommand{\R}{\mathbb{R}}
 
 
 \title{Econ 20110 Notes}
@@ -62,6 +63,58 @@ we can see that
 \frac{\partial u}{\partial x_1} = \frac{1}{x} 
 \]
 which is $\infty$ 
+\subsection{Production Technology}
+People on the demand side are refered to consumers and those who are on the supply-side are firms. \textbf{Firms are the organizer of production}, where these firms thake in inputs into outputs. If we wanted to be specific, we can see that firms are tasked with the question of given a set of inputs, what is the ideal output. Such choices are constrained by the production technology available to the firms.  
+
+
+Mathematically spaking, we can see that input choices are members of the set $X \subseteq \mathbb{R}^m_+$ and similarly, output choices are members of the set $Y \subseteq \mathbb{R}^n_+$. Thus, when we take the cartesian product of these two sets, we get the \textbf{production possibility set}, or mathematiclly speaking $F \subseteq X \times Y$. So essentially, it is a tuple of values (for the sake of arguement, say $(x_1, x_2, \dots x_m, y_1, y_2, \dots y_m)$). So given a set of inputs $(x_1, x_2 \dots, x_m$, we can see that it produces $y_1, y_2, \dots d_n)$. However, there are restrictions on the proudction possibilities. A machine can only make certain amount of outputs for a set of given inputs only for a certian time interval. So for example:
+\[
+F = \{(x,y) \in \mathbb{R}^2_+ \quad | \quad y \leq 0.5x\}
+\]
+But most times, economicsts are interested in the outputs given a set of labor and capital. These will be reflected in restriction type of the production possiblities set. 
+An example of this is $k$, which is a fixed cost. Intuitvely, we can see that it would take $k$ hours to start a process.
+
+
+However, this comes with a key assumption. This assumption is that $y$ has an upper bound. This upper bound is the output given maximum efficieny. However, consider the case where there are no efficient methods. in that case, there are so inputs that go to waste. If we can dispose of these inputs costly, that is considered free disposal. This is, however, unrealistic, as in some cases these byproducts are harmful to dispose of. 
+\subsection{Production Functions}
+For simplicities sake, we are only considering idea where given many input, we are only getting a singular output. Assuming maximum efficiency, we can define a production function as $f: \R^m_+ \to \R_+$ be defined by
+\[
+f(x_1, x_2, \dots x_m) := \sup \{y \in \R_+ \quad | \quad (x_1, x_2, \dots, x_m, y )\in F \}
+\]
+And for the sake of simplicity, assume that the production function is continous, strictly increasing, and strictly quasiconcave on $\R_+^m$ and $f(\mathbf{0}) = 0$. This makes make things easier.  
+\subsection{Some math termialogy}
+For any two vectors $\mathbf{x}, \mathbf{y} \in \R^n$, we write thet 
+\begin{itemize}
+    \item $\mathbf{x} \geq \mathbf{y}$ if $x_i \geq y_i$ for all $i = 1,2, \dots, n$
+    \item $\mathbf{x} >> \mathbf{y}$ if $x_i > y_i$ for all $i = 1, 2, \dots, n$. 
+    \item $\mathbf{x} > \mathbf{y}$ if $\mathbf{x} \geq \mathbf{y}$ and $\mathbf{x} \neq \mathbf{y}$
+\end{itemize}
+A function $f: \R^n \to \R$ is strictly increasing if $f(\mathbf{x}) > f(\mathbf{x})$. 
+\subsection{Analyzing the key assumption of production functions}
+The assumption that roduction function is continous, strictly increasing, and strictly quasiconcave on $\R_+^m$ and $f(\mathbf{0}) = 0$ has the implications that 
+\begin{itemize}
+    \item Contunitity means that small changes in input lead to small changes in output
+    \item Strict Contunitity means that small changes in input will cause changes in output. 
+    \item Strict quasiconcavity means that averaging production plans yields higher output, sort of like the utility curves of last quarter.
+\end{itemize}
+\subsection{Comparitive statics}
+Often times, we are interested in what small changes in input entails. Liek always, assume ceterbis paribus conditions. Assume that $f$ is differentiable, which means that we can now get the marginal product of input i, as 
+\[
+MP_i(\mathbf{x}) = \frac{\partial f(\mathbf{x})}{\partial x_i}
+\]
+which is similar to marginal utility. Note that this value is dependent on the input vector. Similarly, we can see that the marginal rate of technical substitution between inputs $i$ and $j$
+\[
+MRTS_{ij}(\mathbf{x}) = \frac{MP_i(\mathbf{x})}{MP_j(\mathbf{text})}
+\]
+We can also have isoquants, which are the set of all inputs that output the same thing. Note thate absolute value of the slope is given by the MRTS. There is a proof of this on his notes. The quasiconcavity assumption iplies that isoquants bend towards the origin, which means that MRTS is diminishing. 
+\subsection{Returning to scale}
+We also can look at how output changes as we vary all inputs while holding the input proportions (ratios) constant. We can say that 
+\begin{itemize}
+    \item \textbf{Constant Return to Scale}: If $f(tx) = tf(x)$ for all $\mathbf{x} \in \R^m$ and all $t \in \R_+$. AKA, Homogeneous of degree one. 
+    \item \textbf{Increasing return to scale}: $f(tx) > tf(x)$ for all $x \in \R^m_+$ and all $t > 1$
+    \item \textbf{Decreasing return to scale}: $f(tx) < tf(x)$ for same conditions as increasing to scale
+\end{itemize}
+
 \section{Competitive Equilbirum}
 Weeks 3,4,5
 \section{Imperfect Equilbrium}
