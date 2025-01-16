@@ -114,7 +114,48 @@ We also can look at how output changes as we vary all inputs while holding the i
     \item \textbf{Increasing return to scale}: $f(tx) > tf(x)$ for all $x \in \R^m_+$ and all $t > 1$
     \item \textbf{Decreasing return to scale}: $f(tx) < tf(x)$ for same conditions as increasing to scale
 \end{itemize}
+There is also the elasitcity of substitution, which is: 
+\[
+\sigma_{ij} = \frac{d \ln \left( \frac{x_j}{x_i} \right)}{d \ln(MRTS_{ij}(\mathbf{x})))}
+\]
+larger $\sigma$ means that it is easier to substitute between two things.   
+\subsection{Competitive Firm Behavior}
+We believe that firms maximize profit. However, we can put in other considerations into this assumption, as firms may have other priorties. We also assume that the product market and the input markets should be \textbf{Perfectly Competitive}. This means that the consumption of the good does not affect the price, so the output and input behaviors are taken as given. This is can be seen as "Price Taking Behavior". Thus, a firm is interested in solving the following optimization problem:
+\begin{align*}
+    \max_{y, x_1, x_2, \dots, x_m} & \quad py - \sum_{i =1}^m \omega_i  x_i \\
+    \st & \quad y = f(x_1,x_2, \dots, x_m)
+\end{align*}
+but also, note that the following is mathematically sound:
+\[
+\max_{x,y} f(x,y) = \max_{y'} \max_x f(x; y')
+\]
+and the $\arg \max$ arguement still holds. When we analyze the above quantity, we see that the follwing maxization problem is equivalent:
+\[
+    \max_y py - \min_{x_1, x_2, \dots, x_m} \sum_{i =1}^m \omega_i x_i
+\]
+Thus, we can break thsi down into 2 steps. 
+\begin{itemize}
+    \item First, solve for every potential output level $y$, an cost minimization problem.
+    \item Then, we choose the profit maximizing output level y after taking taking the minimized cost for every $y$ as given. 
+\end{itemize}
+\subsection{Cost-minimization}
+We are interested in finding the minimum costing input bundle that yields at least any arbitrary given level of outputs. Hence,
+\begin{align*}
+    \min_{x_1, x_2, \dots, x_m} & \quad \sum_{i =1}^{m} \omega_i x_i\\
+    \st & \quad f(x_1, x_2, \dots, x_m) \geq y
+\end{align*}
+And thus, we can go through the same KTT process as we did for any constrained optimizatino problem. However, note that we are working with \emph{minimization}, hence, for $i = 2, 3, \dots, m$. 
+\[
+\frac{\partial L}{\partial x_i} = \omega_i - \lambda \frac{\partial f(x)}{\partial x_i} \geq 0
+\]
+We can solve this in a very similar way to do that of last quarter, where we can find the solution function, in the form $x(\mathbf{\omega}, y)$. We call these \emph{Conditional Input Demand Function}, where we are concerend about functions in the form $x(\mathbf{\omega}, y)$. Thus, we can have a minimized cost function, that would be $c(\mathbf{\omega}, y) = \mathbf{\omega} \cdot \mathbf{x}$
+\subsection{The Cost Function}
+So we have solved for the minimum value, and we can solve the optimization problem as $\sum_{i =1 }^m \omega_i x_i^*$. Sum and substitute for proper values, and you will get the profit in terms of $y$ and other parameters.
 
+
+But what happens to a graphical perspective. To reiterate, an isoquant is the set of all inputs that produce a certain output (AKA utility equivalent). Iso-costs is the budget constraint. Graphically, this is the tangency image that is repeated a lot in conumser theory. 
+\subsection{Cost minimization}
+Theorem: If $f$ is continuous and strictly increasing and $\mathbf{\omega} >> 0$, then $c(\mathbf{\omega}, y)$ is strictly increasing in $y$. 
 \section{Competitive Equilbirum}
 Weeks 3,4,5
 \section{Imperfect Equilbrium}
