@@ -2,7 +2,6 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
-\geometry{a4paper, margin=0.75in}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref} 
@@ -57,12 +56,92 @@ Thus, the cost function becomes
     &= \left( \frac{y \omega_2 \alpha}{A \omega_1 \beta} \right)^\frac{1}{\alpha + \beta} \left( \omega_1 \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^\beta + \omega_2 \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^{-\alpha} \right)
 \end{align*}
 \subsection*{b}
-For the function to be constant returning to scale, we see that $\alpha = 1 - \beta$, as we already know that the Cobb Douglas Utility function exhibits a constant return to scale. 
+For the function to be constant returning to scale, we see that $\alpha = 1 - \beta$, as we already know that the Cobb Douglas Utility function exhibits a constant return to scale. Now, we begin a proof of increasing return to scale. 
+
+
+For a function to return a scale increasing, for all $t >0$, $f(tx) > tf(x)$. Thus, let $t \in [1,\infty]$. Thus, we see that:
+\[
+f(t\mathbf{x}) = A(tx_1)^\alpha(tx_2)^\beta = Ax_1^\alpha x_2^\beta t^{\alpha + \beta} 
+\]
+Note if $\alpha + \beta < 1$, and since we know that $t > t^{\alpha + \beta}$. Therefore, this implies that for this to increasing return to scale, we see that $\alpha + \beta < 1$ is the required criteria. Additionally, we see that if $\alpha + \beta > 1$ is the converse of this logic, so we see that if we need to decrease return to scale, than $\alpha + \beta >1$. 
 \subsection*{c}
+Note that:
+\[
+\frac{\partial u}{\partial x_1} = A(\alpha)(x^{\alpha -1}_1)x_2^\beta \quad \quad \frac{\partial u}{\partial x_2} = A(\beta)x^{\beta -1}_2 x_1^\alpha
+\]
+Additinally, we see that the marginal technical rate of substitution is:
+\[
+MRTS_{12} = \frac{\frac{\partial u}{\partial x_1}}{\frac{\partial u}{\partial x_2}} = \frac{\alpha x_2}{\beta x_1}
+\]
+If we were to multiply each value by a constant $k$, so $(kx_1, kx_2)$ Note in the $MRTS$, we see that the $k$'s cancel out. Additionally, multiplying each value by $k$, we see that each marginal product is multiplied by $k^{\alpha + \beta}$. To analyze the effects of changing $\alpha$ and $\beta$ slightly, we first note that the marginal products of good 1 and good 2, we see that there are directly proportional to each $\alpha$ and $\beta$. In regrads to $MRTS$, increasing $\beta$ decreases $MRTS$ and increasing $\alpha$ increases MRTS. 
 \subsection*{d}
-If $\beta = 1 - \alpha$, then we know that it is a Cobb Douglas function with a consant elasticit of substitution. Anything else, and we would have a nonconstant elasticity of substition.  
+If $\alpha + \beta = 1$, then this function exhbits constant return to scale, as this is in the Cobb Douglas utility form. Thus, if $\alpha + \beta \neq 1$, we see that our elasicity would change respectively and not be constant. 
 \section*{3}
+\subsection*{a}
+None of the above, this does have global increasing, constant, or decreasing return to scale. 
+\subsection*{b}
+Let $y$ denote the dedicated output level the firm wants to meet. Note, if we want to meet the minimum point, we have to be at the "corner" of the iso-quant by the conditions of optimality. Thus, this implies that:
+\[
+\alpha x_1 = \beta x_2 = y
+\]
+Thus, $x_1^* = \frac{y}{\alpha}$ and $x_2^* = \frac{y}{\beta}$. 
+\subsection*{c}
+The cost function is just the conditional input demand functions times their respective $\omega$. Thus, we see that the cost function is:
+\[
+c(\omega_1,\omega_2, y) = \frac{\omega_1 y}{\alpha} + \frac{\omega_2 y}{\beta}
+\]
+\subsection*{d}
+The marginal cost function is defined as $\frac{\partial c}{\partial y}$ Therefore, the marginal cost function is $\frac{\omega_1}{\alpha} + \frac{\omega_2}{\beta}$.
+\subsection*{e}
+By Shepard's Lemma, we know that:
+\[
+\frac{\partial c(\mathbf{\omega}, y)}{\partial \omega_i} = x^*_i
+\] 
+Thus, 
+\[
+\frac{\partial c(\mathbf{\omega}, y)}{\partial \omega_1} = \frac{y}{\alpha}
+\]
+and 
+\[
+    \frac{\partial c(\mathbf{\omega}, y)}{\partial \omega_2} = \frac{y}{\beta}
+\]
+\subsection*{f}
+Since each $\frac{\partial c(\mathbf{\omega}, y)}{\partial \omega_i}$ has no $\omega$ in it, we know that for both, it is 0.
 \section*{4}
+\subsection*{a}
+We are interested in the following cost minization problem:
+\begin{align*}
+    \min & \quad \omega_1 x_1 + \omega_2 x_2\\
+    \st & \quad y = x_1^{\frac{1}{3}} x_2^{\frac{2}{3}}
+\end{align*}
+Thus, the Langrangian is as follows:
+\[
+L = \omega_1x_1 + \omega_2x_2 +\lambda(y -  x_1^{\frac{1}{3}} x_2^{\frac{2}{3}})
+\]
+with the following first order conditions:
+\begin{align*}
+    [x_1] & \quad \omega_1 \leq \lambda \left( \frac{1}{3} \left( \frac{x_2}{x_1} \right)^\frac{2}{3} \right)\\
+    [x_2] & \quad \omega_2 \leq \frac{2\lambda}{3} \left( \frac{x_1}{x_2} \right)^\frac{1}{3}\\
+    [\lambda] & \quad y \geq x_1^\frac{1}{3} x_2^\frac{2}{3}
+\end{align*}
+Logically, $x_2, x_1 \neq 0$. Similarly, we see that $y$ must equal the production function. Equating $\lambda$ s we see that the following expression is formed. 
+\[
+\frac{\omega_2}{2 \omega_1} = \frac{x_1}{x_2}
+\]
+and 
+\[
+\omega_2 x_2 = 2\omega_1 x_1
+\]
+Thus, using this with the $[\lambda]$ condition, we see that 
+\[
+x_2^* = y \left( \frac{2\omega_1}{\omega_2} \right)^\frac{1}{3} \quad x_1^* = y \left( \frac{\omega_2}{2\omega_1} \right)^\frac{2}{3}
+\]
+Thus, the long term function is
+\[
+c(\mathbf{\omega}, y) = \omega_1 x_1^* + \omega_2 + x_2^* = \omega_1 y \left( \frac{\omega_2}{2\omega_1} \right)^\frac{2}{3} + \omega_2  y \left( \frac{2\omega_1}{\omega_2} \right)^\frac{1}{3} = y \omega_1^\frac{1}{3} \left( \frac{\omega_2}{2} \right)^\frac{2}{3} + y \omega_2 (2\omega_1)^\frac{1}{3}\omega_2^\frac{2}{3}
+\]
+\subsection*{b}
+Let $x_1 = 1$. This means that our production function is $f(x_2 : x_1) = x_2^\frac{2}{3}$
 \section*{5}
 
 
