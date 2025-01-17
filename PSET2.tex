@@ -32,7 +32,35 @@ Let $y_1$ and $Y$ be denoted the same as before. Let $y_2 \in P$ where $y_2$ is 
 Logically, this would be the union of these sets. Since no goods are being produced, we do not have to be concerend about any new goods and be soley be concerned about the inputs. Let $F_3$ denote Firm 3's production set. We can see that $F_3 = F_2 \cup F_1$ and $F_3 = \{(x_1, x_2, y_1, y_2) \in \R^4_+ \hspace{2pt} | \hspace{2pt} y_1 \leq x_1^{\frac{1}{2}} x_2^{\frac{1}{2}}, y_2 \leq y_1^{\frac{1}{2}}\}$.
 \section*{2}
 \subsection*{a}
-
+If we let $\beta = 1-\alpha$, we see that we just replace $1 -\alpha$ by $\beta$, and nothing else changes, as we see that $\alpha$ is not changed in any fashion. The deriativation would not change at all until we get to iso-cost constraint. So what we would end up with is:
+\[
+[\lambda] \quad y = Ax_1^\alpha x_2^\beta
+\]
+and 
+\[
+\frac{\omega_1}{\omega_2} = \frac{\alpha}{\beta} \frac{x_2}{x_1}
+\]
+This means that:
+\[
+x_1^* = \left( \frac{y}{A} \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^\beta \right)^{\frac{1}{\alpha + \beta}}
+\]
+and 
+\[
+x_2^* = \left( \frac{y}{A} \left( \frac{\omega_1 \beta}{\omega_2 \alpha} \right)^\alpha \right)^{\frac{1}{\alpha + \beta}}
+\]
+Thus, the cost function becomes 
+\begin{align*}
+    \sum_{i =1}^2 \omega_i x_i^* &= 
+    \sum_{i = 1}^2 \omega_i x_i^* = \omega_1 \left( \frac{y}{A} \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^\beta \right)^{\frac{1}{\alpha + \beta}} + \omega_2 \left( \frac{y}{A} \left( \frac{\omega_1 \beta}{\omega_2 \alpha} \right)^\alpha \right)^{\frac{1}{\alpha + \beta}}\\
+    &= \left( \frac{y}{A} \right)^{\frac{1}{\alpha + \beta}} \left( \omega_1 \left(\left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^\beta \right)^\frac{1}{\alpha + \beta} + \omega_2 \left( \left( \frac{\omega_1 \beta}{\omega_2 \alpha} \right)^\alpha\right)^\frac{1}{\alpha + \beta}\right)\\
+    &= \left( \frac{y}{A} \right)^\frac{1}{\alpha + \beta} \left( \omega_1 \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^\frac{\beta}{\alpha + \beta} + \omega_2 \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^\frac{-\alpha}{\alpha + \beta} \right)\\
+    &= \left( \frac{y \omega_2 \alpha}{A \omega_1 \beta} \right)^\frac{1}{\alpha + \beta} \left( \omega_1 \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^\beta + \omega_2 \left( \frac{\omega_2 \alpha}{\omega_1 \beta} \right)^{-\alpha} \right)
+\end{align*}
+\subsection*{b}
+For the function to be constant returning to scale, we see that $\alpha = 1 - \beta$, as we already know that the Cobb Douglas Utility function exhibits a constant return to scale. 
+\subsection*{c}
+\subsection*{d}
+If $\beta = 1 - \alpha$, then we know that it is a Cobb Douglas function with a consant elasticit of substitution. Anything else, and we would have a nonconstant elasticity of substition.  
 \section*{3}
 \section*{4}
 \section*{5}
