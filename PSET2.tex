@@ -206,7 +206,37 @@ Let $y = 0$. Obviously, $sc(\mathbf{\omega}, y) > c(\mathbf{\omega}, y)$ as $1 >
     \caption{Comparison of $y = x^{3/2} + 1$ and $y = 3x \cdot 0.5^{3/2}$}
     \label{fig:comparison}
 \end{figure}
-\section*{5}
+\subsection*{d}
 
+\section*{5}
+First assume that $\mathbf{\omega}$ is fixed. Note that generally speaking, we know that the cost function is in the form:
+\[
+c(\mathbf{\omega}, y) = \sum_{i=1}^n \omega_i x_i(\mathbf{\omega}, y) 
+\]
+and thus the average cost function is in the form:
+\[
+AC(\mathbf{\omega}, y) = \frac{\sum_{i = 1}^n \omega_i x_i(\mathbf{\omega}, y)}{y}
+\]
+Now assume that production function exhibits constant returning to scale. We see that for any $t > 0$, this implies that:
+\[
+c(\mathbf{\omega}, ty) = tc(\mathbf{\omega}, y)
+\]
+Hence. we see that 
+\[
+AC(\omega, ty) = \frac{c(\mathbf{\omega}, ty)}{ty} = \frac{tc(\mathbf{\omega}, y)}{ty} = AC(\mathbf{\omega}, y) 
+\]
+Thus, showing that if the production function exhibits constant return to scale, that the average cost is constant. Now assume that the production function exhibits increasing return to scale. This means that for any $t > 1$, we see that:
+\[
+c(\mathbf{\omega}, ty) > tC(\mathbf{\omega}, y) 
+\]
+Thus, we repeat the above logic, where we see that for any $t> 1$, we see that 
+\[
+AC(\mathbf{\omega}, ty) = \frac{c(\mathbf{\omega}, ty)}{t} < \frac{tc(\mathbf{\omega}, y)}{ty} = AC(\mathbf{\omega}, y)
+\]
+And similarly, we see that if we assume that the production function exhibits decreasing return scale, we see that for any $t > 1$, 
+\[
+AC(\mathbf{\omega}, ty) = \frac{c(\mathbf{\omega}, ty)}{t} > \frac{tc(\mathbf{\omega}, y)}{ty} = AC(\mathbf{\omega}, y)
+\]
+Thus, proving the statement. 
 
 \end{document}
