@@ -156,6 +156,31 @@ So we have solved for the minimum value, and we can solve the optimization probl
 But what happens to a graphical perspective. To reiterate, an isoquant is the set of all inputs that produce a certain output (AKA utility equivalent). Iso-costs is the budget constraint. Graphically, this is the tangency image that is repeated a lot in conumser theory. 
 \subsection{Cost minimization}
 Theorem: If $f$ is continuous and strictly increasing and $\mathbf{\omega} >> 0$, then $c(\mathbf{\omega}, y)$ is strictly increasing in $y$. 
+
+We can argue this because when $f(x)$ and $c(\omega, y)$ are differentiable (which is guaranteed when f is also quasi-concave) and $f_i(x) > 0$ for all $i$ and $\mathbf{x}$. This implies that when there is no free inpu, margianl cost of production is always positive. We can also average 
+\[
+AC(\omega, y) = \frac{c(\omega, y)}{y}
+\]
+We have already proven in the HW that if the fucntion exhibits constant, inreasing, or decreasing return to scale, we see that tha leads to constant, decreasing, increasing respectively return to scale. Note that if we were to change the input prices by the same proprotion, we actually do not change the actual relative price. Thus, our input levels should not change, which implies that the \emph{the conditional input demand functions are homoegnous of degree zero in prices}. But, a collorary of this is that the cost function is homoegnous in egree one in regards to $\omega$. 
+
+
+As a byproduct of this, we can see that the Envelope Theorem gives us Shepard's Lemma, if $f$ is strictly quasiconcave, then:
+\[
+\frac{\partial c(\mathbf{\omega}, y)}{\partial \omega_i} = x_i^*(\mathbf{\omega}, y)
+\]
+We can see that the cost function is (weakly) increasing in $\omega$. what this entails is that if we can achieve lower cost with higher price, subject to the same constraints, we were not optimal to begin with. In fact, this also entails that $c(\omega, y)$ is concave in $\omega$. \\
+Now we have the substitution matrix, which is the Hessian matrix of $c(\omega, y)$, which corresponds to the Hessian Matrix of $c(\omega, y)$ which is concave in $\omega$. \footnote{I am not the best at this}. It is seen here as 
+\[
+\mathbf{\sigma^*}(\omega, y) = \begin{bmatrix}
+    \frac{\partial x_1(\omega, y)}{\partial \omega_1} & \frac{\partial x_1(\omega, y)}{\partial \omega_2} & \dots & \frac{\partial x_1(\omega, y)}{\partial \omega_n} \\
+    \frac{\partial x_2(\omega, y)}{\partial \omega_1} & \frac{\partial x_2(\omega, y)}{\partial \omega_2} & \ddots & \frac{\partial x_2(\omega, y)}{\partial \omega_n}\\
+    \vdots & \ddots & \ddots & \vdots \\
+    \frac{\partial x_n(\omega, y)}{\partial \omega_1} & \dots & \dots & \frac{\partial x_n(\omega, y)}{\partial \omega_n}
+\end{bmatrix}
+\]
+And from a proof that I frankly will not be doing, we know that $\sigma^*$ is symmetric and negative semidefinite, which means that all $\frac{\partial x_i(\omega, p)}{\partial \omega_i} \leq 0$ 
+\subsection{Hessian Matrix Breakdown}
+Intuitvely, the Hessian Matrix refers to the local curvature around a certain point. We have varying types of curavture, which are characterized by differing forms of a matrix. 
 \section{Competitive Equilbirum}
 Weeks 3,4,5
 \section{Imperfect Equilbrium}
