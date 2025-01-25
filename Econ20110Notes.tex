@@ -15,7 +15,7 @@
 
 \newcommand{\st}{\text{s.t}}
 \newcommand{\R}{\mathbb{R}}
-
+\newcommand{\N}{\mathbb{N}}
 
 \title{Econ 20110 Notes}
 \author{Anthony Yoon}
@@ -180,7 +180,41 @@ Now we have the substitution matrix, which is the Hessian matrix of $c(\omega, y
 \]
 And from a proof that I frankly will not be doing, we know that $\sigma^*$ is symmetric and negative semidefinite, which means that all $\frac{\partial x_i(\omega, p)}{\partial \omega_i} \leq 0$ 
 \subsection{Hessian Matrix Breakdown}
-Intuitvely, the Hessian Matrix refers to the local curvature around a certain point. We have varying types of curavture, which are characterized by differing forms of a matrix. 
+Intuitvely, the Hessian Matrix refers to the local curvature around a certain point. We have varying types of curavture, which are characterized by differing forms of a matrix. They are as follows:
+\begin{itemize}
+    \item A Positive Definite Matrix M means that for all $x \in \R^n \setminus \{0\}$, $x^T M x >0$ and that all eigenvalues are positive.
+    \item A Positive Semi-Definite Matrix M means that for all $x \in \R^n$, we know that $x^T M x \geq 0$ and all eigenvalues are non-negative (so this means that the eigenvalue can be 0)
+    \item I'll fill in this later 
+\end{itemize}
+\subsection{Short Run Cost Function}
+So far we have assumed that firms are able to change all of their inputs when minimizing their production costs. However, it is assumed that this is only true in the long run. In the short run, there are some things that are not so easily changible. I.E, you can't build a building within 2 days. Thus, we can write a firm's short run cost minimization as follows:
+\begin{align*}
+    \min_{x_1, x_2, \dots, x_j} & \quad \sum_{i = 1}^{I} \omega_i x_i + \sum_{i = 1}^{J} \overline{\omega}_j \overline{x}_j 
+\end{align*}
+where any variable that has a bar over it like $\overline{x}$, that corresponds to a short run function. Thus, we see tha the short run cost cannot be lower than the long run (minimized) cost. Thus, for $sc \geq c$. However, to enforce strict equality, note that if over long term conditional input demand functions equal our $\overline{x}$, than we know that 
+\[
+sc(\mathbf{\omega}, y ; \mathbf{\overline{x}}(\mathbf{\omega}, y)) = c(\mathbf{\omega}, y)
+\]
+If the above is true, than we know that our chosen $\mathbf{\overline{x}}$ must minimize short cost at our desired parameters. Thus, we see that 
+\[
+\frac{\partial sc(\omega, y ; \mathbf{\overline{x}}(\mathbf{\omega}, y))}{\partial \overline{x}_j} = 0
+\]
+for all $j \in \N$. Note that for a gievn value of $y$, we can make the short run cost equal the long term cost also implies that they are also tangent to each other. 
+\subsection{Direct Profit Maximization}
+Note to this point, we have been interested in solving the problem:
+\begin{align*}
+    \max_{(y, x_1, x_2, \dots, x_m)} & \quad py - \sum_{i=1}^{m} \omega_i x_i\\
+    \st & \quad y = f(x_1, x_2, \dots, x_m)
+\end{align*}
+Up till this point, we have been motivated to solve this in two steps: (1) find the cost minimized inputs, then (2) maximize the profits for a given level of outputs. Here, we are interested in this solving in two steps. We can substute the constraint into our objective function to get the following:
+\[
+\max_{x_1, x_2, x_3, \dots, x_m} pf(x_1, x_2, \dots, x_m) - \sum_{i = 1}^m \omega_i x_i
+\]
+We can see that if we assume interior solutions, we see that the FOCs are 
+\[
+p \frac{\partial f(\mathbf{x})}{\partial x_i} = \omega_i 
+\]
+we call $p \frac{\partial f(\mathbf{x})}{\partial x_i}$ the Marginal Revenue Product of input $i$, which the FOC says that it must be equal to the price of input $i$. 
 \section{Competitive Equilbirum}
 Weeks 3,4,5
 \section{Imperfect Equilbrium}
