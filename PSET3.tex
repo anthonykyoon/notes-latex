@@ -16,6 +16,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
 
 \title{PSET 3}
 \author{Anthony Yoon}
@@ -144,5 +145,69 @@ Thus, this implies that the profit function is:
 \end{cases}
 \]
 \section{}
-
+Note that the following production function, or the perfect subsitute production function:
+\[
+y = \alpha x_1 + \beta x_2
+\]
+we can exchange between $x_1$ and $x_2$. From here, we can see that cost will be minimized if we purchase only of the cheaper of the 2 goods. To prove that, we see that we are interested in the following cost minimization problem 
+\begin{align*}
+    \min & \quad \omega_1 x_1 + \omega_2 x_2\\
+    \st & \quad y \leq \alpha x_1 + \beta x_2
+\end{align*}
+However, plugging the constraint into the object function yields the following optimization problem:
+\[
+\min_{x_1} \quad \omega_1 x_1 + \omega_2 \left( \frac{y - \alpha x_1}{\beta} \right)
+\]
+From here, we differeniate with respect to $x_1$, we can se that we get
+\[
+\omega_1 - \frac{\omega_2 \alpha}{\beta} 
+\]
+However, note that this quantity is dependent on parameters, so we can make the following deductions:
+\begin{itemize}
+    \item If $\omega_1 - \frac{\omega_2 \alpha}{\beta} < 0$ , we can see that increasing the input of $x_1$ will decrease cost, so we can see that in this case $x_1 = \frac{y}{\alpha}$ and $x_2 = 0$
+    \item If $\omega_1 - \frac{\omega_2 \alpha}{\beta} > 0$, we can see that increasing the input of $x_1$ will increase cost, so we can see that in this case $x_2 = \frac{y}{\beta}$ and $x_1 = 0$
+    \item If $\omega_1 = \frac{\omega_2 \alpha}{\beta}$, we can see that any input will give us the optimal amount. So this implies that $x_1 \in [0, \frac{y}{\alpha}]$ and $x_2 = \frac{y - \alpha x_1}{\beta}$
+\end{itemize}
+Thus, we can see that cost is minimized when we choose the minimum of the inputs, or rather 
+\[
+c(\omega, y) = \min \left\{  \frac{\omega_1 y}{\alpha}, \frac{\omega_2 y}{\beta}\right\}
+\]
+For notational sake, let us call $c(\omega, y) = C$ Note that we are know interetsed in the following profit maximaization problem:
+\[
+\max y (1 - C)
+\]
+So we can see that our ODF (for same reasons as 2)
+\[
+y^* = \begin{cases}
+    \text{undefined} & \quad C < 1\\
+    [0, \infty] & \quad C = 1\\
+    0 & \quad C > 1
+\end{cases}
+\]
+and using the proof above and let $W = \omega_1 - \frac{\omega_2 \alpha}{\beta}$, we can see that 
+\[
+x_1^* = \begin{cases}
+    0 & \quad W < 0 \text{ and } C = 1\\
+    [0, \frac{y}{\alpha}] & \quad W = 0 \text{ and } C = 1\\
+    \frac{y}{\alpha} & \quad W > 1 \text{ and } C = 1\\
+    \text{undefined} & \quad C < 1\\
+    0 & \quad C > 1
+\end{cases}
+\]
+\[
+x_2^* = \begin{cases}
+    0 & \quad W > 0 \text{ and } C = 1\\
+    [0, \frac{y}{\beta}] & \quad W = 0 \text{ and } C = 1\\
+    \frac{y}{\beta} & \quad W < 1 \text{ and } C = 1\\
+    \text{undefined} & \quad C < 1\\
+    0 & \quad C > 1
+\end{cases}
+\]
+Thus, we can see our profit function is 
+\[
+\pi(\omega, p) = \begin{cases}
+    \text{undefined} & C <1\\
+    0 & C \geq 1
+\end{cases}
+\]
 \end{document}
