@@ -338,7 +338,7 @@ MC = \frac{1}{\alpha} \quad AC = \frac{1}{\alpha} + \frac{1}{y}
 now we begin a case by case analysis of the relationship between $p$ and $\alpha$.
 \begin{itemize}
     \item If $p < \frac{1}{\alpha}$, we can see that our profit will be less than 0 as our marginal cost must be greater han that of price. So the firm shuts down and produces nothing. 
-    \item if $p = \frac{1}{\alpha}$ we can see that the firm makes 0 profit and will have $y \in [0,\infty)$. However, we know that our upper bound must be $\alpha$, which implies that the firm must produce $y \in [0, \alpha)$
+    \item if $p = \frac{1}{\alpha}$ we can see that the firm makes 0 profit and will have $y \in [0,\infty)$. However, we know that our upper bound must be $\alpha$, which implies that the firm must produce $y \in [0, \alpha]$
     \item if $p > \frac{1}{\alpha}$ we can see that our profit is stricly positive, as marginal renevue is greater than that of marginal cost. So the firm is incentived to produce as much as possible, but they must stop at $\alpha$ as that is the upper bound of production.
 \end{itemize}
 By symmetry, a similar argument holds for $\beta$. Since we also know that $\alpha > \beta > 0$ and $p = A - q$, we must now analyze the relationship of $p$ and $\alpha, \beta$. Note that $\frac{1}{\beta} > \frac{1}{\alpha} > 0$
@@ -348,7 +348,31 @@ By symmetry, a similar argument holds for $\beta$. Since we also know that $\alp
     p = A - (\alpha + q^2_s) \implies \alpha + \frac{1}{\beta} \leq A \leq \alpha + \beta + \frac{1}{\beta}
     \] Thus, if the above conditions are met, we are at competitive equilbrium.
     \item $p \in (\frac{1}{\alpha}, \frac{1}{\beta})$. This implies that $q^2_s = 0$ but $q^1_s = \alpha$ Thus, we can see that $q^s = \alpha$, and thus $p = A - \alpha$, where we see that $\alpha + \frac{1}{\alpha} < \alpha + \frac{1}{\beta}$
-    \item $p = \frac{1}{\alpha}$
+    \item $p = \frac{1}{\alpha}$ If this is the case, $q^1_s \in [0, \alpha)$ and $q^2_s = 0$ This implies that $p = A - q_s^1$. Thus, we can see that $\frac{1}{\alpha} \leq A \leq \frac{1}{\alpha} + \alpha$ 
+    \item $p < \frac{1}{\alpha}$ If that's the case, then both firms shut down, and thus produce nothing. Therefore, there cannot be an equilbrium here. 
+\end{itemize}
+\subsection*{b}
+We impose the 0 profit condition and removed the fixed $x_2$ Thus, when we analyze the production function, we can see that to minimize cost, we must have that $\alpha x_1 = \alpha x_2 = y$ Thus, we see that our cost function is:
+\[
+c = \frac{2y}{\alpha}
+\]
+Thus, our profit maximization problem is as follows:
+\[
+\max_y py - \frac{2y}{\alpha}
+\]
+So we can see that we are dealing with following production function, the same reasoning applies from all previous questions:
+\[
+y^* = \begin{cases}
+    \text{undefined} & \quad p > \frac{2}{\alpha}\\
+    [0, \infty) & \quad p = \frac{2}{\alpha}\\
+    0 & \quad p < \frac{2}{\alpha}
+\end{cases}
+\]
+Thus, we can see that a similar logic applies to firm 2. We are now faced with the same conditions as before in part $a$. Let us analyte the cases:
+\begin{itemize}
+    \item $p > \frac{2}{\beta} > \frac{2}{\alpha}$, $p = \frac{2}{\beta}$, $p \in (\frac{2}{\alpha}, \frac{2}{\beta})$, all these lead to both or one firms producing infinte amounts, which leads to no solution. 
+    \item $p  < \frac{2}{\alpha}$, both firms produce nothinhg, which implies there is no solution to the equilbrium question. 
+    \item $p = \frac{2}{\alpha}$ we see that $q^1_s$ can be any value while $q^2_s = 0$ Therefore, we can see that $q^d = A - p$, which implies that $p + q^d = A$, which means that $\frac{2}{\alpha} \leq A$ and $q^d = A - \frac{2}{\alpha} = q^s$
 \end{itemize}
 \section{}
 \subsection*{a}
