@@ -212,6 +212,7 @@ Thus, we can see our profit function is
 \end{cases}
 \]
 \section{}
+\subsection*{a}
 If we fix $x_2 = 1$, we can see that 
 \begin{align*}
     y = x^\alpha_1 \iff x_1^* = y^\frac{1}{\alpha}
@@ -220,5 +221,27 @@ This implies that
 \[
 sc(\omega, y) = \omega_2 + \omega_1 y^\frac{1}{\alpha}
 \]
-We can see that if $\alpha = 1$, we get constant return to scale, and if $\alpha > 1$ we can see we get decreasing return to scale and $\alpha < 1$ we get increasing return to scale. 
+We can see that if $\alpha = 1$, we get constant return to scale, and if $\alpha > 1$ we can see we get decreasing return to scale and $\alpha < 1$ we get increasing return to scale. Now we solve the profit maximaization case. where we want to 
+\[
+py - \omega_2 - \omega_1 y^\frac{1}{\alpha}
+\]
+Now, we are interested in the profit maximizing short run supply function. 
+If we let $\alpha = 1$, we get the equation:
+\[
+py - \omega_2 - \omega_1 y \iff y(p - \omega_1) - \omega_2
+\]
+which implies that $\omega_2$ is a fixed cost that the company must pay for. Thus, we can see the following production functions.
+\[
+y^* = \begin{cases}
+    \text{undefined} & \quad p > \omega_1\\
+    [0,\infty) & \quad p = \omega_1\\
+    0 & \quad p < \omega_1
+\end{cases}
+\]
+If $\alpha > 1$, note the following. Let us look at the marginal cost. 
+\[
+\frac{\partial sc}{\partial y} = -\frac{\omega_2}{y^2} - \left( \frac{1-\alpha}{\alpha} \right)\omega_1 y^\frac{1- 2\alpha}{\alpha}
+\]
+Note that with $\alpha >1$, we can see that the above quantity is always negative, which implies that average cost is strictly less than that of marginal cost, which means the firm would want to produce infinite amounts. If $\alpha < 1$, we know that 
+
 \end{document}
