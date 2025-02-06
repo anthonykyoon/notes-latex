@@ -277,8 +277,34 @@ Let us assume that there exists a solution to this function, and we will still d
 \[
 \pi = y(p^E - \omega_1) - \omega_2 = \left( \frac{\alpha p^E}{\omega_1} \right)^\frac{\alpha}{1-\alpha} ( p^E - \omega_1) - \omega_2
 \]
-\subsection{c}
+\subsection*{c}
+Now, we impose the zero profit condition. Assume that every firm has the same production capabilities. From a previous PSET, we know that the value of $\alpha + \beta$ has significant impact on the Cobb Douglas production function. Using resuls derived from previous PSETs (2.2), we get the following:
+\[
+x_1 = \left( y \left( \frac{\beta}{\alpha} \right)^\beta \right)^\frac{1}{\alpha + \beta} x_2 = \left( y \left( \frac{\beta}{\alpha} \right)^\alpha \right)^\frac{1}{\alpha + \beta}
+\] 
+\[
+c(\omega, y) = y^\frac{1}{\alpha + \beta} \left( \left( \frac{\beta}{\alpha} \right)^\frac{\alpha}{\alpha + \beta} + \left( \frac{\alpha}{\beta} \right)^\frac{\beta}{\alpha + \beta} \right)
+\]
+Let $A =  \left( \left( \frac{\beta}{\alpha} \right)^\frac{\alpha}{\alpha + \beta} + \left( \frac{\alpha}{\beta} \right)^\frac{\beta}{\alpha + \beta} \right)$. Now, we are interested in the profit maximaization problem, where 
+\[
+\max_y py - y^\frac{1}{\alpha + \beta} A
+\]
+If $\alpha + \beta > 1$, this means that the profit can just keep producing in order to maximize profit, incentivizing infinite productin, so the equilbrium does not exist here. \\
 
+
+If $\alpha + \beta = 1$, we can see that we get $(p - A)y$. Thus, we can see that we have to concern the relationship between $p$ and $A$. So we get the following output supply functions for the same reasons for the previous problems. 
+\[
+y^* = \begin{cases}
+    \text{undefined} & \quad p > A\\
+    [0, \infty) & \quad p = A\\
+    0 & \quad p < A
+\end{cases}
+\]
+Thus, this implies that equilbrium only exists $p=A$. Therefore, we can see that $p =  A$ is our equilbrium price, and thus we are only interested in solving for the supply that would sastify this
+\[
+q^d = q^s  \iff 10 - A = 2y \iff y = \frac{10 - A}{2}
+\]
+If $\alpha + \beta < 1$, we have a decreasing return to scale problem. 
 
 
 
