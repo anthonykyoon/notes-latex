@@ -304,7 +304,20 @@ Thus, this implies that equilbrium only exists $p=A$. Therefore, we can see that
 \[
 q^d = q^s  \iff 10 - A = 2y \iff y = \frac{10 - A}{2}
 \]
-If $\alpha + \beta < 1$, we have a decreasing return to scale problem. 
+If $\alpha + \beta < 1$, we have a decreasing return to scale problem. Given the optimization problem, let us differentiate with respect $y$, where we see that we get (assuming interior solutions):
+\[
+p = \frac{1}{\alpha + \beta} y^{\frac{1}{\alpha + \beta} - 1} A
+\]
+After some algebra, we get that:
+\[
+y = \left(\left( \frac{\alpha + \beta}{A} \right) p\right)^\frac{\alpha + \beta}{1-\alpha-\beta}
+\]
+By the zero profit condition, we can see that:
+\[
+\pi = py -y^\frac{1}{\alpha + \beta} A = p^\frac{1}{1-\alpha - \beta} \left( \left( \frac{\alpha + \beta}{A} \right)^\frac{\alpha + \beta}{1-\alpha - \beta} - \left( \frac{\alpha + \beta}{A} \right)^\frac{1}{1-\alpha-beta}\right) = 0
+\]
+This implies that $p =0$, which means no equilbrium exists. 
+\section{}
 
 
 
