@@ -1,0 +1,73 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref} 
+\usepackage{amsmath}
+\usepackage{ gensymb }
+\usepackage{ amssymb }
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{float}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbff{Z}}
+
+\title{PSET5}
+\author{Anthony Yoon}
+\date{2/20/2025}
+\begin{document}
+\maketitle
+\section{}
+\subsection*{a}
+We can first begin calulating MRS for each individual. Without a loss of generality, we can begin to note the following:
+\[
+MRS_i = \frac{\alpha (x_1^i)^{\alpha -1}(x_2^i)^\beta}{\beta(x_2^i)^{\beta - 1}(x_1^i)^\alpha}
+\]
+This above quantity implies that $\frac{x_2^1}{x_1^1} = \frac{x_2^2}{x_1^2}$. Let $e_1 = x_1^1 + x_1^2$ and $e_2 = x_2^1 + x_2^2$. Using this equalities as well as the implication derived from the MRSes, we can find that we get:
+\[
+x_2^1 = \frac{e_2}{e_1} x_1^1 \quad x_2^2 = \frac{e_2}{e_1} x_1^2
+\]
+Since both the above quantities are linear in nature with no intercept, this implies that indeed the contact curve is that of connecting endpoints. 
+\subsection*{b}
+Since we we are working with different utility functions, we can find that after similar caluclations to above that:
+\[
+MRS_1 = \frac{\alpha (x_1^1)^{\alpha - 1}(x_2^1)^{1-\alpha}}{(1-\alpha)(x_1^1)^\alpha (x_2^1)^{-\alpha}} = \frac{\alpha x_2^1}{(1-\alpha)x_1^1}
+\]
+and using similar calculations, we find that:
+\[
+MRS_2 = \frac{\beta x^2_2}{(1-\beta)x_1^2}
+\]
+Since we know that $1 > \alpha > \beta > 0$, we find that:
+\[
+\frac{\alpha}{1-\alpha} > \frac{\beta}{1-\beta}
+\]
+Thus, we can see that for MRS to equal to each other, we know that:
+\[
+\frac{x_2^1}{x_1^1} < \frac{x^2_2}{x^2_1}
+\]
+Using the equations derived above, we can find that:
+\[
+x_2^1 < \frac{e_2}{e_1} x_1^1
+\]
+this implies that the graph still intersects the origins, but now $x_2^1 < x_1^1$, where we have all a curve that will be strictly below that of the original line derived in \textbf{a}
+\subsection*{c}
+For the contract curve to exist, we want $MRS_1 = MRS_2$. Let $e_1 = x_1^1 + x_1^2$. We can see that
+\[
+MRS_1 = MRS_2 \implies \alpha (x_1^1)^{\alpha - 1} = \beta (x_1^2)^{\beta - 1}
+\]
+Thus, substuting the endowment, we find that:
+\[
+    (x_1^1)^{\alpha - 1} = \beta (e_1 - x_1^1)^{\beta - 1}
+\]
+So we see that as $ x_1^1 \to e^1_1$, we find that the consumers will not consume any 
+\section{}
+\section{}
+\section{}
+\section{}
+\section{}
+\end{document}
