@@ -169,8 +169,36 @@ and since we have only one relative price, we can find that the set of Walrasian
     W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E})  =  \left\{ \left( \frac{4}{3}, 2 \right), \left( \frac{8}{3}, 2 \right)\right\}
 \]
 \subsection*{i}
+Consider the general form of the equation,
 \section{}
 \section{}
-\section{}
-\section{}
+\subsection*{a}
+We can note that as we are all using the minimum function, we can see that $x_1^1 = x_2^1 = x_2^2 = x_3^2 = x_1^3 = x_3^3$, which implies that we are interested in the allocation:
+\[
+    x_1^1 = x_2^1 = x_2^2 = x_3^2 = x_1^3 = x_3^3 = 0.5
+\]
+which is optimal as moving away would cause utilty lose and maximizes utlity for all and markets clear. Thus, this allocation is in the core, and let this allocation equal $\overline{x}$
+\subsection*{b}
+Consider the UMP for consumer 1. We are interested in the following optimization problem:
+\begin{align*}
+    \max & \quad \min\{x_1^1, x_2^1\}\\
+    \st & \quad x_1^1 p_1 + p_1x_2^1 \leq p e_1
+\end{align*}
+note that we want $x_1^1 = x_2^1$, which implies using the strict equality of the constraint (which we know is true by the AU assumption) that 
+\[
+x_1^1 = x_2^1 = \frac{p_1}{p_1 + p_2}
+\]
+using a similar logic, we can see that:
+\[
+x_2^2 = x_3^2 = \frac{p_2}{p_2+p_3}
+\]
+and
+\[
+x_1^3 = x_3^3 = \frac{p_3}{p_1+p_3}
+\]
+Thus, we can now analyze the aggegate demand functions. 
+We find that $z_i = x_i^1 + x_i^2 + x_i^3 - 1$
+
+\section*{6}
+
 \end{document}
