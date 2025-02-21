@@ -169,7 +169,32 @@ and since we have only one relative price, we can find that the set of Walrasian
     W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E})  =  \left\{ \left( \frac{4}{3}, 2 \right), \left( \frac{8}{3}, 2 \right)\right\}
 \]
 \subsection*{i}
-Consider the general form of the equation,
+Note that the optimal values of $x_1$ and $x_2$ are only dependent on prices, we are interested in solving the cases purely dependent on making the value of the endowments equal to each other. 
+\subsubsection*{First Economy}
+since we know that $p_1 = p_2$, and we are interested in equating market values to each other, we should know that:
+\[
+p_1(e_1^1 + e_2^1) = p_2(e_1^2 + p_2^2) \implies (e_1^1 + e_2^1) = (e_1^2 + p_2^2)
+\]
+Let $T = (T_1, T_2)$ where each $T_i$ represents the transfer from each individual 1 to individual 2 in respect to each good, we can see that:
+\[
+2 - T_1 + 1 - T_2 = 2 + T_1 + 3 + T_2 
+\]
+However, since prices are equal, we can solve with respect with each good. Thus, we can see that:
+\[
+2 - T_1 = 2 + T_1 \iff T_1 = 0 \quad 1 - T_2 = 3 + T_2 \iff T_2 = -1
+\]
+Thus, $T = (0, -1)$, which means that no transfer of good is done, but one $x_1$ is transfered from person 2 to person 1, with leads to:
+\[
+\mathbf{e^1} = \mathbf{e^2}= (2, 2)
+\]
+\subsubsection*{Second Economy}
+Now. we see that $3p_2 = 2p_1$, using a similar logic to that above and same definition of $T$, we see that:
+\begin{align*}
+    p_1(2-T_1) + p_2(1-T_2) &= p_1(2+T_1) + p_2(3 + T_1)\\
+    \frac{3p_2}{2}(2 - T_1) + p_2(1 - T_2) &= \frac{3p_2}{2}(2+T_1) + p_2(3+T_1)\\
+\end{align*}
+Using a similar arguement, we find that $T = (0, -1)$, which means that we obtain the same individual endowment as before.
+
 \section{}
 \subsection*{a}
 See Graph
@@ -178,7 +203,7 @@ Note that equating the MRSes here is not ideal due to the given utility function
 \subsection*{c}
 The core would be characterized as $\{e^1, e^2\} = \{(e_1^1, 0), (0, e_2^2) | e_1^1, e_2^2 \in [0,2]\}$. As moving to any allocation in this set will strictly increase utility for each consumer. 
 \subsection*{d}
-
+Consider 
 \section{}
 \subsection*{a}
 We can note that as we are all using the minimum function, we can see that $x_1^1 = x_2^1 = x_2^2 = x_3^2 = x_1^3 = x_3^3$, which implies that we are interested in the allocation:
