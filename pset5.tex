@@ -16,6 +16,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
 
 \title{PSET5}
 \author{Anthony Yoon}
@@ -54,7 +55,7 @@ Using the equations derived above, we can find that:
 \[
 x_2^1 < \frac{e_2}{e_1} x_1^1
 \]
-this implies that the graph still intersects the origins, but now $x_2^1 < x_1^1$, where we have all a curve that will be strictly below that of the original line derived in \textbf{a}
+this implies that the graph still intersects the origins, but now $x_2^1 < x_1^1$, where we have all a curve that will be strictly below that of the original line derived in \textbf{a}. The contract curve is seen as below. 
 \subsection*{c}
 For the contract curve to exist, we want $MRS_1 = MRS_2$. Let $e_1 = x_1^1 + x_1^2$. We can see that
 \[
@@ -64,8 +65,110 @@ Thus, substuting the endowment, we find that:
 \[
     \alpha(x_1^1)^{\alpha - 1} = \beta (e_1 - x_1^1)^{\beta - 1}
 \]
-So we see that as $ x_1^1 \to e^1_1$, we find that the consumers will not consume any $x_2$, and consume only $x_1$ However, since we know that $\alpha > \beta$, this implies that consumer $x_1^1$ has greater value on $x_1^1$, which implies that $x_1^1  > x_1^2$. However, once we hit $x_1^1 $
+So we see that as $ x_1^1 \to e^1_1$, we find that the consumers will not consume any $x_2$, and consume only $x_1$ However, since we know that $\alpha > \beta$, this implies that consumer $x_1^1$ has greater value on $x_1^1$, which implies that $x_1^1  > x_1^2$. Note that any level of $x_2$ sastifies the MRS equality arguement, thus we are only concerned about when $e_1 = x_1^1 + x_1^2$ and one of these inputs are the utility maximizing solution. The contract curve will like the one below:
 \section{}
+\subsection*{a}
+See Graph 
+\subsection*{b}
+See Graph 
+\subsection*{c}
+See Graph
+\subsection*{d}
+The core would just be the point $(e_1^1, e_2^1)$ as any trade would make this individual worse off, hence no trade would not be blocked by any coalition. 
+\subsection*{e}
+We first derive the general Marshallian Demand function for each individual. We are interested in the following optimization problem:
+\begin{align*}
+    \max & \quad x_1x_2\\
+    \st & \quad p_1e_1 + p_2e_2 \geq p_1x_1 + p_2x_2
+\end{align*}
+Where the langrangian is:
+\[
+L = x_1x_2 - \lambda(p_1e_1 + p_2e_2 - p_1x_1 - p_2x_2)
+\]
+wherw we see that the FOCs are:
+\begin{align*}
+    [x_1] &\quad x_2 + \lambda p_1 \leq 0 \text{ and } x_1 \geq 0\\
+    [x_2] & \quad x_1 + \lambda p_2 \leq 0 \text{ and } x_2 \geq 0\\
+    [\lambda] &\quad p_1e_1 + p_2e_2 \leq p_1 x_1 + p_2x_2 
+\end{align*}
+We can see all FOCs must be strict equality, as if that is not the case, then markets will fail to clear $([x_1], [x_2])$ and by the AU assumption that we want to use all of our endowment to maximize utility. Using these FOCs, we can find that:
+\[
+p_1x_1 = p_2x_2
+\]
+Thus, using this equation and the constraint, we find that:
+\[
+x_1^m = \frac{e_1}{2} + \frac{p_2}{2p_1}e_2 \quad x_2^m = \frac{p_1}{2p_2}e_1 + \frac{e_2}{2}
+\]
+Thus, we find that:
+\[
+x_1^1 = \frac{p_2}{2p_1} + 1 \quad x_2^1 = \frac{p_1}{p_2} + \frac{1}{2}
+\]
+\[
+x_1^2 = \frac{3p_2}{2p_1} + 1 \quad x_2^2 = \frac{p_1}{p_2} + \frac{3}{2}
+\]
+Thus we can find that where we let $\mathbf{p} = (p_1, p_2)$:
+\[
+z_1(\mathbf{p}) = 2 + 2 \left( \frac{p_2}{p_1} \right)  - 4 =  - 2 + 2 \left( \frac{p_2}{p_1} \right) 
+\]
+\[
+z_2(\mathbf{p}) = 2 + 2 \left( \frac{p_1}{p_2} \right)  - 4 =  - 2 + 2 \left( \frac{p_1}{p_2} \right) 
+\]
+and we can verify that:
+\[
+\mathbf{p} \cdot \mathbf{z} = \begin{bmatrix}
+    p_1 & p_2 
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+    2 \left( \frac{p_2}{p_1} \right) - 2\\ 
+    2 \left( \frac{p_1}{p_2} \right) - 2
+\end{bmatrix} = 2p_2 - 2p_1 + 2p_1 - 2p_2 = 0
+\]
+\subsection*{f}
+We can see if $p_2 = p_1$, we find that obviously, $\mathbf{z}$ goes to 0. Thus, we find that the set of Walrasian equlibria is $p^*(\mathcal{E}) = \{p_1, p_2) | p_1 = p_2\}$ We find that a Walrasian equilbrium allocation is
+\[
+x^W =\{ (x_1, x_2)\} = \{ (1.5, 1.5), (2.5, 2.5)\}
+\]
+since there is one relative price, we can find that the set of Walrasian Equilbirum Allocations is: 
+\[
+W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E})  = \{ (1.5, 1.5), (2.5, 2.5)\}
+\]
+\subsection*{g}
+Note that $e_1 = e_2$, this implies that the slope of the line is 1, which means that all allocations that have $x_1 = x_2$ will be in the core. Thus, we can see that the above set is a subset of the core. 
+\subsection*{h}
+Switching the utility function, we find that we are interested in the following optimization problem:
+\begin{align*}
+    \max & \quad x_1^{\frac{2}{3}}x_2^{\frac{1}{3}}\\
+    \st & \quad p_1e_1 + p_2e_2 \leq p_1 x_1 + p_2x_2 
+\end{align*}
+the constraint remains the same, but with the following FOCs. 
+\begin{align*}
+    [x_1] & \quad \left( \frac{2}{3} x_1^{-\frac{1}{3}} \right)x_2^\frac{1}{3} = p_1 \lambda\\
+    [x_2] & \quad \left( \frac{1}{3}x_1^{-\frac{1}{3}} \right)x_1^\frac{2}{3} = p_2 \lambda
+\end{align*}
+We know that these FOCs must have strict equality due to the same reasons as stated above. Using these FOCs, the following can be derived:
+\[
+2x_2p_2 = x_1p_1
+\]
+which implies that:
+\[
+x_1^2 = \frac{2}{3p_1} (p_1e_1 + p_2e_2) \quad x_2^2 = \frac{1}{3p_1}(p_1e_1 + p_2e_2)
+\]
+Using, previous results, we can find that:
+\[
+z_1(\mathbf{p}) = 1 + \frac{p_2}{2p_1} + \frac{4}{3} + \frac{2p_2}{p_1} - 4 = \frac{5p_2}{2p_1} - \frac{5}{3}
+\]
+\[
+z_2(\mathbf{p}) = \frac{1}{2} + \frac{p_1}{p_2} + \frac{2p_1}{3p_2} + 1 -4 = \frac{5p_1}{3p_2} - \frac{5}{2}
+\]
+Note that this implies that $3p_2 = 2 p_1$, as this is the only relative price that makes Walras' law hold. Thus, we see that:
+\[
+x^W = \{(x_1, x_2)\} = \left\{ \left( \frac{4}{3}, 2 \right), \left( \frac{8}{3}, 2 \right)\right\}
+\]
+and since we have only one relative price, we can find that the set of Walrasian equilbirum is 
+\[
+    W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E})  =  \left\{ \left( \frac{4}{3}, 2 \right), \left( \frac{8}{3}, 2 \right)\right\}
+\]
+\subsection*{i}
 \section{}
 \section{}
 \section{}
