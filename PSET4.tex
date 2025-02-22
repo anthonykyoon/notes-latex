@@ -372,5 +372,22 @@ thus, we see that:
 W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E}) = \{(h_1, h_2, x_1, x_2, l_1, l_2, y) = (12,12,24,24,12, 12 ,48)\}
 \]
 \subsection*{d}
-We can see that we now have 2 firms, and we want to make Walrasian equilbrium exist. Note that firm 2 is a more efficient version of firm 1
+We can see that we now have 2 firms, and we want to make Walrasian equilbrium exist. Note that firm 2 is a more efficient version of firm 1, where $C_2 < C$. We know consider the aggregate output of the two firms:
+\[
+y^*_1 + y^*_2 = \begin{cases}
+    \infty & \quad p > C\\
+    [0,\infty] + \infty & \quad p = C \\
+    \infty & \quad C> p > C_2\\
+    [0, \infty) & \quad p = C_2\\
+    0 & \quad p < C_2\\
+\end{cases}
+\]
+we see that if $p = C_2$, firm 2 is the \textbf{only} operational firm. Thus, we can see that:
+\[
+p^*(\mathcal{E}) = \{ p \in \R \hspace{2pt} | \hspace{2pt} p = 0.5\omega_1 = 0.5\omega_1\}
+\]
+and thus:
+\[
+    W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E}) = \{(h_1, h_2, x_1, x_2, l_1, l_2, y) = (12,12,24,24,12, 12 ,48)\}
+\]
 \end{document}
