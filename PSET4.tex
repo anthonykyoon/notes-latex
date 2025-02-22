@@ -330,5 +330,47 @@ which thus this implies that $h^* = 12$ Thus, we can see that in any market, as 
 \[
 p^*(\mathcal{E}) = \{p \in \R \hspace{2pt} | \hspace{2pt} p = \omega_1 = \omega_2\}
 \]
-
+\subsection*{b}
+We can see that:
+\[
+    W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E}) = \{(h_1, h_2, x_1, x_2, l_1, l_2, y) = (12,12,12,12,12, 12 ,24)\}
+\]
+as $x_i = 12\frac{\omega_i}{p} = 12$. Since both utility functions are strictly increasing, we can see that this is an unique solution and it exists. 
+\subsection*{c}
+Note that we have doubled the firms producitivity, which implies that we have a similar solution to the cost minimization problem, so we can see that:
+\[
+c_2(\omega_1, \omega_2, y) = \frac{1}{2}\min \{ \omega_1, \omega_2\} = \frac{1}{2}c_1(\omega_1, \omega_2, y)
+\]
+So we can note that we can follow a very similar logic to that above, where we can see that we still  get very similar solutions where we let $C_2 = 0.5C$:
+\begin{align*}
+    y^* &= \begin{cases}
+        \infty & p > C_2\\
+        [0,\infty) & p = C_2\\
+        0 & p < C_2
+    \end{cases}\\
+    h_1^* &= \begin{cases}
+        \infty & p>C_2\\
+        [0, y] & p = C_2\\
+        0 & p < C_2
+    \end{cases}\\
+    h_2^* &= \begin{cases}
+        \infty & p > C_2\\
+        y - h_2 & p = C_2\\
+        0 & p > C_2
+    \end{cases}\\
+    \pi &= \begin{cases}
+        \infty & p > C_2\\
+        0 & p \leq C_2
+    \end{cases}
+\end{align*}
+We can also see that our UMP for each consumer is the same, so we get the exact same results, where we see that $l^* = h^* = 12$ and similarly we can see that $x_i = 12\frac{\omega_1}{p}$. We can see that by a simiar logic to above, we see that $p = 0.5\omega_1 = 0.5\omega_2$, and thus:
+\[
+p^*(\mathcal{E}) = \{ p \in \R \hspace{2pt} | \hspace{2pt} p = 0.5\omega_1 = 0.5\omega_1\}
+\]
+thus, we see that:
+\[
+W(\mathcal{E}) = \bigcup_{p^*} x^W(p^*(\mathcal{E}), \mathcal{E}) = \{(h_1, h_2, x_1, x_2, l_1, l_2, y) = (12,12,24,24,12, 12 ,48)\}
+\]
+\subsection*{d}
+We can see that we now have 2 firms, and we want to make Walrasian equilbrium exist. Note that firm 2 is a more efficient version of firm 1
 \end{document}
