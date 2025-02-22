@@ -288,5 +288,47 @@ We first solve for the firms profits maximization problem, as the profit firm pr
 \[
 c(\omega_1, \omega_2, y) = y\min\{\omega_1, \omega_2\}
 \]
-and let $C = \min(\omega_1, \omega_2)$. 
+and let $C = \min(\omega_1, \omega_2)$. Thus, we can see that we have the following:
+\begin{align*}
+    y^* &= \begin{cases}
+        \infty & p > C\\
+        [0,\infty) & p = C\\
+        0 & p < C
+    \end{cases}\\
+    h_1^* &= \begin{cases}
+        \infty & p>C\\
+        [0, y] & p = C\\
+        0 & p < C
+    \end{cases}\\
+    h_2^* &= \begin{cases}
+        \infty & p > C\\
+        y - h_2 & p = C\\
+        0 & p > C
+    \end{cases}\\
+    \pi &= \begin{cases}
+        \infty & p > C\\
+        0 & p \leq C
+    \end{cases}
+\end{align*}
+Note that only possible case where firms produce and don't shut down is when $p = C$, as in any other scenario firms shut down and don't produce anything. Now we are interested in solving the consumer's UMP problem. We are interested in the following optimization problem for each individual:
+\begin{align*}
+    \max & \quad l x\\
+    \st & \quad px + \omega l \leq \omega T \\
+    \text{where} & \quad l + h = 24 = T
+\end{align*}
+FOCs are as follows:
+\begin{align*}
+    [l] & \quad x - \omega \lambda \leq \text{ and } l \geq 0\\
+    [x] & \quad l - p \lambda \leq 0 \text{ and } x \geq 0\\
+    [\lambda] & \quad px + \omega l = 24 \omega 
+\end{align*}
+we can use these FOCs to find that:
+\[
+px = l\omega  \quad x^* = \frac{12\omega}{p} \quad l^* = 12
+\]
+which thus this implies that $h^* = 12$ Thus, we can see that in any market, as long as $p = C(\omega_1, \omega_2)$, then markets clear. Thus, we want a variable amount of $h_1, h_2$, which implies that $p = \omega_1 = \omega_2$. Thus, we see that:
+\[
+p^*(\mathcal{E}) = \{p \in \R \hspace{2pt} | \hspace{2pt} p = \omega_1 = \omega_2\}
+\]
+
 \end{document}
