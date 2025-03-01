@@ -26,7 +26,8 @@
 \section{}
 Set of players: $\{ \text{Frank Underwood}, \text{Raymond Tusk}\} = \{p1, p2\}$.\\ 
 Set of actions: $\{\text{Compromise}, \text{Not Compromise}\} = \{ C, NC\}$ \\
-We can see that:
+Action profile:$A = \{ (\text{C}, \text{C}),(\text{C}, \text{NC}), (\text{NC}, \text{C}), (\text{NC}, \text{NC})\}$
+We can define:
 \[
 u_1(C, C) = 3 \quad u_2(C,C) = 3 
 \]
@@ -40,7 +41,7 @@ u_1(NC, C) = 2 \quad u_2(NC, C) = 1
 u_2(NC, NC) = 0 \quad u_2(NC, NC) = 0
 \]
 The table is as follows:
-\begin{table}[h]
+\begin{table}[H]
     \centering 
     \begin{tabular}{c|c|c}
         & C & NC\\
@@ -49,10 +50,110 @@ The table is as follows:
         NC & $(2,1)$ & $(0,0)$ 
     \end{tabular}
 \end{table}
-We can see that the Nash Equilbrium is $(3,3)$
+\noindent We can see that the Nash Equilbrium is $(3,3)$
+\newpage
 \section{}
+We first define the set of players as $\{1,2\}$. We can also define the set of actions as $\{ \text{Sit}, \text{Stand} \} =\{I, T\}$ and $A = \{ (I, I), (I, T), (T, I), (T,T)\}$, we the note that:
+\[
+u_i(I, D) \succ u_i(I, I)
+\] 
+with respective $I, D$ for each person. 
+\subsection*{a}
+We define the payoffs as follows:
+\[
+u_1(I, T) = 5 \quad u_2(I,T) = 0
+\]
+\[
+u_1(I, I) = 3 \quad u_2(I, I) = 3
+\]
+\[
+u_1(T, I) = 0 \quad u_2(T, I) = 5
+\]
+\[
+u_1(T, T) = 0 \quad u_2(T,T) = 0
+\]
+with the following table:
+\begin{table}[H]
+    \centering 
+    \begin{tabular}{c|c|c}
+        & I & T\\
+        \hline
+        I & $(3,3)$ & $(5,0)$\\
+        TC & $(0,5)$ & $(0,0)$ 
+    \end{tabular}
+\end{table}
+\noindent We can see that the nash equilbrim is $(I,I)$
+\subsection*{b}
+We can define the payoffs as the following:
+\[
+u_1(I,I) = 1 \quad u_2(I, I) = 1
+\]
+\[
+u_1(I, T) = 2 \quad u_2(I,T) = 3
+\]
+\[
+u_1(T, I) = 3 \quad u_2(T, I) = 2
+\]
+\[
+u_1(T,T) = 0 \quad u_2(T, T) = 0
+\]
+We see that the payoff table is as follows.
+\begin{table}[H]
+    \centering 
+    \begin{tabular}{c|c|c}
+        & I & T\\
+        \hline
+        I & $(1,1)$ & $(2,3)$\\
+        TC & $(3,2)$ & $(0,0)$ 
+    \end{tabular}
+\end{table}
+\noindent We can see that there exists no nash equilbrim. 
+\subsection*{c}
+Refer to above
 \section{}
+We can see that:
+\[
+B_1(L) = \{M\} \quad B_2(T) = \{L, C\}
+\]
+\[
+B_1(C) = \{ T \} \quad B_2(M) = \{L\}
+\]
+\[
+B_1(R) = \{T\} \quad B_1(B) = \{L\}
+\]
+Thus, we can see that that $\{M, L\}$ is the Nash equilbrim 
 \section{}
+\subsection*{a}
+First, define the players of the game as $\{1, 2, \dots n\}$, where $n = 10$ and the actions that the can take as $\{Hare, Stag\}$. We now consider the following cases:
+\begin{itemize}
+    \item Everyone hunts the stag 
+    \item Everyone hunts a Hare
+    \item Without a loss of generality, assume that one person hunts a hare and everyone else hunts the stag
+    \item Without a loss of generality, assume that one person hunts a stag and everyone hunts a hare. 
+\end{itemize}
+We can see that if everyone hunts the stag, then we are in a Nash Equilbrium, as if one person goes to hunt a Hare, they are strictly worse off. A similar logic applies to that of everyone hunting a hare, as if one individual were to hunt the stag, then they would be strictly worse off. 
+
+
+Thus, we can see that if we consider the two other cases, we can see that these are not Nash Equilbrium. We can see that in the third case that if the one person hunting a hare goes to go hunt the stag, we will be better off and by symmetry a similar argueement holds for final case. Thus, the Nash Equilbrium is everyone hunting the hare of the stag.  
+\subsection*{b}
+We now modify the arguement here. Let $k$ equal to number of people hunting the stag. We now consider the following cases:
+\begin{itemize}
+    \item Everyone hunts the Stag 
+    \item Everyone hunts a Hare 
+    \item We have $k \geq 6$
+    \item We have $k < 6$
+\end{itemize}
+By a similar arguement to that above, we know that Everyone hunting the Stag and everyone hunting the Hare is a Nash equilbrim. Now we analyze the case where $k < 6$. If $k < 6$, then $k$ people hunting the stag can move to hunting a Hare and be strictly better off, which means that this is not a Nash Equilbrium. If $k \geq 6$, we see that each indvidual recieves $\frac{100}{k}$ dollars. Assume that $k = 10$, we see that $\frac{100}{10} = 10$, which implies for all $k \geq 6$, we see that the hunters will be strictly better off hunting the stag, and anyone currently hunting a hare can unilateraly deviate to hunting the stag and be strictly better off, so $k \geq 6$ is not a nash equilbrim. By symmetry, we see that if $k < 6$, that a similar logic is repeated but the stag hunting people will want to hunt a hare, thus making no nash equilbrium. Thus, the same nash equilbrium derived from before holds. 
+\subsection*{c}
+We have the following cases:
+\begin{itemize}
+    \item Everyone hunts the Stag
+    \item Everyone hunts a Hare
+    \item We have $k = 6$ 
+    \item We have $k < 6$
+    \item WE have $k > 6$
+\end{itemize}
+Note that $60 / 6 = 10$. Thus, by the same logic as above, everyone hunting the hare and the stag is a Nash Equilbrium. Consider the case $k = 6$. If $k = 6$, we can see that each individual who hunts the stag recieves $10$ dollars. If a person hunting a hare unilateraly deviates to a stag, now everyone who hunts the stag recieves $10 /7 \approx 8.57 < 9$, which makes that person worse off. Simialrly, if a person hunting a stag goes to hunt a hare, we see that $10 > 9$, which makes the worse off. Thus, $k = 6$ is a nash equilbrim. By a simillar arguement to above, $k < 6$ and $k > 6$ are not nash equilbriums. 
 \section{}
 \section{}
 \section{}
