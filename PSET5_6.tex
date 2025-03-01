@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref} 
+\usepackage{amsmath}
+\usepackage{ gensymb }
+\usepackage{ amssymb }
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{float}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
+
+\title{PSET 5 and 6}
+\author{Anthony Yoon}
+\date{3/1/2025}
+\begin{document}
+\maketitle
+\section{}
+Set of players: $\{ \text{Frank Underwood}, \text{Raymond Tusk}\} = \{p1, p2\}$.\\ 
+Set of actions: $\{\text{Compromise}, \text{Not Compromise}\} = \{ C, NC\}$ \\
+We can see that:
+\[
+u_1(C, C) = 3 \quad u_2(C,C) = 3 
+\]
+\[
+u_1(C, NC) = 1 \quad u_2(C, NC) = 2
+\]
+\[
+u_1(NC, C) = 2 \quad u_2(NC, C) = 1
+\]
+\[
+u_2(NC, NC) = 0 \quad u_2(NC, NC) = 0
+\]
+The table is as follows:
+\begin{table}[h]
+    \centering 
+    \begin{tabular}{c|c|c}
+        & C & NC\\
+        \hline
+        C & $(3,3)$ & $(1,2)$\\
+        NC & $(2,1)$ & $(0,0)$ 
+    \end{tabular}
+\end{table}
+We can see that the Nash Equilbrium is $(3,3)$
+\section{}
+\section{}
+\section{}
+\section{}
+\section{}
+\section{}
+\section{}
+\end{document}
