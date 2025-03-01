@@ -155,7 +155,63 @@ We have the following cases:
 \end{itemize}
 Note that $60 / 6 = 10$. Thus, by the same logic as above, everyone hunting the hare and the stag is a Nash Equilbrium. Consider the case $k = 6$. If $k = 6$, we can see that each individual who hunts the stag recieves $10$ dollars. If a person hunting a hare unilateraly deviates to a stag, now everyone who hunts the stag recieves $10 /7 \approx 8.57 < 9$, which makes that person worse off. Simialrly, if a person hunting a stag goes to hunt a hare, we see that $10 > 9$, which makes the worse off. Thus, $k = 6$ is a nash equilbrim. By a simillar arguement to above, $k < 6$ and $k > 6$ are not nash equilbriums. 
 \section{}
+\subsection*{a}
+The monopolist solves:
+\[
+\max_q P(q) q - c q
+\]
+Note: If $a \leq p$, this implies that $q^d = 0 = p$. Thus, we see that we have to let $a > p$, which means that $ q = a - p$ Thus, using this assumption, we can solve the following:
+\[
+\max q(q - a) - qc
+\]
+The FOCS indicate that:
+\[
+c = 2q _m+ a \iff q_m = \frac{a+c}{2}
+\]
+Thus, we can see that $q_m = \frac{a-c}{2}$ which implies that $p_m = \frac{a+c}{2}$ 
+\subsection*{b}
+In PE, we are concerned with the Profit Maximzation Problem where:
+\[
+\max py - cy  = \max y(p -c)
+\]
+Using results from derived from previous homeworks, we know that $p = c$, which means that equilbrim price is $c$ and the quantity demanded is $a -c = q^d$ Thus, we can see that:
+\[
+\frac{a-c}{2} > c \quad \frac{a-c}{2} < a-c
+\]
+Which meanns that the monopoly has a higher price and supplies than that of partial equilbrim. 
+\subsection*{c}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{IMG_01FA30BA49F0-1 2.jpeg}
+    \caption{CS for 5}
+    \label{fig:enter-2abel}
+\end{figure}
+we can see that the red highlighted part corresponds to CS for the monopolist and the yellow part is the CS assocaited withthe PE case. Thus, we can see through the calculation of area that:
+\[
+CS_{PE} = \frac{(a-c)^2}{2} \quad CS_M = \frac{(a-c)^2}{4}
+\]
+\subsection*{d}
+We see that $q^d = p^{-2}$
+Thus, we see that:
+\[
+\frac{\partial Q}{\partial P} \frac{P}{Q} = -2p^{-3} \left( \frac{p}{q} \right) = -2
+\]
+\subsection*{e}
+With the new demand function, we see that:
+\[
+\max q p(q) - cq \iff q^\frac{1}{2} -cq 
+\]
+FOCs for optimization inidcate that
+\[
+0.5q^{-\frac{1}{2}} = c \iff q = \frac{1}{4c^2}
+\]
+Thus, we see that $p = 2c$. Using results from the lecture slides, we see that:
+\[
+p^*(q_m) = \frac{c}{1 - \frac{1}{1 -|\mathcal{E}|^{-1}}} = \frac{c}{\frac{1}{2}} = 2c
+\]
+Verifies results on lecture slides. 
 \section{}
+
 \section{}
 \section{}
 \end{document}
