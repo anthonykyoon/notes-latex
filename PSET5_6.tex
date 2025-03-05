@@ -79,7 +79,7 @@ with the following table:
         & I & T\\
         \hline
         I & $(3,3)$ & $(5,0)$\\
-        TC & $(0,5)$ & $(0,0)$ 
+        T & $(0,5)$ & $(0,0)$ 
     \end{tabular}
 \end{table}
 \noindent We can see that the nash equilbrim is $(I,I)$
@@ -104,7 +104,7 @@ We see that the payoff table is as follows.
         & I & T\\
         \hline
         I & $(1,1)$ & $(2,3)$\\
-        TC & $(3,2)$ & $(0,0)$ 
+        T & $(3,2)$ & $(0,0)$ 
     \end{tabular}
 \end{table}
 \noindent We can see that there exists no nash equilbrim. 
@@ -178,7 +178,7 @@ Using results from derived from previous homeworks, we know that $p = c$, which 
 \[
 \frac{a-c}{2} > c \quad \frac{a-c}{2} < a-c
 \]
-Which meanns that the monopoly has a higher price and supplies than that of partial equilbrim. 
+Which meanns that the monopoly has a higher price and supplies less than that of partial equilbrim. 
 \subsection*{c}
 \begin{figure}[H]
     \centering
@@ -211,6 +211,59 @@ p^*(q_m) = \frac{c}{1 - \frac{1}{1 -|\mathcal{E}|^{-1}}} = \frac{c}{\frac{1}{2}}
 \]
 Verifies results on lecture slides. 
 \section{}
+\subsection*{a}
+Let $q_1$ and $q_2$ denote the output for Nobil and Chel respectively, where $q_1 + q_2 = Q$ Thus, we have the following profit functions:
+\[
+\pi_1(q_1, q_2) = q_1(P(q_1, p_2) - 3) \quad \pi_2 (q_1, q_2) q_2(P(q_1,q_2) - 2)
+\]
+We begin with an analysis of $\pi_1$. Note that if $q_2 \geq 0.0001(5-3) = 20,000$, then $q_1^* = 0$ as $q_1$ produced would shut the market down. Thus, assuming that $q_2 < 20,000$,
+we find that:
+\[
+\max q_1(5-0.00001(q_1 + q_2) - 3)
+\]
+Take deriative with respect to $q_1$ and we get the following FOC:
+\[
+5 - 0.0001(q_1 + q_2) - 3 + q_1(-0.0001) = 0
+\]
+\[
+q_1^* = 10000 -0.5q_2 \quad q_2 < 20000
+\]
+or more specifcaly:
+\[
+B_1(q_2) = \begin{cases}
+    10000 -0.5q_2 & q_2 < 20000\\
+    0 & \text{otherwise}
+\end{cases}
+\]
+and by symmetry we find that 
+\[
+B_2(q_1) = \begin{cases}
+    15000 - 0.5q_1 & q_1 < 30000\\
+    0 & \text{otherwise}
+\end{cases}
+\]
+Thus, let $q_1^* = B(q_2)$ and see that:
+\[
+10000 -0.5(15000 -0.5q_1) = q_1 \iff q_1 = \frac{10000}{3}, q_2 = \frac{400000}{3}
+\]
+Thus, this implies that Chel owns more of the market share. 
+\subsection*{b}
+\[
+p = 5 - (0.0001)\left( \frac{50000}{3} \right) = \frac{10}{3}
+\]
+thus we see that $\pi_1 = 1111 \frac{1}{9}$ and $\pi_2 17777\frac{7}{9}$, which means that $\pi_2 > \pi_1$
+\subsection*{c}
+Refering to section \textbf{a}, we see that Chell must produce at least 20000 units to make the other firm not produce. Thus, we can refer to a general best response function for Chell to see that:
+\[
+\max q_1(5-0.0001(q_1+q_2) - \tilde{c}) 
+\]
+and assuming $q_2 < x$ where $x$ is some constant, then:
+\[
+q_1^* = \frac{10000(5-\tilde{c}) - q_2}{2}
+\]
+Thus, setting $q_1^* = 0$, we see that $\tilde{c} = 1$
+
+
 
 \section{}
 \section{}
