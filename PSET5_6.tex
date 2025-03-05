@@ -262,9 +262,28 @@ and assuming $q_2 < x$ where $x$ is some constant, then:
 q_1^* = \frac{10000(5-\tilde{c}) - q_2}{2}
 \]
 Thus, setting $q_1^* = 0$, we see that $\tilde{c} = 1$
-
-
-
 \section{}
+We modify the above question as follows, as cost is variate. Note that the only possibilty where each firm will actually produce anything is when $q_i > 0$ and $Q \leq 50000$. With these assumptions, we begin with the problem:
+\[
+\max_{q_1} q_1( 5 - 00001(q_1 + q_2) - (5000 - 2q_1))
+\]
+taking the deriative with respect to $q_1$ we find that:
+\[
+3 - 0.0002q_1 - 0.0001q_2 = 0 \iff q_1 = 15000 - 0.5q_2
+\]
+By symmetry, we find that:
+\[
+q_2 = 15000 - 0.5q_1
+\]
+Thus, if we let:
+\[
+    q_1 = 15000 - 0.5(15000 - 0.5q_1)
+\]
+and solve this system of equations, we get that:
+\[
+q_1 = q_2 = 10000
+\]
+which is the Nash Equilbrium. 
+note that changing 5000 to 15000 does not change anything as marginal cost stays the same. 
 \section{}
 \end{document}
