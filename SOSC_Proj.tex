@@ -1,0 +1,209 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{setspace}  % For spacing
+\usepackage{titlesec}  % For section formatting
+\usepackage{graphicx}  % For figures
+\usepackage{amsmath}   % For mathematical symbols
+\usepackage{hyperref}  % For clickable links
+\usepackage{newtxtext}  % Improved Times New Roman font
+\usepackage[numbers]{natbib}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{booktabs}  % Improves table formatting
+\usepackage[table]{xcolor}
+
+
+
+% Set double spacing
+\doublespacing
+
+% Title format
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+
+% Document starts
+\begin{document}
+
+% Title Page
+\title{Does Mainstream Media Technology and Shark Attacks Influence Voter Share?}
+\author{Anthony Yoon}
+\date{\today}
+\maketitle
+\tableofcontents
+\newpage 
+\section{Introduction and Preliminary Data Analysis}
+In 2017, Professor Anthony Fowler and Professor Andrew B. Hall conducted a study critiquing the claim presented in Chris Achen's and Larry Bartels' paper in 2016 that stated that election results were influenced by shark attacks on the coast. This claim was derived from the idea that "'when [a] collective misfortune strikes a society, somebody has to take the blame'" \cite{article1}, where the government would be the one to blame. Fowler and Hall successfully proved that that there was no effect on Democratic vote share. In this paper, we use the data used by Fowler and Hall to conduct an analysis on whether the introduction of mainstream media technology (I.E radio, TV, etc.) crossed with shark attacks had an impact on election results by using an analysis of the coefficeint of a linaer regression. 
+
+
+This dataset is an aggregation of county election results from 1872 - 2012, fatal shark attacks gathered from the Shark Research Institute, which collects data about Shark Attacks in the US, and Coastal County, Classification obtained from the National Oceanic and Atmospheric, Administration. This data contains information about the democratic vote share, which county and state this data was collected from, and the current incumbent party at the time. Note that not all of the states were included, which indicates that the data is a sample of a larger population. 
+% However, the external validity of this study seems relatively strong, as we are testing whether these attacks actually influence election results. These results could potentially be extended to democratic countries with ample access to the media, as these are some of the key characteristics that the U.S. holds. 
+This analysis will conduct a regression on the effects on democratic voteshare from shark attacks in counties. Then, to increase the robustness of the study, we address covariates such as the current incumbent party in a county as well as a notable "shift" within modern politics. 
+
+
+Naturally, if we were not to control for the current incumbent party, the voteshare might depend on the behavior and policies of the incumbent party. However, the "shift" in modern politics is a cutoff that must be quantified. A good candidate could be the 20th century, events like the election of President Franklin D Roosevelt, World War 2, and the Great Depression massively changed the scope of the American politics.
+% First, we must quantify when mainstream media was introduced. The radio was introduced in the 1890s, but the majority of the American public adopted it in 1931 \cite{article2}. We can then consider 1932 as a treatment for the sample that we have from the dataset. A natural question that may arise from this is the distribution of shark attacks that happened before and after 1931. 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{rr @{\hspace{1cm}} lr} % Adds 1.5cm space between the two tables
+    \toprule
+    \multicolumn{2}{c}{Distribution of Shark Attacks} & \multicolumn{2}{c}{\hspace{1cm} Pre 1931 and after 1931 Shark Attacks} \\
+    \midrule
+    Is Coastal Region? & Number of Shark Attacks & & Number of Attacks\\
+    \midrule
+    \cellcolor{gray!10}{Not Coastal} & \cellcolor{gray!10}{1} & \cellcolor{gray!10}{Before 1931} & \cellcolor{gray!10}{32}\\
+    Coastal & 96 & After 1931 & 65\\
+    \bottomrule
+    \end{tabular}
+    \caption{Distribution of Shark Attacks}
+\end{table}
+The non-coastal region that has a shark attack is Desoto county of New Jersey, which is a region that has a river that enabled a shark to swim upstream and attack a victim.  Additinally, we can note that the number of shark attacks appears to be proportional to that of the length of time as number of shark attacks that happened before 1931 is half that of after 1931
+\begin{table}[!h]
+    \centering    
+    \begin{tabular}{lr}
+    \toprule
+    Stat & Value\\
+    \midrule
+    \cellcolor{gray!10}{Min.} & \cellcolor{gray!10}{0.000}\\
+    1st Qu. & 0.419\\
+    \cellcolor{gray!10}{Median} & \cellcolor{gray!10}{0.559}\\
+    Mean & 0.591\\
+    \cellcolor{gray!10}{3rd Qu.} & \cellcolor{gray!10}{0.778}\\
+    \addlinespace
+    Max. & 1\\
+    \cellcolor{gray!10}{Std.} & \cellcolor{gray!10}{0.226}\\
+    \bottomrule
+    \end{tabular}
+    \caption{Distribution of Vote Share}
+    \vspace{1em} % Adds space between tables
+    \begin{tabular}{lrrr}
+        \toprule
+        Period & Mean & Standard Deviation & Count\\
+        \midrule
+        \cellcolor{gray!10}{Before 1931} & \cellcolor{gray!10}{0.6693001} & \cellcolor{gray!10}{0.2209977} & \cellcolor{gray!10}{15442}\\
+        After 1931 & 0.5409564 & 0.2141812 & 24203\\
+        \bottomrule
+        \end{tabular}
+        \caption{Descripitive Statistics based on year}
+\end{table}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{dist_vote_share.png}
+    \caption{Distribution of Vote Shares}
+    \label{fig:enter-label1}
+\end{figure}    
+We can also note something about the vote share. There seems to be a clear preference towards Democrats, with all descriptive statistics pointing in that direction and the histogram. Addionally, note that in Table 3 that after 1931, we can see that the mean voteshare division is less than for before 1931 then that of after 1931. We also can also analyze the distribution of the number of shark attcaks filtered on 1931. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{dist_scatter.png}
+    \caption{Distribution of the number of shark attacks based on year}
+    \label{fig:enter-label1234}
+\end{figure}
+Note that the distirbution of the number of shark attacks between the 2 time periods is about the same, which implies that we have approximately the same distribution of shark attacks on each side. 
+\newpage
+\section{Data Analysis and Data Visualizations}
+We begin with the following regression:
+\[
+\text{voteshare} = \alpha \text{  attacks} + \beta \text{  After 1931} + \gamma (\text{  attacks} \times \text{  After 1932}) + \mathcal{E}
+\]
+as we are interested in the effect of introducing technology to help spread the speed of news like shark attacks on voteshare. We can see that 
+the variables have the following meanings under \emph{Ceteribus Paribus conditions} or assuming everything else held constant: 
+\begin{itemize}
+    \item $\alpha$ is the change in democratic voteshare given an increase in shark attacks
+    \item $\beta$ is the change in democratic voteshare given the data is after 1931. 
+    \item $\gamma$ is the change in democratic voteshare for the shark attacks that happened after $1931$
+    \item $\mathcal{E}$ is the fixed effect for the dataset. 
+\end{itemize}
+When we run the robust linear regression, the following hypothesis and assumptions are imposed: 
+\begin{itemize}
+    \item \textbf{Null Hypothesis}: $\gamma = 0$ (No effect)
+    \item \textbf{Alternative Hypothesis}: $\gamma \neq 0$ (Has an effect)
+    \item \textbf{Gauss-Markov assumptions about our data}
+\end{itemize}
+Results are shown as follows:
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{ % This will scale the table to fit within the text width
+    \begin{tabular}[t]{lrrrrrrrl}
+    \toprule
+    term & estimate & std.error & statistic & p.value & conf.low & conf.high & df & outcome\\
+    \midrule
+    \cellcolor{gray!10}{(Intercept)} & \cellcolor{gray!10}{0.6693552} & \cellcolor{gray!10}{0.0017799} & \cellcolor{gray!10}{376.0552098} & \cellcolor{gray!10}{0.0000000} & \cellcolor{gray!10}{0.6658665} & \cellcolor{gray!10}{0.6728439} & \cellcolor{gray!10}{39554} & \cellcolor{gray!10}{voteshare}\\
+    attacks & -0.0265841 & 0.0338126 & -0.7862199 & 0.4317434 & -0.0928576 & 0.0396893 & 39554 & voteshare\\
+    \cellcolor{gray!10}{post} & \cellcolor{gray!10}{-0.1284350} & \cellcolor{gray!10}{0.0022531} & \cellcolor{gray!10}{-57.0032146} & \cellcolor{gray!10}{0.0000000} & \cellcolor{gray!10}{-0.1328511} & \cellcolor{gray!10}{-0.1240188} & \cellcolor{gray!10}{39554} & \cellcolor{gray!10}{voteshare}\\
+    attacks:post & 0.0400185 & 0.0363104 & 1.1021199 & 0.2704162 & -0.0311509 & 0.1111878 & 39554 & voteshare\\
+    \bottomrule
+    \end{tabular}
+    }
+    \caption{Difference-in-Differences Regression Results}
+\end{table}
+and the power of the test is as follows, assuming $\alpha = 0.05$:
+\begin{table}[H]
+    \caption{Power Analysis Results}
+    \centering
+    \begin{tabular}[t]{rrrrrr}
+    \toprule
+    R2 & F2 & df\_num & df\_denom & Power & Sig\_Level\\
+    \midrule
+    0.077 & 0.0834 & 3 & 39641 & 1 & 0.05\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+ \subsection{Analysis of the Regression Results}
+Beginning with the regression analysis, we can see that our p-value of our regression coefficient is greater than 0.05. Additionally, we see that the confidance interval for our intercept $(-0.0311509, 0.1111878)$ contains the value 0, which leads to the possiblity that our regression coefficient is 0. Thus, I am confidant that I have sufficient evidence to reject the alternative hypothesis in favor of the null hypothesis, where I can see that introduction of technology like the television and radio does not affect the democratic voteshare. 
+
+% Note the intercept having a p value of 0, which indicates that our fixed effect does have statistical signficance at any $\alpha$ level, which means that I am confidant that this affects our voteshare heavily. 
+
+
+We can also note that our statistical power is $1$. This means that our test has a near 100 percent chance \footnote{accounting for potential rounding} of detecting the effect size. Thus, this adds even more evidence towards the fact that there is no effect on shark attacks past 1931 with better technology leads to increasing democratic vote share. 
+\subsection{Alternative Regressions}
+We now aim to control for the incumbent president with the following regression:
+\[
+    \text{voteshare} = \alpha \text{  attacks} + \beta \text{  After 1931} + \gamma (\text{  attacks} \times \text{  After 1932}) + \lambda \text{ Incumbent party} +  \mathcal{E}_2
+\]
+with the same variables  except $\lambda$ and $\mathcal{E}_2$, which can be interpreted under \emph{Ceteribus Paribus} is the effect of the incumbent party being democratic and new fixed effect resepctively. Thus, we can see that adding this covariate allows us to control for incumbent parties. We then impose the same null and alternative hypothesis to this model as in \textbf{2} to see whether the treatment effect actually causes a change in the voting share. 
+\begin{table}[H]
+    \centering
+    \caption{Difference-in-Differences Regression Results}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}[t]{lrrrrrrrl}
+    \toprule
+    term & estimate & std.error & statistic & p.value & conf.low & conf.high & df & outcome\\
+    \midrule
+    \cellcolor{gray!10}{(Intercept)} & \cellcolor{gray!10}{0.6777191} & \cellcolor{gray!10}{0.0018061} & \cellcolor{gray!10}{375.2302034} & \cellcolor{gray!10}{0.0000000} & \cellcolor{gray!10}{0.6741791} & \cellcolor{gray!10}{0.6812592} & \cellcolor{gray!10}{39553} & \cellcolor{gray!10}{voteshare}\\
+    attacks & -0.0309594 & 0.0363563 & -0.8515557 & 0.3944659 & -0.1022185 & 0.0402998 & 39553 & voteshare\\
+    \cellcolor{gray!10}{post} & \cellcolor{gray!10}{-0.1386426} & \cellcolor{gray!10}{0.0022406} & \cellcolor{gray!10}{-61.8772251} & \cellcolor{gray!10}{0.0000000} & \cellcolor{gray!10}{-0.1430343} & \cellcolor{gray!10}{-0.1342510} & \cellcolor{gray!10}{39553} & \cellcolor{gray!10}{voteshare}\\
+    incumbency & 0.0419429 & 0.0014386 & 29.1544487 & 0.0000000 & 0.0391231 & 0.0447626 & 39553 & voteshare\\
+    \cellcolor{gray!10}{attacks:post} & \cellcolor{gray!10}{0.0458732} & \cellcolor{gray!10}{0.0383335} & \cellcolor{gray!10}{1.1966876} & \cellcolor{gray!10}{0.2314355} & \cellcolor{gray!10}{-0.0292614} & \cellcolor{gray!10}{0.1210078} & \cellcolor{gray!10}{39553} & \cellcolor{gray!10}{voteshare}\\
+    \bottomrule
+    \end{tabular}%
+    }
+\end{table}
+\begin{table}[H]
+    \caption{Power Analysis Results}
+    \centering
+    \begin{tabular}[t]{rrrrrr}
+    \toprule
+    R2 & F2 & df\_num & df\_denom & Power & Sig\_Level\\
+    \midrule
+    0.077 & 0.0834 & 3 & 39641 & 1 & 0.05\\
+    \bottomrule
+    \end{tabular}
+\end{table}
+We can note that we reach the same conclusions as in the original regression, as the p-value is still higher than any reasonable $\alpha$ level. Additionally, we can see that 0 is in the confidance interval for the attacks:post variable, which further adds evidence to there being no effect. We also yield a  very similar power calculation, which indicates that the probability that the test actually captures the true effect size is very high. Thus, this means that regardless if we control for the current incumbent party or not, the introduction of mainstream media combined with these shark attacks did not influence the democratic voteshare, as we have strong evidence against against the null hypothesis that shark attacks past 1931 did not influence election results. 
+\newpage 
+\section{Discussion}
+We first begin a discussion of the design and results of the study. Note that the treatment is a weakly identified treatment. The introduction of the radio in 1930 does not encapsualte all of the effects that were happening in the time before and after. We cannot be confidant that the "pulling of the lever" on the introduction of the radio really affects the vote share. Thus, even if the results were to be statistically significant and be favor of the alternative hypothesis, we cannot be confidant that the introduction of the radio was the actual reason why the democractic voteshare decreased or increased. It could be that historical events like the baby boom, aftermath of World War II, or the actual running candidates could have caused a change in this manner. 
+
+
+One thing to note that is that in the original Fowler and Hall paper, they concluded that upon all time periods and controlling for many effects, \emph{shark attacks were not significant on affecting the electoral share}. Thus, although the treatment of post 1931 is a weakly identifed treatment, we still can see that it supports the claim made by Fowler and Hall. Logically, this makes sense as a subset of the time period should be the same as Fowler and Hall. 
+
+
+Ultimately, this ties back to the claim that "'when [a] collective misfortune strikes a society, somebody has to take the blame'" \cite{article1}. We can note that it does not seem to see like the method of transporattion of information does not really matter to the common person, rather the \emph{topic} of the news is more of importance. It could be that the general public could not be too concernd with a shark attack that was not that numerous, but rather could be more concerned about the more social issues, like the BLM movemenet and the raising egg prcies. This could be a topic for further study, where we could analyze whether story of the "negative" effect is more of a strong effect than the quantity and speed of transmission affects the voteshare of the party. 
+
+
+% References
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
+
+
