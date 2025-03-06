@@ -246,7 +246,7 @@ Thus, let $q_1^* = B(q_2)$ and see that:
 \[
 10000 -0.5(15000 -0.5q_1) = q_1 \iff q_1 = \frac{10000}{3}, q_2 = \frac{400000}{3}
 \]
-Thus, this implies that Chel owns more of the market share. 
+Thus, this implies that Chel owns more of the market share and the above is the equilbrim. 
 \subsection*{b}
 \[
 p = 5 - (0.0001)\left( \frac{50000}{3} \right) = \frac{10}{3}
@@ -286,4 +286,50 @@ q_1 = q_2 = 10000
 which is the Nash Equilbrium. 
 note that changing 5000 to 15000 does not change anything as marginal cost stays the same. 
 \section{}
+\subsection*{a}
+Let $\beta \in (0,1)$ denote the fraction obtained by Firm 1.
+This implies that:
+\[
+\pi_1(p_1, p_2) = \begin{cases}
+    (p_1 - c_1)(\alpha - p_1) & p_1 < p_2\\
+    \beta(p_1 - c_1)(\alpha - \beta) & p_1 = p_2 < c_2\\
+    (p-1 - c_1)(\alpha - p_1) & p_1 = p_2 \geq c_2\\
+    0 & p_1 > p_2
+\end{cases}
+\]
+\[
+    \pi_2(p_1, p_2) = \begin{cases}
+        0 & p_1 < p_2\\
+        (1-\beta)(p_2-c_2)(\alpha - p_2) & p_1 = p_2 < c_2\\
+        0 & p_1 = p_1 \geq c_2\\
+        (p_2 - c_2)(\alpha - p_2) & p_1 > p_2 
+    \end{cases}
+\]
+We wish to prove that $(c_2, c_2)$ is the only nash equilbrim. Consider the following cases, where we analyze the best response of firm 1, and let $c_2 = p_1$, and we see that $\pi_1(c_2, c_2) = (c_2 - c_1)(\alpha - c_2)$:
+\begin{itemize}
+    \item $p_1 = c_2$, then $\pi_1(p_1, c_2) = 0$
+    \item $p_1 < c_2$ then $\pi_1(p_1, c_2) = (p_1 - c_1)(\alpha - p_1)$. Note that this quantity is increasing.
+\end{itemize}
+Thus, this implies that $p_1^* = c_2$. Consider firm 2's cases. Assume that $p_1 = c_2$ We see the following cases:
+\begin{itemize}
+    \item if $p_2 > c_2$, $\pi_2 = 0$ as firm 2 does not have any demand. 
+    \item if $p_2 < c_2$, $\pi_2 \leq 0$, which forces a shutdown
+\end{itemize}
+Thus, we see that $(c_2, c_2)$ is the only Nash Equilrbium. To prove uniqueness that this is the only nash equilbrim, consider the following cases:
+\begin{enumerate}
+    \item If $p_1 > p_2 > c_2$, the firm wants to decrease their price such that $p_1 = p_2$ and thus, this takes the market. 
+    \item If $p_1 = p_2 > c_2$, the firm wants to decrease their price such that firm 2 always wants to have a price that is less than than of $p_1$, which will let firm 2 take the market.
+    \item If $p_2 > p_1 = c_2$, this is a similar to case 1
+    \item If $p_2 > p_1 > c_2$ Same logic to 2 
+    \item If $p_1 > p_2 = c_2$ firm 2's price will deviate in between $p_1, p_2$
+    \item If $p_1 \geq c_2 > p_2$, we see that firm 2's profit will be less than 0, which implies that $p_2 = 0$ as the firm chooses not to produce. 
+    \item If $p_2 \geq c_2 > p_1$, we see that $p_1 = c_2$. thus $\pi_1$ increases
+    \item If $p_2 < p_1 = c_2$, thus in equilbrium, $p_2< c_2$ so in inequilbirum $\pi_2 = 0$
+\end{enumerate}
+Thus, we see that $(c_2, c_2)$ is the only Nash Equilrbium.
+\subsection*{b}
+We have already done most of the mundane casework. Therefore, consider the following cases:
+\begin{itemize}
+    \item If $p_1 = p_2 = c_2$, we see that firm 1 will always want to decrease the price relative to $c_2$, which increases their profits. Thus, the given allocation is noot a Nash Equilrbium.  
+\end{itemize}
 \end{document}
