@@ -32,10 +32,10 @@ We can define:
 u_1(C, C) = 3 \quad u_2(C,C) = 3 
 \]
 \[
-u_1(C, NC) = 1 \quad u_2(C, NC) = 2
+u_1(C, NC) = 1 \quad u_2(C, NC) = 4
 \]
 \[
-u_1(NC, C) = 2 \quad u_2(NC, C) = 1
+u_1(NC, C) = 4 \quad u_2(NC, C) = 1
 \]
 \[
 u_2(NC, NC) = 0 \quad u_2(NC, NC) = 0
@@ -46,11 +46,11 @@ The table is as follows:
     \begin{tabular}{c|c|c}
         & C & NC\\
         \hline
-        C & $(3,3)$ & $(1,2)$\\
-        NC & $(2,1)$ & $(0,0)$ 
+        C & $(3,3)$ & $(1,4)$\\
+        NC & $(4,1)$ & $(0,0)$ 
     \end{tabular}
 \end{table}
-\noindent We can see that the Nash Equilbrium is $(3,3)$
+\noindent We can see that the Nash Equilbrium is $(C, NC), (NC, C)$
 \newpage
 \section{}
 We first define the set of players as $\{1,2\}$. We can also define the set of actions as $\{ \text{Sit}, \text{Stand} \} =\{I, T\}$ and $A = \{ (I, I), (I, T), (T, I), (T,T)\}$, we the note that:
@@ -113,15 +113,15 @@ Refer to above
 \section{}
 We can see that:
 \[
-B_1(L) = \{M\} \quad B_2(T) = \{L, C\}
+B_1(L) = \{M\} \quad B_2(T) = \{C\}
 \]
 \[
 B_1(C) = \{ T \} \quad B_2(M) = \{L\}
 \]
 \[
-B_1(R) = \{T\} \quad B_1(B) = \{L\}
+B_1(R) = \{T, M , B\} \quad B_1(B) = \{L, C,R\}
 \]
-Thus, we can see that that $\{M, L\}$ is the Nash equilbrim 
+Thus, we can see that that $\{M, L\}, \{C,T\},\{R, B\} $ is the Nash equilbrim 
 \section{}
 \subsection*{a}
 First, define the players of the game as $\{1, 2, \dots n\}$, where $n = 10$ and the actions that the can take as $\{Hare, Stag\}$. We now consider the following cases:
