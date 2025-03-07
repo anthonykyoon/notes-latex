@@ -9,17 +9,18 @@
 \usepackage{float}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{setspace}
 \usepackage{bm}
 \usepackage{booktabs}  % Improves table formatting
 \usepackage[table]{xcolor}
 
+\onehalfspacing
 \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
 
 \title{Econ Research Project}
 \author{Chimin Liu, Anthony Yoon, Allison Yang\thanks{We would like to thank Professor Fang for his advice and guidance on this project}}
 \date{\today}
 
-% \doublespacing
 
 \begin{document}
 \maketitle
@@ -95,7 +96,17 @@ However, depending on the number of upperclassmen staying on campus, the Univers
     \end{itemize}
 \end{enumerate}
 \subsection{Solving for optimal incentives}
-The university aims to have $\xi$ number of upperclassmen living on campus. To simplify notation, let $x$ be the number of upperclassmen who choose the live on campus. Thus, the incentive, or $K$, that the university provides must have only one feasible nash equilbria, such that $\xi$ number of upperclassmen choose to live on campus. Thus, we must derive some relationship between $\Lambda, \phi, K$ to enforce this notion. To simplify notation, let $x$ be the number of upperclassmen who choose the live on campus. We claim that the condition that enforces this is $k > \Lambda - \gamma$. 
+The university aims to have $\xi$ number of upperclassmen living on campus. To simplify notation, let $x$ be the number of upperclassmen who choose the live on campus. Thus, the incentive, or $K$, that the university provides must have only one feasible nash equilbria, such that $\xi$ number of upperclassmen choose to live on campus. Thus, we must derive some relationship between $\Lambda, \phi, K$ to enforce this notion. To do so, consider the following. If $x = \xi$, and denoting unilateral deviation as the following:
+\begin{align*}
+    U_i(O) = \gamma + K \quad &\to \quad U_i(F) = \Lambda\\
+    U_i(F) = \Lambda + K \quad &\to \quad U_i(O) = \gamma - K
+\end{align*}
+Note that if we want no profitable deviation, we want the following conditions to hold:
+\begin{align*}
+    n &\leq \gamma + k \iff k \geq \Lambda - \gamma > 0 \\
+    \gamma - K & \leq \Lambda + K \iff 2k \geq \gamma - \Lambda
+\end{align*}
+Note that the second constraint is strictly negative, which implies that if $K \geq \Lambda - \gamma$, then the scenario when $\xi = x$ will be a nash equilbrium. To increase the strength of this relation, consider strict inquality. Thus, we claim that $K > \Lambda - \gamma$ is the relationship between $K, \Lambda, \gamma$. 
 \subsubsection{Casework}
 \subsubsection*{1. $\mathbf{x = 0}$}
 Since everyone is living off campus, moving to on campus would make them strictly worse off, thus, this makes this case a Nash Equilbria. 
@@ -136,7 +147,7 @@ Consider the possible deviations:
     u_i(O) = \gamma + K \quad &\to \quad u_i(F) = \Lambda - K \\
     u_i(F) = \Lambda \quad &\to \quad u_i(O) = \gamma + K
 \end{align*}
-We see that this is very similar to $2k < \Lambda - \gamma$ and $k > \Lambda - \gamma$, which the later terms matches our proposed condition. 
+We see that this is very similar to $2k < \Lambda - \gamma$ and $k > \Lambda - \gamma$, of which the latter term matches our proposed condition. 
 \subsubsection*{8. $\mathbf{\phi + 2 < x < \xi -1}$}
 Consider the possible deviations:
 \begin{align*}
@@ -145,12 +156,18 @@ Consider the possible deviations:
 \end{align*}
 Note that $k > \Lambda - \gamma$ forces a profitable deviation. 
 \subsubsection*{9. $x > \xi + 1$}
+Consider the possible deviations:
+\begin{align*}
+    u_i(O) = \gamma - K \quad &\to \quad u_i(F) = \Lambda  \\
+    u_i(F) = \Lambda \quad &\to \quad u_i(O) = \gamma - K
+\end{align*}
+Note that our proposed condition causes this to not be a nash equilbirum. 
 \subsubsection*{10. $\mathbf{n = N}$}
 Consider the following deviation:
 \[
 U_i(O) = \gamma - K \quad \to \quad  U_i(F) = \Lambda 
 \]
-we see that $k > \gamma - \Lambda$ makes this not a profitable deviation. 
+Note that our proposed condition causes this to not be a nash equilbirum. 
 
 
 \end{document}
