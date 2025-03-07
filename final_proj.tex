@@ -43,7 +43,7 @@ However, once students are released from the on-campus housing requirement, many
 Inspired by the many variables that motivate students to leave the dorms as well as UChicago’s preference to have students stay, we chose to examine incentives that would lead UChicago students to stay in the dorms for our research project
 
 
-In this paper, we treat UChicago as the firm and undergraduate students as the consumer. Specifically, UChicago wants to produce occupancy, or optimize for the number of students staying on campus. The students (the consumers) are choosing to maximize their utility by consuming one of either good, on or off campus housing. In this paper, we ask the question: \textbf{How can we model the incentives UChicago wishes to provide to motivate students to stay in on-campus housing using an annoymous game with externalities?}
+In this paper, we treat UChicago as the firm and undergraduate students as the consumer. Specifically, UChicago wants to optimize for the number of students staying on campus. The students (the consumers) are choosing to maximize their utility by consuming one of either good, on or off campus housing. In this paper, we ask the question: \textbf{How can we model the incentives UChicago wishes to provide to motivate students to stay in on-campus housing using an annoymous game with externalities?}
 \section{Associated Costs of Living}
 We begin with a perspective of the various costs of living on and off campus. According to the \href{https://financialaid.uchicago.edu/undergraduate/how-aid-works/undergraduate-costs/}{University of Chicago Finacial Aid Website} and \href{https://web.archive.org/web/20160304084033/http://colleges.usnews.rankingsandreviews.com/best-colleges/university-of-chicago-1774/student-life}{the US News report in 2014}, the costs and the quantity of people are as follows: 
 \begin{table}[H]
@@ -57,18 +57,21 @@ We begin with a perspective of the various costs of living on and off campus. Ac
         \hline
     \end{tabular}
 \end{table}
-Under the assumption that there are approximately 1913 students per grade level, we see that there are approximately 307 upperclassmen that choose to stay on campus. This indicates that the majority of upperclassmen choose to live off campus. Thus, we can estimate that assuming that these numbers have remained constant throughout time that majority of upperclassmen choose to live off campus. 
+Under the assumption that there are approximately 1913 students per grade level, we see that there are approximately 307 upperclassmen that choose to stay on campus. This indicates that the majority of upperclassmen choose to live off campus. 
+We also assume that there are about 100 occupancies per house, and with 48 houses within the dorms, that there are approximately 4800 spots for students to live on campus. This means that currently the university has about 670 open spot thorughout a given school year. This implies that there is a wastage of capital, and thus a potental loss of profit. 
+Thus, we can estimate that assuming that these numbers have remained constant throughout time that majority of upperclassmen choose to live off campus. 
 \section{Assumptions of the model}
 We first we would like to some assumptions. Mainly being,
 \begin{itemize}
-    \item When the university lacks the space to house students, the University will convert increasing the number of people living in a room to accomodate for the students. The students will be strictly worse off if this happens. 
-    \item The incentives we propose in our model is symmetric such that the improvements and detriments to the quality of life that a student recieves is constant for all students. 
-    % \item The number of living places in the dormitories and off campus places are bounded above by $4800$ and some $M \in \R^+$ respectively. 
+    \item The number of occupancies in the dormitories are bounded by some constant $M \in \R^+$ where given our estimates for the new academic year, $M = 4800$
+    \item When the demand for rooms is greater than $M$, the university will increase each rooms'  occupancy by adding beds, making all students living on campus worse off. 
+    \item The incentives we propose in our model is symmetric such that the improvements and detriments to the quality of life that a student recieves is constant for all students.
+    \item We assume that the university is strictly better off the more rooms that they fill. Hence,  all occupancies being filled would be the optimal outcome. 
     \item All assumptions presented in class will hold in this analysis
 \end{itemize}
 \section{Model}
 \subsection{Modeling student's choice to move on or off campus}
-Given that we know the current number of upperclassmen staying on campus is suboptimal, the university decides to introduce a housing game before the next academic year in the hopes of increasing the upperclassmen's on-campus occupancy to the optimal level. Let the status quo number of upperclasmen living on campus be the floor $\phi$ and the optimal number the ceiling $\xi$. Now consider the following one-shot game. We define the players of the game as the upperclassmen at the University.
+Given that we know the current number of upperclassmen staying on campus is suboptimal, the university decides to introduce a housing game before the next academic year in the hopes of increasing the upperclassmen's on-campus occupancy to the optimal level. Let the status quo number of upperclasmen living on campus be the bound $\phi$ and the optimal number of upperclassmen $\xi$. Utilizing the estimates from earlier, $\phi$ and $\xi$ must be in $[0,M]$ where $\xi = M$. Now consider the following one-shot game. We define the players of the game as the upperclassmen at the University.
 \[
 Players = \{1, 2, \dots, N \}
 \]
@@ -99,7 +102,7 @@ However, depending on the number of upperclassmen staying on campus, the Univers
         \item $U_i(O)$: $\gamma + K$
         \item $U_i(F)$: $\Lambda + K$
     \end{itemize}
-    \item If there are more than $\xi$ upperclassmen, the university crams students into dorms by adding more and the quality of living lowers. Thus, the payoffs can be defined as \begin{itemize}
+    \item If there are more than $\xi$ upperclassmen, the university crams students into dorms by adding more beds and the quality of living lowers. Thus, the payoffs can be defined as \begin{itemize}
         \item $U_i(O)$: $\gamma - K$
         \item $U_i(F)$: $\Lambda$
     \end{itemize}
