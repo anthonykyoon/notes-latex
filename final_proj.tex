@@ -58,11 +58,11 @@ We first we would like to some assumptions. Mainly being,
 \end{itemize}
 \section{Model}
 \subsection{Modeling student's choice to move on or off campus}
-Given that we know that floor of upperclasmen living on campus is $\phi$ and the ceiling $\xi$, we now consider the following game. We define the players of the game as the upperclassmen at the University, or 
+Given that we know the current number of upperclassmen staying on campus is suboptimal, the university decides to introduce a housing game before the next academic year in the hopes of increasing the upperclassmen's on-campus occupancy to the optimal level. Let the status quo number of upperclasmen living on campus be the floor $\phi$ and the optimal number the ceiling $\xi$. Now consider the following one-shot game. We define the players of the game as the upperclassmen at the University.
 \[
 Players = \{1, 2, \dots, N \}
 \]
-and with the actions to move off or on campus, or denoted as follows:
+and with the actions to live off or on campus, or denoted as follows:
 \[
 Actions = \{F, O\}
 \]
@@ -71,9 +71,10 @@ with the base payoffs for eah individual as follows:
 U_i(F) = \Lambda \quad U_i(O) = \gamma
 \]
 for $i \in players$. Note that $\Lambda > \gamma$ as the price for living off campus is cheaper than that of living on campus. 
-Let $K$ equal the improvement or detrition to the standard of living. To collect the number of individuals living on and off campus, the University sends outs the 2025-2026 housing application for individuals to fill out. 
 
+The university sends out the 2025-2026 housing application to upperclassmen with complete information of standard of living will change contingent on number of upperclassmen who live on campus. Let $K$ equal the improvement or detrition to the standard of living. 
 
+Based on this information, the upperclassmen choose whether to live on or off campus.
 However, depending on the number of upperclassmen staying on campus, the University has actions that it can take. Using the bounds that were derived before, the following cases emerge:
 \begin{enumerate}
     \item If less than or equal $\phi$ studenst stay on campus, the University is worse off compared to last year. Thus, to compensate for this, the quality of life is reduced on campus. Thus, the payoffs can be defined as \begin{itemize}
@@ -102,17 +103,30 @@ Since everyone is living off campus, moving to on campus would make them strictl
 Consider the possible deviations:
 \begin{align*}
     u_i(O) = \gamma - K \quad &\to \quad u_i(F) = \Lambda - K \\
-    u_i(F) = \Lambda - K\quad &\to \quad u_i(O) = \gamma + K
+    u_i(F) = \Lambda - K\quad &\to \quad u_i(O) = \gamma - K
 \end{align*}
-
+We see hat $\Lambda 0 k > \gamma - k$ or $\gamma - k > \Lamda - K$ must hold to force a profitable deviation. Thus, we see that 
 \subsubsection*{3. $\mathbf{n = \xi - 1}$} 
 Note that in this case, there is no profitable deviation, as:
-\[
-U_i(O) =  \quad \to \quad U_i(O) = 
-\]
+Consider the possible deviations:
+\begin{align*}
+    u_i(O) = \gamma + K \quad &\to \quad u_i(F) = \Lambda - K \\
+    u_i(F) = \Lambda - K\quad &\to \quad u_i(O) = \gamma + K
+\end{align*}
 \subsubsection*{4. $\mathbf{x = \xi}$}
+If this is the case, we see that our claimed condition forces this to be a nash equilbrium. 
 \subsubsection*{5. $\mathbf{x = \xi + 1}$}
+Consider the possible deviations:
+\begin{align*}
+    u_i(O) = \gamma - K \quad &\to \quad u_i(F) = \Lambda - K \\
+    u_i(F) = \Lambda - K\quad &\to \quad u_i(O) = \gamma + K
+\end{align*}
 \subsubsection*{6. $\mathbf{x = \phi}$}
+Consider the possible deviations:
+\begin{align*}
+    u_i(O) = \gamma - K \quad &\to \quad u_i(F) = \Lambda - K \\
+    u_i(F) = \Lambda - K\quad &\to \quad u_i(O) = \gamma + K
+\end{align*}
 \subsubsection*{7. $\mathbf{x = \phi + 1}$}
 \subsubsection*{8. $\mathbf{\phi + 2 < x < \xi -1}$}
 \subsubsection*{9. $x > \xi + 1$}
