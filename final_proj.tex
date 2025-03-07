@@ -11,8 +11,15 @@
 \usepackage{hyperref}
 \usepackage{setspace}
 \usepackage{bm}
+\usepackage{amsfonts}
 \usepackage{booktabs}  % Improves table formatting
 \usepackage[table]{xcolor}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
 
 \onehalfspacing
 \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
@@ -56,6 +63,7 @@ We first we would like to some assumptions. Mainly being,
 \begin{itemize}
     \item When the university lacks the space to house students, the University will convert increasing the number of people living in a room to accomodate for the students. The students will be strictly worse off if this happens. 
     \item The improvements and determinets to quality of life that a student recieves from a university policy is equal. 
+    % \item The number of living places in the dormitories and off campus places are bounded above by $4800$ and some $M \in \R^+$ respectively. 
 \end{itemize}
 \section{Model}
 \subsection{Modeling student's choice to move on or off campus}
@@ -106,7 +114,7 @@ Note that if we want no profitable deviation, we want the following conditions t
     n &\leq \gamma + k \iff k \geq \Lambda - \gamma > 0 \\
     \gamma - K & \leq \Lambda + K \iff 2k \geq \gamma - \Lambda
 \end{align*}
-Note that the second constraint is strictly negative, which implies that if $K \geq \Lambda - \gamma$, then the scenario when $\xi = x$ will be a nash equilbrium. To increase the strength of this relation, consider strict inquality. Thus, we claim that $K > \Lambda - \gamma$ is the relationship between $K, \Lambda, \gamma$. 
+Note that the second constraint is strictly negative, which implies that if $K \geq \Lambda - \gamma$, then the scenario when $\xi = x$ will be a nash equilbrium. To increase the strength of this relation, consider strict inquality. Thus, we claim that $K > \Lambda - \gamma$ is the relationship between $K, \Lambda, \gamma$, and we check for any other Nash Equilbria. 
 \subsubsection{Casework}
 \subsubsection*{1. $\mathbf{x = 0}$}
 Since everyone is living off campus, moving to on campus would make them strictly worse off, thus, this makes this case a Nash Equilbria. 
@@ -168,6 +176,8 @@ Consider the following deviation:
 U_i(O) = \gamma - K \quad \to \quad  U_i(F) = \Lambda 
 \]
 Note that our proposed condition causes this to not be a nash equilbirum. 
+\subsection{Analysis of casework}
+We can see that there are 2 Nash equilbria, $x = 0$ and $x = \xi$. 
 
 
 \end{document}
