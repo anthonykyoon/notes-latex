@@ -62,8 +62,9 @@ Under the assumption that there are approximately 1913 students per grade level,
 We first we would like to some assumptions. Mainly being,
 \begin{itemize}
     \item When the university lacks the space to house students, the University will convert increasing the number of people living in a room to accomodate for the students. The students will be strictly worse off if this happens. 
-    \item The improvements and determinets to quality of life that a student recieves from a university policy is equal. 
+    \item The incentives we propose in our model is symmetric such that the improvements and detriments to the quality of life that a student recieves is constant for all students. 
     % \item The number of living places in the dormitories and off campus places are bounded above by $4800$ and some $M \in \R^+$ respectively. 
+    \item All assumptions presented in class will hold in this analysis
 \end{itemize}
 \section{Model}
 \subsection{Modeling student's choice to move on or off campus}
@@ -177,5 +178,13 @@ U_i(O) = \gamma - K \quad \to \quad  U_i(F) = \Lambda
 \]
 Note that our proposed condition causes this to not be a nash equilbirum. 
 \subsection{Analysis of casework}
-We can see that there are 2 Nash equilbria, $x = 0$ and $x = \xi$. However, some attention must be brought to the case where $x = 0$. From the universities perspective, this is the worst possible case for the university. 
+We can see that there are 2 Nash equilbria, $x = 0$ and $x = \xi$. However, some attention must be brought to the case where $x = 0$, as this is a case that must be avoided. This is becasue this is the worst possible case for the University, but we can also show that this is the worst possible case for all the upperclassmen as well. Consider the aggregated utility of the case where $x = 0$, we see that 
+\[
+\text{total utility in 0 case} = N(\Lambda - K)
+\]
+and similarly when $x = \xi$
+\[
+\text{total utilty in } \xi \text{ case} = \xi(\gamma + K) + (N - \xi)(\lambda + K)
+\]
+we see that the total utility in the $x = \xi$ is clearly higher than that in the $x = 0$ case. Thus, it is also in the students' interest to move away from the $x = 0$. Thus, if there is some collective action among the upperclassmen or some additional university policy that encourages movement away from the $x = 0$ case.
 \end{document}
