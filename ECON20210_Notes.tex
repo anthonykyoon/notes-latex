@@ -139,6 +139,73 @@ and since $e = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n$, we see tha
     \lim_{n \to \infty} \left( 1 + \frac{\gamma}{n} \right)^n = e^\gamma \implies X_t = X_0 \cdot e^{\gamma t} \iff \ln X_t = \ln X_0 + \gamma t
 \]
 This implies that if we take an contionus GDP, take the natural log of GDP with respect time and it is linear, then the GDP rate of growth is constant. 
+\section{Lecture 2}
+\subsection{CPI}
+Inflation is usally measured by tracking the price of a basket of goods, hence we are not interested in the nominal or the real discussion of GDP. There are many ways to track inflation in the following ways:
+\begin{itemize}
+    \item GDP Deflator: Basket of goods and services produced domestically
+    \item Consumer Price Index: Basket of goods and services consumed by househoulds
+    \item Personal Consumption Expenditure (PCE) price index: Chained the prices togther, which yields to higher coverage. 
+    \item Producer Price Index: Basket of goods purchased by producers. 
+\end{itemize}
+To calcluate the CPI, we can do the following. We fix the basket of goods, say $Q_{i,0}$, and we track the price throughout time, like the following:
+\[
+X_t = \sum_i P_{i, t} Q_{i,0}
+\]
+We can calculate the price index as taking the expenditure of a year and and comparing it to the base year. Or: 
+\[
+P_t = \frac{X_t}{X_0} \times 100
+\]
+Inflation is calcluated as the change in price index, or
+\[
+\pi_t = \frac{P_{t+1} - P_t}{P_t}
+\]
+Inflation can be expressed as the arithmetic mean of indvidual inflation rates weighted by the expenditure share, or rather:
+\[
+\frac{P_{i,t} Q_{i,0}}{\text{Expenditure}} \cdot \frac{P_{i,0}}{P_{i,0}} \implies \frac{P_{i,t}}{P_{i,0}}
+\]
+We can also calcualte the GDP deflator as:
+\[
+\frac{\text{Nomial GDP}}{\text{Real GDP}} = \frac{\sum P_{i,t}Q_{i,t}}{\sum P_{0,t}Q_{i,t}}
+\]
+CPI tends to be greater than of the GDP deflator. The CPI that we have been familar with until this point has been referred to as the \textbf{Lasperes} index which tends to over estimate the true cost of livin, as 
+\[
+c(u_o, P_t) \leq \sum p_{i,t} q_{i,0} \implies \frac{\sum_i p_{i,t}q_{i,0}}{\sum_i p_{i,0}, q_{i,0}} \geq \frac{C(u_0, P_t)}{C(u_0, P_0)}
+\]
+because the hicksian demand function will always produce the amount with the lowest cost. 
+We can also refer to the \textbf{Passche} index, which is where:
+\[
+\frac{\sum P_{i,t} Q_{i,t}}{\sum P_{i,0} Q_{i,t}}
+\]
+which tends to underestimate the rate of inflation for $u_1$ as \todo{Write in proof here}
+We can also view price index as the cost of achieving the same level of utility across multiple time periods. We can see that we can use the Hicksian Demand Functions, $C(u,P)$ where $u$ denotes utility and $P$ denotes the price vector. Thus, we can define the true inflation rate as 
+\[
+X_t = \frac{C(u_0, P_t)}{C(u_0, P_0)}
+\]
+and also note that the changing of the price vector can be seen as a substitution efffect of the preference of the goods. We can also define the \textbf{Fisher index} as the geometric average of these two indices.
+\subsection{Proof that Lasperes index at base time approximates the true cost of living}
+Consdier the first order expansion of $C(u_0l P_t)$ where we evaluate it where $p_T = p_0$. 
+\[
+C(u_0, P_t)\big|_{P_t = P_0} \approx C(u_0, P_0) + \sum_i \left. \frac{\partial C(u_0, P_t)}{\partial P_{i,t}} \right|_{P_t = P_0} (P_{i,t} - P_{i,0})
+\]
+Using Shephard's Lemma, we know that:
+\[
+\frac{\partial C(u_0, P_0)}{\partial P_{i, 0}} = Q_{i,0}(u_0,P_0)
+\]
+which implies that 
+\[
+C(u_0, P_t) \approx + \sum_i Q_{i,0} (P_{i,t} - P_{i,0}) = \sum_i P_{i,t} Q_{i,0}
+\]
+which implies that the Laspreyes index approximates the true cost of living. 
+\subsection{Chained Index}
+Over a long timer period, the assumptions that $Q_t \approx Q_0$ or $P_t \approx P_0$ are no longer tenable. This can be the idea where more goods are added to the basket at a time, and we can consider the Laspreyes index, but note that:
+\[
+\frac{P_{2024}}{P_{1970}} = \frac{P_{1971}}{P_{1970}} \frac{P_{1972}}{P_{1971}} \cdots \frac{P_{2023}}{P_{2022}} \frac{P_{2024}}{P_{2023}}
+\]
+or similarly:
+\[
+\frac{P_{2024}}{P_{1970}} = \frac{\sum p_{1971}q_{1970}}{\sum p_{1970}q_{1970}} \frac{\sum p_{1972} q_{1971}}{\sum p_{1971} q_{1971}}
+\]
 
 
 % % --- EXAMPLE CONTENT ---
