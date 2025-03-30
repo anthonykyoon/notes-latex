@@ -235,11 +235,53 @@ Exact Price Index from the Economic Approach
     \[
     y = \frac{M}{2p_y}
     \]
+    which indicates that expenditure share is one half. 
 \end{subsol}
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-    
+    The indirect utilty function is 
+    \[
+    V(M, P) = \ln \left( \frac{M}{2p_x} \right) + \ln \left( \frac{M}{2p_y} \right)
+    \]
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    We aim to use duality to prove this. Let 
+    \[
+    U = 2\ln(M) - \ln(4) -\ln(p_x p_y)
+    \]
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    Using duality, we see that:
+    \begin{align*}
+        U &= 2\ln(M) - \ln(4) - \ln (p_x p_y)\\
+        \ln(M) &= 0.5 \ln(4) + \ln ( \sqrt{p_x p_y})\\
+        M &= 2e^\frac{U}{2} \sqrt{p_x p_y}
+    \end{align*}
+    Using Shephard's Lemma, we see that:
+    \[
+    x^h = \frac{\partial e(p, U)}{\partial p_x} = \sqrt{\frac{e^U p_y}{p_x}}
+    \]
+    and by symmetry
+    \[
+    y^h = \frac{\partial e(p,U)}{\partial p_y} = \sqrt{\frac{e^U p_x}{p_y}}
+    \]
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    \[
+    M = \frac{2e^\frac{U_t}{2} \sqrt{p_x^t p_y^t}}{2e^\frac{U_0}{2} \sqrt{p_x^0 p_y^0}} = e^\frac{U_t - U_0}{2} \sqrt{\frac{p^t_x p^t_y}{p_x^0p_y^0}}
+    \]\todo{Check this}
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    \todo{Double check this} This is the fisher price index. 
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
