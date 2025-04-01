@@ -2,7 +2,7 @@
 %Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
 \documentclass[12pt]{article}
  \usepackage[margin=1in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ, float}
 \usepackage[colorinlistoftodos]{todonotes}
 \pagestyle{fancy}
 \setlength{\headheight}{65pt}
@@ -64,30 +64,104 @@
 
 
 %Copy the following block of text for each problem in the assignment.
-\begin{problem}{1} 
-MATLAB Tutorial
-\end{problem}
-\begin{sol}
-N/A
-\end{sol}
+% \begin{problem}{1} 
+% MATLAB Tutorial
+% \end{problem}
+% \begin{sol}
+% N/A
+% \end{sol}
 
 \setcounter{subproblem}{0}
 \begin{problem}{2} 
 Dynamics in a Non-linear system. 
 \end{problem}
 \begin{subprob}
-123
 \end{subprob}
 \begin{subsol}
-
+    For the graph to have a stable solution, the graph must asymptoically approach a value, to encourage convergance. 
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+We can consider 3 cases: $|a| < 1, |a| = 1, |a| > 1$. Note that if $|a| = 1$, we have the linear difference equation $x_{t_1} = x_t + b$, which implies that there is not stable solution, and thus approachs infinity. If $|a| < 1$ or $|a| > 1$, this means that the exponetial term grows slower and faster than the linear term respectively. However, as noted in \textbf{1}, we can see that if the slope of graph $|ax_t^{a-1}| < 1$, we will asymptocally approach a solution. Else, we may diverge and not approach a steady state solution. \todo{Suppose conditions under local stability, what conditions connverge above or below . show 100}
+\todo{Do the graphically}
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    \begin{align*}
+        \overline{x} &= \overline{x}_t^{0.5} + 2\\
+        \overline{x} - \overline{x}_t^{0.5} &= 2\\
+        (\overline{x}^{0.5} - 2)(\overline{x}^{0.5} + 1) &= 0\\ 
+    \end{align*}
+    The only possible solution to the above is $\overline{x} = 4$
 \end{subsol}
 
-\begin{problem}{3} 
-Level vs. Growth Rate
-\end{problem}
-\begin{sol}
-Write your solution here. 
-\end{sol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{trajectory_plot.pdf}
+        \caption{Intial value of 0.1}
+        \label{fig:1}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{trajectory_plot1.pdf}
+        \caption{Intial Value of 10}
+        \label{fig:12121}
+    \end{figure}
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{trajectory_plot2.pdf}
+        \caption{Intial value of 0.1}
+        \label{fig:3}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{trajectory_plot3.pdf}
+        \caption{Intial Value of 10}
+        \label{fig:enter-label}
+    \end{figure}
+    The steady state changes to approximately 2.45. Both trajectories seem to either steeply rise and fall or fall and rise for intial values of 0.1 and 10 resepctively. This is constrast to the other set of parameters as in the original case, there are no kinks in the graph. \todo{Check, different trajectories. Monotone convergence, osciallation}
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    We are given $x_{t+1} = x_t^a + b$ where $f(x) = x^a + b$. Let $\overline{x}$ such that $f(\overline{x}) = \overline{x}$ and $\overline{x} \in (x_t - \epsilon, x_t + \epsilon), \forall \epsilon >0 $. Consider the first degree Taylor expansion around $\overline{x}$. We can see that:
+    \begin{align*}
+        x_{t+1} &\approx f(\overline{x}) + f'(x)(x_t-\overline{x})\\
+        x_{t+1} - \overline{x} &\approx f'(x)(x_t - \overline{x})
+    \end{align*}
+    Let $d_{t} = x_{t} - \overline{x}$ and similarly for $d_{t+1}$. Thus, 
+    \[
+        x_{t+1} - \overline{x} \approx f'(x)(x_t - \overline{x}) \implies d_{t+1} = f'(x)d_t
+    \]
+    which implies that the general solution:
+    \[
+    d_t = (f'(\overline{x}))^t d_0
+    \]
+    Using this equation, we see that:
+    \begin{align*}
+        d_t &= (f'(\overline{x}))^t d_0\\ 
+        (x_t - \overline{x}) &= (f'(\overline{x}))^t(x_0 - \overline{x})\\
+        x_t &= (f'(\overline{x}))^t x_0 + \overline{x}(1-f'(x)^t)
+    \end{align*}
+    Note that $f'(x) = -0.5x_t^{-0.5}$ and for any $x \in [0, \infty]$ that $|f'(x)| < 1$. Thus, for any $t$ sufficently large enough, we see that $x_t \to \overline{x}$, which indicates that this equation approximates it very well. 
+\end{subsol}
+
+% \begin{problem}{3} 
+% Level vs. Growth Rate
+% \end{problem}
+% \begin{sol}
+% Not to be submitted
+% \end{sol}
 
 \setcounter{subproblem}{0}
 \begin{problem}{4} 
@@ -148,22 +222,26 @@ Intertemporal Consumption Choice
     A_1(y_0 - c_0)^\alpha = c_1
     \]
 \end{subprob}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{IMG_8FBD37C0B675-1.jpeg}
+    \caption{Graph for 3,4,5,6}
+    \label{fig:enter-label1}
+\end{figure}
 \begin{subprob}
-    Draw the graph \todo{Draw the graph}
 \end{subprob}
 \begin{subsol}
-    See graph. The slope represents the rate of change between the consumption in the current time period and the next time period. 
+    See graph above in black ink. The slope represents the rate of change between the consumption in the current time period and the next time period. 
 \end{subsol}
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-    See graph
+    See graph above in black ink
 \end{subsol}
 \begin{subprob}
-    \todo{draw the graph.}
 \end{subprob}
 \begin{subsol}
-    See graph above. If $A_0$ increases, $y_0$ increases as technology in the current period would increase. This implies that budget constraint shifts outward to the right. Since the consumer now has more "budget" of corn, he now was more income to consume more. Thus, 
+    See graph above, blue line. If $A_0$ increases, $y_0$ increases as technology in the current period would increase. This implies that budget constraint shifts outward to the right. Since the consumer now has more "budget" of corn, he now was more income to consume more. Thus, 
     \begin{itemize}
         \item $y_0$ increases
         \item $c_0$ increases
@@ -171,14 +249,13 @@ Intertemporal Consumption Choice
     \end{itemize}
 \end{subsol}
 \begin{subprob}
-    \todo{Draw Graph}
 \end{subprob}
 \begin{subsol}
-    See graph above. If $A_1$ increases, this means that $y_1$ strictly increases. This implies that the maximum possible value of $c_1$ will increases, and make the graph steeper. Thus, 
+    See graph above, red line. If $A_1$ increases, this means that $y_1$ strictly increases. This implies that the maximum possible value of $c_1$ will increases, and make the graph steeper. Thus, 
     \begin{itemize}
         \item $c_1$ increases
         \item $y_1$ increases
-        \item $c_0$ does not change, as production is not impacted. 
+        \item $c_0$ decreases, as consumer will substitute away from the good. 
     \end{itemize}
 \end{subsol}
 \begin{subprob}
@@ -229,11 +306,11 @@ Exact Price Index from the Economic Approach
     \end{align*}
     Note that the FOCs imply that $p_x x = p_y y$ and thus, using the budget constraint, we find that:
     \[
-    p_x x + p_y y = M \iff 2p_x x = M \iff x = \frac{M}{2p_x}
+    p_x x + p_y y = M \iff 2p_x x = M \iff p_x x = \frac{M}{2} 
     \]
     and by symmetry
     \[
-    y = \frac{M}{2p_y}
+    p_y y = \frac{M}{2}
     \]
     which indicates that expenditure share is one half. 
 \end{subsol}
@@ -276,12 +353,17 @@ Exact Price Index from the Economic Approach
 \begin{subsol}
     \[
     M = \frac{2e^\frac{U_t}{2} \sqrt{p_x^t p_y^t}}{2e^\frac{U_0}{2} \sqrt{p_x^0 p_y^0}} = e^\frac{U_t - U_0}{2} \sqrt{\frac{p^t_x p^t_y}{p_x^0p_y^0}}
-    \]\todo{Check this}
+    \]
+    Since the level of utility remains fixed, we can see that we are left with the following expression. 
+    \[
+        \sqrt{\frac{p^t_x p^t_y}{p_x^0p_y^0}}
+    \]
 \end{subsol}
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
     \todo{Double check this} This is the fisher price index. 
+    Geometric mean of passches index and \todo{Same basket}. Compare geometric with arithmetic mean, compare AM - GM inqualitu Hold basket fixed, not taking into account sub effect
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
