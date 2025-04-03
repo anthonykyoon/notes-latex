@@ -362,7 +362,21 @@ Exact Price Index from the Economic Approach
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-    We can see that the we have the Fisher Price index. Now to derive what the price index with the fixed basket of goods. 
+    The price index based on a same basket given by:
+    \[
+    \frac{p_x^t x_0 + p_y^t y_0}{p_x^0 x_0 + p_y^0 y_0}
+    \]
+    However, since 
+    \[
+    x_0 = \frac{M}{2p_x^0} \quad y_0 = \frac{M}{2p_y^0}
+    \]
+    After some algebra, we see that:
+    \[
+    \frac{1}{2} \left( \frac{p_x^t}{p_x^0} + \frac{p_y^t}{p_y^0} \right)
+    \]
+    This is the geometric mean. The equation derived in \textbf{(5)} is the Fisher Price index, which is the geometric mean. The Fisher Price index takes into account the substitution effect where as the price index we just derived does not. Additionally, by the AM - GM inequality, we know that the the price index we derived will always be bigger than the fisher price index. 
+
+
     \todo{Double check this} This is the fisher price index. 
     Geometric mean of passches index and \todo{Same basket}. Compare geometric with arithmetic mean, compare AM - GM inqualitu Hold basket fixed, not taking into account sub effect
 \end{subsol}
