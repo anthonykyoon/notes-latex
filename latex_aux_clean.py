@@ -1,8 +1,8 @@
 import os
 
-root_dir = "INSERT PATH HERE LATER"
+root_dir = "/Users/anthonyyoon/Documents/LaTeX"
 
-aux_exntensions = {
+aux_extensions = {
     ".aux",
     ".log",
     ".toc",
@@ -11,13 +11,15 @@ aux_exntensions = {
     ".lot",
     ".bbl",
     ".blg",
-    ".synctex.gz"
+    ".synctex.gz",
+    ".fls",
+    ".fdb_latexmk"
 }
 
 for foldername, subfolders, filenames in os.walk(root_dir):
     for filename in filenames:
         if any(filename.endswith(ext) for ext in aux_extensions):
-            file_path = os.path.join(foldername, filename):
+            file_path = os.path.join(foldername, filename)
             try:
                 os.remove(file_path)
                 print(f"Removed: {file_path}")
