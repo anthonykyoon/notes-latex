@@ -96,7 +96,7 @@ Dynamics in a Non-linear system.
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-We can consider cases: $|a| < 1, |a| = 1, |a| > 1$. Note that if $|a| = 1$, we have the linear difference equation $x_{t_1} = x_t + b$, which implies that there is not stable solution, and thus approachs infinity. If $|a| < 1$ or $|a| > 1$, this means that the exponetial term grows slower and faster than the linear term respectively. However, as noted in \textbf{1}, we can see that if the slope of graph $|ax_t^{a-1}| < 1$, we will asymptocally approach a solution. Else, we may diverge and not
+We can consider cases: $|a| < 1, |a| = 1, |a| > 1$. Note that if $|a| = 1$, we have the linear difference equation $x_{t_1} = x_t + b$, which implies that there is not stable solution, and thus approachs infinity. If $|a| < 1$ or $|a| > 1$, this means that the exponetial term grows slower and faster than the linear term respectively. However, as noted in \textbf{1}, we can see that if the slope of graph $|ax_t^{a-1}| < 1$, we will asymptocally approach a solution. Else, we may diverge. 
 approach a steady state solution. Regrading the trajectories, we see that there are types of convergance. Either the function approachs the stable state monotonically or the function oscillates towards the final stable state solution.  
 \end{subsol}
 \begin{subprob}
@@ -122,7 +122,6 @@ approach a steady state solution. Regrading the trajectories, we see that there 
     \newpage
     Code for the above simulation: 
     \begin{lstlisting}
-        function predicted = predict_return(past_returns)
         a = 0.5;
         b = 2; 
         N = 100; 
@@ -152,7 +151,6 @@ approach a steady state solution. Regrading the trajectories, we see that there 
     \newpage
     Code for the above simulation:
     \begin{lstlisting}
-        function predicted = predict_return(past_returns)
         a = 0.5;
         b = 2; 
         N = 100; 
@@ -186,7 +184,6 @@ approach a steady state solution. Regrading the trajectories, we see that there 
     \newpage 
     Code for then above simulation:
     \begin{lstlisting}
-        function predicted = predict_return(past_returns)
         a = -0.9;
         b = 2; 
         N = 100; 
@@ -215,7 +212,6 @@ approach a steady state solution. Regrading the trajectories, we see that there 
     \end{figure}
     \newpage
     \begin{lstlisting}
-        function predicted = predict_return(past_returns)
         a = 0.5;
         b = 2; 
         N = 100; 
@@ -239,7 +235,6 @@ approach a steady state solution. Regrading the trajectories, we see that there 
     The steady state changes to approximately 2.45. Both trajectories seem to oscillate towards to the steady state, which is a change from the previous set of paraneters, which monotonically convereg towards to the stable solution. 
 \end{subsol}
 \begin{subprob}
-    
 \end{subprob}
 \begin{subsol}
     We are given $x_{t+1} = x_t^a + b$ where $f(x) = x^a + b$. Let $\overline{x}$ such that $f(\overline{x}) = \overline{x}$ and $\overline{x} \in (x_t - \epsilon, x_t + \epsilon), \forall \epsilon >0 $. Consider the first degree Taylor expansion around $\overline{x}$. We can see that:
