@@ -208,8 +208,47 @@ or similarly:
 \]
 \subsection{Unemployment}
 People who are over the age of 16 are only considered. People are classified as unemployed if they do not have a job, acgtively looked for work, in the prior 4 weeks, and those currently available for work. 
-\todo{Make this nicer}
-
+\section{Lecture 3}
+One of the models we study in Macroeconomics is the \textbf{Solov growth modwl}. \footnote{This model has a lot of symbols and stuff, so it does get very overwhelming.} We begin with the following observations:
+\begin{enumerate}
+    \item Share of labor incomes and captial incomes remain fixed at constant ratios. 
+    \item The value of capital per worker is slowly rising 
+    \item The value of output per worker is slowly rising. 
+    \item Capital and output grow at the same rate. 
+    \item The rate of return on capital is approximatley constant. 
+    \item Some economies grow faster than others. 
+\end{enumerate}
+The solov growth model was an attempt to explain these trends.
+\subsection{Solov Growth Model version 1}
+We begin with the following notation:
+\begin{itemize}
+    \item $K$ denotes the growth from accumulation of capital. This is how we measure "growth"
+    \item $C$ denotes consumption. 
+    \item $I$ denotes investment
+    \item $Y$ denotes output
+    \item $A$ denotes the aggregate productivity factor, or a measure of technology in the economy. 
+    \item $N$ denotes labor \todo{Check this definition of N}
+    \item $\delta$ denotes the depreciation rate. 
+    \item $s$ denotes the saving rate
+\end{itemize}
+We work with the following production function:
+\[
+Y = AK^\alpha N^{1-\alpha}, \alpha \in [0,1]
+\]
+which is a Cobb Douglas Production function and CRS production technology. We introduce the following the assumptions:
+\begin{enumerate}
+    \item Saving rate $s$ is constant and exogenous. 
+    \item We do not consider the international sector 
+    \item No government involved 
+    \item $K$ follows the evolution that \[K_{t+1}= K_t(1-\delta) + I_t\]
+    \item We fix $A$ and $N$ to be constant for all time periods. 
+    \item $K_0$ is also given. 
+\end{enumerate}
+In summary, we know that $\{s, \delta, A, \alpha, N\}$ are all exogenous. 
+These assumptions allow us to see that $Y = C + I$. This also implies that $C = Y(1-s)$ and $I = s(Y)$, where $Y = A K^\alpha_t N^{1-\alpha}$. \footnote{Note that time is on a discrete time}. With all this combined informaion, we get the following equation:
+\[
+K_{t+1} = (1-\delta) K_t + sA K^\alpha_t N^{1-\alpha}
+\]
 % % --- EXAMPLE CONTENT ---
 % \section{Microeconomics Basics}
 
