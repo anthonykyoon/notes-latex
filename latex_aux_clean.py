@@ -13,7 +13,8 @@ aux_extensions = {
     ".blg",
     ".synctex.gz",
     ".fls",
-    ".fdb_latexmk"
+    ".fdb_latexmk",
+    ".tdo"
 }
 
 for foldername, subfolders, filenames in os.walk(root_dir):
