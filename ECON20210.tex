@@ -244,13 +244,47 @@ which is a Cobb Douglas Production function and CRS production technology. We in
     \item We fix $A$ and $N$ to be constant for all time periods. 
     \item $K_0$ is also given. 
 \end{enumerate}
-In summary, we know that $\{s, \delta, A, \alpha, N\}$ are all exogenous. 
+In summary, we know that $\{s, \delta, A, \alpha, N\}$ are all exogenous. We also have the following technical asssumptions on the production function, where 
+\[
+\lim_{K \to \infty} F_K(K,N) = 0 \quad \lim_{K \to \infty} F_K(K,N) = \infty
+\]
+and $F_K (K, N) = 0$ and $F_K(K,N) = \infty$. 
 These assumptions allow us to see that $Y = C + I$. This also implies that $C = Y(1-s)$ and $I = s(Y)$, where $Y = A K^\alpha_t N^{1-\alpha}$. \footnote{Note that time is on a discrete time}. With all this combined informaion, we get the following equation:
 \[
 K_{t+1} = (1-\delta) K_t + sA K^\alpha_t N^{1-\alpha}
 \]
 We can see that if we are given a $K_0$, it is very easy to calcualte the discrete sequence of $K_t$.
 Note the following, if $K_{t+1} = K_t$, we are at a \textbf{steady state} solution. We can see this graphically: 
+\todo{Fill this in}
+
+
+We can see that if $K_0 = 0$ or $K_0 > 0$, the Inada conditions ensure there is a unique and stable steady state solution. 
+
+\subsubsection{Implications of the Solow Growth Model Version 1}
+
+Note that:
+\begin{align*}
+    K_{t+1} &= (1-\delta) K_t + sA K_t^\alpha N_t^{1-\alpha} \\
+    K_{t+1} - K_t &= sA K_t^\alpha N^{1-\alpha} - \delta K_t\\
+    \frac{K_{t+1} - K_t}{K_t} &= sA K_t^{\alpha-1}N^{1 - \alpha } - \delta\\
+    \frac{\Delta K_t}{K_t} &= sA K_t^{\alpha - 1}N^{1- \alpha } - \delta\\
+\end{align*}
+This implies that the growth rate will decrease as the size of the economy increases. For a competitve factor market, we can see that factor price must equal the marginal product \footnote{Think of marginal revenue and marginal product}
+We can see that the version covers all the assumptions from (1,3,4). But we fail to explain why the value of capital per worker is slowly rising and why the rate of return on capital is constant and the why some economices grow faster than others. 
+\subsection{Solov Growth Model Version 2}
+We now have the same assumptions as before but allow $A$ and $N$ to change over time. We define the following:
+\[
+\frac{A_{t-1}}{A_t} = 1 +g \quad \frac{N_{t+1}}{N_t} = 1 + n
+\]
+We are now left with the following production function:
+\[
+Y_t = (A_t N_t)^{1-\alpha} K_t^\alpha
+\]
+we also consider the following:
+\[
+k_t = \frac{k_t}{A_t N_t} \quad y_t = \frac{y_t}{A_tN_t} 
+\]
+
 % % --- EXAMPLE CONTENT ---
 % \section{Microeconomics Basics}
 
