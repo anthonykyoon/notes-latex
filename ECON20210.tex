@@ -274,7 +274,7 @@ We can see that the version covers all the assumptions from (1,3,4). But we fail
 \subsection{Solov Growth Model Version 2}
 We now have the same assumptions as before but allow $A$ and $N$ to change over time. We define the following:
 \[
-\frac{A_{t-1}}{A_t} = 1 +g \quad \frac{N_{t+1}}{N_t} = 1 + n
+\frac{A_{t-1}}{A_t} = g \quad \frac{N_{t+1}}{N_t} = n
 \]
 We are now left with the following production function:
 \[
@@ -282,9 +282,21 @@ Y_t = (A_t N_t)^{1-\alpha} K_t^\alpha
 \]
 we also consider the following:
 \[
-k_t = \frac{k_t}{A_t N_t} \quad y_t = \frac{y_t}{A_tN_t} 
+k_t = \frac{K_t}{A_t N_t} \quad y_t = \frac{y_t}{A_tN_t} 
 \]
-
+These are the capital and output per effective unit of labor. We do this to account for the increases in labor and production. Since we allow for time variance, we should rewrite our growth of capital in order forms:
+\begin{align*}
+    K_{t+1} &= K_t(1-\delta) + I_t\\
+    K_{t+1} &= K_t(1 - \delta) + s(A_t N_t)^{1-\alpha} K_t^\alpha\\
+    K_{t+1} - K_t &=  s(A_t N_t)^{1-\alpha} K_t^\alpha - \delta K_t\\
+    \frac{\Delta K_t}{K_t} &= \frac{s(A_t N_t)^{1-\alpha} K_t^\alpha}{K_t} - \delta \\
+    \frac{\Delta K_t}{K_t} &= \frac{s K_t^{\alpha - 1}}{(A_t N_t)^{\alpha -1}} - \delta \\
+    \frac{\Delta K_t }{K_t} &= s k_t^{\alpha -1} - \delta\\
+\end{align*}
+Note that $K_t = A_t N_t k_t$ This implies:
+\begin{align*}
+    \frac{\Delta K_t }{K_t} &= s k_t^{\alpha -1} - \delta\\
+\end{align*}
 % % --- EXAMPLE CONTENT ---
 % \section{Microeconomics Basics}
 
