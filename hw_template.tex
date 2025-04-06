@@ -47,7 +47,9 @@
   commentstyle=\color{gray},
   stringstyle=\color{red},
   showstringspaces=false,
-  language=Matlab
+  numbers=left,            
+  numberstyle=\tiny\color{gray}, 
+  numbersep=10pt 
 }
 
 
@@ -55,19 +57,14 @@
 %Fill in the appropriate information below
 \lhead{Class:}
 \chead{Assignment: XYZ}
-% \lhead{Anthony Yoon}  %replace with your name
 \rhead{Anthony Yoon} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter this block.
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%Solutions to problems go below.  Please follow the guidelines from https://www.overleaf.com/read/sfbcjxcgsnsk/
-
 
 %Copy the following block of text for each problem in the assignment.
 \setcounter{subproblem}{0}
@@ -78,9 +75,44 @@ Statement of problem goes here (write the problem exactly as it appears in the b
 Write your solution here. 
 \end{sol}
 
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+
+\end{subsol}
 %Subproblems can be determined using \begin{subprob} and \begin{subsol}
 % put \setcounter{subproblem}{0} in front of each problem
 
+%Example code block render 
+\textbf{Python}
+\begin{lstlisting}[language=Python]
+  def greet():
+      print("Hello from Python!")
+  \end{lstlisting}
+  
+  \textbf{Java}
+  \begin{lstlisting}[language=Java]
+  public class HelloWorld {
+      public static void main(String[] args) {
+          System.out.println("Hello from Java!");
+      }
+  }
+  \end{lstlisting}
+  
+  \textbf{R}
+  \begin{lstlisting}[language=R]
+  greet <- function() {
+    print("Hello from R!")
+  }
+  \end{lstlisting}
+  
+  \textbf{MATLAB}
+  \begin{lstlisting}[language=Matlab]
+  function greet()
+      disp('Hello from MATLAB!');
+  end
+  \end{lstlisting}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
 \end{document}
