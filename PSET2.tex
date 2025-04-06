@@ -197,6 +197,27 @@ grid on;
 \end{figure}
 Note that $k$ and $y$ are appraoch the steady state behaviors and $Y$ and $K$ approach infinity, which resemble the Inada conditions. 
 \end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    \begin{lstlisting}
+% Problem 3 Q5
+
+% Setting values 
+k_steady_state = (s / (n+g+delta))^(1.5);
+k_1 = zeros(z, 1);
+k_1(1) = k_steady_state;
+s = 0.35;
+
+for i=1:z
+    k_1(i+1) = s * k_1(i)^alpha - (n + g + delta) * k_1(i) + k_1(i);
+end
+
+figure;
+
+plot(X,k_1)
+    \end{lstlisting}
+\end{subsol}
 
 \begin{problem}{3}
     Cookie Eating - Part 1
