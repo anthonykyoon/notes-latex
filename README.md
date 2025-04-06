@@ -10,10 +10,10 @@ These are my notes that I typed up from my time at the University of Chicago. Th
 
 These will have a lot of typos, so be advised. You can also see how my style of notes have evolved overtime. 
 
-
 Any unlabled PSET at the current moment is most likely ECON 20210 PSETs
 
-I will also try my best to upload my LaTeX template here. 
+My current LaTeX template is `hw_template.tex` 
+
 # Previous Years PSETS
 Due to concerns about academic integrity and such, I take down the PSETs I upload here to keep track. If you are interested in PSETs in the following classes, contact me so we can discuss. 
 
