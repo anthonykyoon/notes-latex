@@ -4,6 +4,7 @@
  \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
 \usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
 
 \pagestyle{fancy}
 \setlength{\headheight}{65pt}
@@ -19,7 +20,8 @@
 \NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
 
 \newcounter{subproblem}
-\renewcommand{\thesubproblem}{\alph{subproblem}}
+% \renewcommand{\thesubproblem}{\alph{subproblem}} % letters 
+\renewcommand{\thesubproblem}{\arabic{subproblem}} % numbers
 \newenvironment{subprob}[1][]{
   \refstepcounter{subproblem}
   \begin{trivlist}
@@ -35,6 +37,7 @@
     }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength {\marginparwidth }{2cm}
+
 
 \usepackage{listings}
 \usepackage{xcolor}

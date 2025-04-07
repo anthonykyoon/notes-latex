@@ -4,6 +4,7 @@
  \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
 \usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
 \pagestyle{fancy}
 \setlength{\headheight}{65pt}
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
@@ -18,7 +19,8 @@
 \NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
 
 \newcounter{subproblem}
-\renewcommand{\thesubproblem}{\alph{subproblem}}
+% \renewcommand{\thesubproblem}{\alph{subproblem}} % letters 
+\renewcommand{\thesubproblem}{\arabic{subproblem}} % numbers
 \newenvironment{subprob}[1][]{
   \refstepcounter{subproblem}
   \begin{trivlist}
@@ -54,7 +56,7 @@
   language=Matlab
 }
 
-
+\setlength {\marginparwidth }{2cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Fill in the appropriate information below
 \lhead{Class: ECON 20210}
@@ -67,6 +69,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter this block.
 \begin{document}
+\listoftodos
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{problem}{1}
     Explaining lower real interest rates. 
@@ -217,20 +221,81 @@ figure;
 
 plot(X,k_1)
     \end{lstlisting}
+    \textbf{INSERT GRAPH}
 \end{subsol}
 
+\setcounter{subproblem}{0}
 \begin{problem}{3}
     Cookie Eating - Part 1
 \end{problem}
-
-\setcounter{subproblem}[0]
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    We can see the law of depreciation is:
+    \[
+    W_{t+1} = W_t - c_t \quad \st \quad W_0 > 0
+    \]
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    Note that $W_{t+1} =  W_t - c_t$ and thus $W_t = W_{t-1} - c_{t-1}$. This implies that via a recursive arguement:
+    \[
+    W_{t+1} = W_t - c_t \implies W_{t+1} = W_0 - \sum_{t = 1}^{T} c_t 
+    \]
+    such that $W_{t+1} \geq 0 $
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    The Langrangian is as follows:
+    \[
+    L = s - \lambda \left( W_{t+1} - W_0 + \sum_{0}^{t} c_t \right)
+    \]
+    with the following FOCs:
+    \begin{align*}
+        [c_i] & \quad \left(\frac{\partial u}{\partial c} \bigg|_{c_i}\right) \cdot \beta^i + \lambda \leq 0\\
+        [\lambda] & \quad W_{t+1} \leq W_0 - \sum_{t = 1}^{T} c_t 
+    \end{align*}
+    Note that $W_{t+1}$ has to be 0, as no utility is derived from $W_{t+1}$ period. 
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    From a $[c_{i+1}]$ and $[c_i]$, we see that:
+    \[
+    u'(c_{t+1})  = \frac{\lambda}{\beta^{t+1}} \quad u'(c_t) = \frac{\lambda}{\beta^t}
+    \]
+    This implies
+    \[
+    \frac{u'(c_{t})}{u'(c_{t+1})} = \frac{\frac{\lambda}{\beta^t}}{\frac{\lambda}{\beta^{t+1}}} = \beta \iff u'(c_t) = \beta u'(c_{t+1})
+    \]
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    From (4), we see that 
+    \[
+    \beta c_t = c_{t+1} \iff \frac{c_t}{\beta} = c_{t-1}
+    \]
+    This implies that using the $[\lambda]$ condition, we are innterested in solving:
+    \[
+    W_0 = \sum_{i = 0}^{t} \beta^{-i} c_t 
+    \]
+    which is equivalent to 
+    \[
+    c_t \sum_{i=0}^{t} = W_0 \iff c_t = \frac{W}{\sum_{i=0}^{t} \beta^{-i}}
+    \]
+\end{subsol}
+\todo{Do final part}
+\setcounter{subproblem}{0}
 \begin{problem}{4}
     Crusoe’s Intratemporal Choice
 \end{problem}
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-    
+
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
