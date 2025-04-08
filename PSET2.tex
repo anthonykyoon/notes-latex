@@ -295,7 +295,55 @@ plot(X,k_1)
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-
+\begin{align*}
+    \max & U(c, l)\\
+    \st & \quad c = \frac{1}{1-\theta} (l - \overline{l})^{1-\theta}\\
+    \st & \quad 0 < \theta < 1
+\end{align*}
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    The FOCs are as follows:
+    \begin{align*}
+        [c] & \quad \frac{\alpha}{c} - \lambda = 0\\
+        [l] & \quad \frac{1-\alpha}{1-l} - \lambda(l - \overline{l})^{-\theta} = 0\\
+        [\lambda] & \quad c = \frac{1}{1-\theta} (l - \overline{l})^{1-\theta} 
+    \end{align*}
+    We see that using the $[l]$ and $[\lambda]$ constraint, we see that
+    \begin{align*}
+        -\frac{1-\alpha}{1-l} + \frac{a}{c} (l -\overline{l})^{-\theta} &= 0\\
+        \frac{\alpha}{c} (l - \overline{l})^{-\theta} &= \frac{1-\alpha}{1-l}\\
+        \frac{\alpha}{c(l-\overline{l})^\theta} &= \frac{1-\alpha}{1-l}
+    \end{align*}
+    Note that $(l - \overline{l})^{\theta}$ is the weight of trade off between the consumption and labor. If $\theta$ increases, working more does become as beneifical. 
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    Using the derived optimality condition, we can see the following:
+    \begin{align*}
+        \frac{1-\alpha}{1-l} &= \frac{\alpha}{c} (l - \overline{l})^{-\theta}\\
+        c(1-\alpha) &= \alpha (1- l )(l - \overline{l})^{-\theta}\\
+        c &= \frac{\alpha (1-l)(l- \overline{l})^{-\theta}}{1-\alpha}\\
+        \frac{1}{1-\theta} (l - \overline{l})^{1-\theta} &= \frac{\alpha (1-l)(l- \overline{l})^{-\theta}}{1-\alpha}\\
+        \frac{l - \overline{l}}{1-\theta} &= \frac{\alpha (1-l)}{1-\alpha}\\
+        \frac{l}{1-\theta} + \frac{\alpha l}{1-\alpha} &= \frac{\alpha}{1-\alpha} + \frac{\overline{l}}{1-\theta}\\
+        l \left( \frac{1}{1-\theta} + \frac{\alpha}{1-\alpha} \right) &= \frac{\alpha (1-\theta) + \overline{l} (1-\alpha)}{(1-\alpha)(1-\theta)}\\
+        l \left( \frac{1-\alpha + \alpha(1-\theta)}{(1-\theta)}(1-\alpha) \right) &= \frac{\alpha (1-\theta) + \overline{l} (1-\alpha)}{(1-\alpha)(1-\theta)}\\
+        l &= \frac{\alpha (1-\theta) + \overline{l} (1 - \alpha)}{1-\alpha + \alpha(1-\theta)}
+    \end{align*}
+    This implies that:
+    \begin{align*}
+        c &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \overline{l}(1 - \alpha)}{1 - \alpha + \alpha(1 - \theta)} - \overline{l} \right)^{1 - \theta} \\
+          &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \overline{l}(1 - \alpha)}{1 - \alpha + \alpha - \alpha\theta} - \overline{l} \right)^{1 - \theta} \\
+          &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \overline{l}(1 - \alpha)}{1 - \alpha\theta} - \overline{l} \right)^{1 - \theta} \\
+          &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \overline{l}(1 - \alpha) - \overline{l}(1 - \alpha\theta)}{1 - \alpha\theta} \right)^{1 - \theta} \\
+          &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \overline{l}[(1 - \alpha) - (1 - \alpha\theta)]}{1 - \alpha\theta} \right)^{1 - \theta} \\
+          &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \overline{l}(\alpha\theta - \alpha)}{1 - \alpha\theta} \right)^{1 - \theta} \\
+          &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \alpha(\theta - 1)\overline{l}}{1 - \alpha\theta} \right)^{1 - \theta} \\
+          &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta)(1 - \overline{l})}{1 - \alpha\theta} \right)^{1 - \theta}
+        \end{align*}        
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
