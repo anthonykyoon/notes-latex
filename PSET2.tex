@@ -225,6 +225,7 @@ plot(X,k_1)
 \end{subsol}
 
 \setcounter{subproblem}{0}
+\todo{REDO}
 \begin{problem}{3}
     Cookie Eating - Part 1
 \end{problem}
@@ -343,7 +344,19 @@ plot(X,k_1)
           &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \overline{l}(\alpha\theta - \alpha)}{1 - \alpha\theta} \right)^{1 - \theta} \\
           &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta) + \alpha(\theta - 1)\overline{l}}{1 - \alpha\theta} \right)^{1 - \theta} \\
           &= \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta)(1 - \overline{l})}{1 - \alpha\theta} \right)^{1 - \theta}
-        \end{align*}        
+        \end{align*}
+        Therefore:
+        \[
+           l = \frac{\alpha (1-\theta) + \overline{l} (1 - \alpha)}{1-\alpha + \alpha(1-\theta)} \quad c = \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta)(1 - \overline{l})}{1 - \alpha\theta} \right)^{1 - \theta}
+        \]        
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    \[
+    \frac{\partial l}{\partial \overline{l}} = \frac{1-\alpha}{1-\alpha + \alpha(1-\theta)} \quad 
+    \frac{\partial c}{\partial \overline{l}} = -\left( \frac{\alpha(1 - \theta)}{1 - \alpha\theta} \right)^{1 - \theta} (1 - \overline{l})^{-\theta}
+    \]
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
