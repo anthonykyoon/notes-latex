@@ -107,10 +107,52 @@
 \begin{problem}{4}
     
 \end{problem}
+\begin{sol}
+    Conisder the following: We know that by the definition of the induced norm that:
+    \[
+    \|Ax\|_a \leq \| A\|_{a \leftarrow c} \cdot \|x\|_c
+    \]
+    as 
+    \[
+    \|A\|_{a \leftarrow c} := \sup \frac{\|Ax\|_a}{\|x\|_c}, \forall x \in \R^n
+    \]
+    Let $y = Bx$, we see that:
+    \[
+    \|Ay\|_a \leq \|A\|_{a\leftarrow c} \cdot  \|Bx\|_c
+    \]
+    But, since we know that:
+    \[
+    \|B\|_{c \leftarrow b} := \sup \frac{\|Bx\|_c}{\|x\|_b}, \forall x \in \R^n
+    \]
+    we can see that:
+    \[
+        \|Bx\|_c \leq \| B\|_{c \leftarrow b} \cdot \|x\|_b
+    \]
+    Thus, we can see that, if we were to combine these two inequalities, we get that:
+    \[
+        \|Ay\|_{a} \leq \|A\|_{a\leftarrow c} \cdot \|\cdot \| B\|_{c \leftarrow b} \cdot \|x\|_b
+    \]
+    We can see that 
+    \begin{align*}
+        \|ABx\|_{a} & \leq \|A\|_{a\leftarrow c} \cdot \|\cdot \| B\|_{c \leftarrow b} \cdot \|x\|_b\\
+        \frac{\|ABx\|_{a}}{\|x\|_b} & \leq \|A\|_{a\leftarrow c} \cdot \|\cdot \| B\|_{c \leftarrow b}
+    \end{align*}
+    We can take the supremum of $\frac{\|ABx\|_{a}}{\|x\|_b}$, and we can see that:
+    \[
+    \|AB\|_{a \leftarrow b} = \|A\|_{a \leftarrow c} \|B\|_{c \leftarrow b}
+    \]
+\end{sol}
 
 \begin{problem}{5}
     
 \end{problem}
+
+\begin{problem}{6}
+    
+\end{problem}
+\begin{sol}
+
+\end{sol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
 \end{document}
