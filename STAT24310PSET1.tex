@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[12pt]{article}
+ \usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\lhead{Class: STAT 24310}
+\chead{Assignment: 1}
+% \lhead{Anthony Yoon}  %replace with your name
+\rhead{Anthony Yoon} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Copy the following block of text for each problem in the assignment.
+\begin{problem}{1}
+    
+\end{problem}
+\begin{sol}
+    Note that $f$ is continous at every point in $\R^3$. This implies that Jacobian exists. Let $f_1: \R^3 \to \R, f_1(x_1, x_2, x_3) =  x_1 x_2 + \sin(x_3) + x_1^2$ and $f_2: \R^3 \to \R^1, f_2(x_1, x_2, x_3) = 7 + e^{x_2}$. Therefore 
+    \[
+    \nabla f_1  = \begin{bmatrix}
+        x_2 + 2x_1 & x_2 & \cos(x_3)
+    \end{bmatrix} \quad 
+    \nabla f_2 = \begin{bmatrix}
+        0 & e^{x_2} & 0
+    \end{bmatrix}
+    \]  
+    This implies that 
+    \[
+    J_x = \begin{bmatrix}
+        x_2 + 2x_1 & x_1 & \cos(x_3) \\
+        0 & e^{x_2} & 0 
+    \end{bmatrix}
+    \]
+    We now aim to show what induced one norm on a matrix. For any $x \in \R^n$ and $A \in \R^{m \times n}$, we can see that:
+    \begin{align*}
+        Ax &= \sum_{j = 1}^n a_{ij} x_j\\
+        \|Ax\|_1 &= \sum_{i = 1}^{m} \left | \sum_{j = 1}^{n} a_{ij} x_j \right |\\
+        &\leq \sum_{i = 1}^{m} \sum_{j = 1}^{n} |a_{ij}| \cdot |x_j|\\
+        &\leq \sum_{j = 1}^{n} |x_j| \sum_{i = 1}^{m} |a_{ij}|\\
+        &\leq \sum_{j = 1}^{n} |x_j| \max_j |c_j|\\
+        &\leq \max_j |c_j|
+    \end{align*}
+    where $c_j$ denotes the sum of the $j$th column. To prove the reverse direction, we can see that if we let $x = e_j$, where it is the maximum column sum, we can see that 
+    \[
+    \|Ax\|_1 = \sup_{\|x\|_ 1 = 1} \|Ax\|_1 \geq \max_j |c_j |
+    \]  
+    which implies that $|A\|_1 = \max_j |c_j|$. Therefore, we see that 
+    \[
+        k_{abs} = \max \{ |x_2 + 2x_1| , |x_1 + e^{x_2}|, |\cos(x_3)|\}
+    \]
+    Therefore, since $k_{rel} = k_{abs} \cdot \frac{\|x\|_1}{\|f(x)\|_1}$, we see that:
+    \[
+    k_{abs} = \max \{ |x_2 + 2x_1| , |x_1 + e^{x_2}|, |\cos(x_3)|\} \cdot \frac{|x_1| + |x_2| + |x_3|}{|x_2 + 2x_1| + |x_1 + e^{x_2}| + |\cos(x_3)|}
+    \]
+\end{sol}
+
+\newpage
+\begin{problem}{2}
+    
+\end{problem}
+\begin{sol}
+    Let $x, X, y, Y \in \R$, the following are derived from the statements given.
+    \begin{align*}
+        x \| \cdot \|_c \leq &\| \cdot \|_a \leq X \| \cdot \|_c\\
+        y \| \cdot \|_b \leq &\| \cdot \|_c \leq Y \| \cdot \|_b
+    \end{align*}
+    We can combine these inequalities to find that:
+    \[
+    xy \| \cdot \|_b \leq x \| \cdot \|_c \leq \| \cdot \|_a \leq X \| \cdot \|_c \leq  XY \|\cdot\|_b
+    \]
+    Thus, showing that  $\| \cdot \|_a$ and $\| \cdot \|_b$ are indeed equivalent. 
+\end{sol}
+
+\begin{problem}{3}
+    WIP
+\end{problem}
+
+\begin{problem}{4}
+    
+\end{problem}
+
+\begin{problem}{5}
+    
+\end{problem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter anything below this line.
+\end{document}
