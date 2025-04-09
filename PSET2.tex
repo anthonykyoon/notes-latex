@@ -94,7 +94,21 @@
     
 \end{subprob}
 \begin{subsol}
-    
+    We can see that $r = \frac{\partial Y}{\partial K_t} - \delta$. We can compute this as the following:
+    \[
+    \frac{\partial Y}{\partial K_t} = \alpha K_t^{\alpha - 1} (A_t N_t)^{1-\alpha} = \alpha k^{\alpha - 1}
+    \]
+    In steady state, note that $\Delta k_t = 0$. This implies that
+    \begin{align*}
+        \Delta k_t &= s k_t^\alpha - (n + g + \delta)k_t\\
+        0 &= sk_t^\alpha - (n + g + \delta)k_t\\
+        \frac{n + g + \delta}{s} &= k_t^{\alpha - 1}\\
+        \alpha \frac{n + g + \delta}{s} &= \alpha k_t^{\alpha - 1}
+    \end{align*}
+    Thus, 
+    \[
+    r = \alpha \frac{n + g + \delta}{s} - \delta
+    \]
 \end{subsol}
 
 \setcounter{subproblem}{0}
