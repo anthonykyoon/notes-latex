@@ -259,7 +259,7 @@ grid on;
     \caption{Figure Econ 20210 Problem 3 Question 5}
     \label{fig:enter-label}
 \end{figure}
-Note that $k$ and $y$ are appraoch the steady state behaviors and $Y$ and $K$ approach infinity, which resemble the Inada conditions. 
+Note that $k$ and $y$ are appraoch the steady state behaviors and $Y$ and $K$ approach infinity, make sense as the economy constantly grows. 
 \end{subsol}
 \begin{subprob}
 \end{subprob}
@@ -396,7 +396,7 @@ plot(X,k_1)
     
 \end{subprob}
 \begin{subsol}
-    We can see that the graph is concave down, and we can see that it will assymptocailly appraoch a value. \todo{redo}
+    We can see that the graph is concave down, and we can see that it will assymptocailly appraoch a value. 
 \end{subsol}
 % \begin{problem}{3}
 %     Cookie Eating - Part 1
@@ -543,12 +543,13 @@ plot(X,k_1)
         [c] & \quad \frac{\alpha}{c} + \lambda c = 0\\
         [l] & \quad -\frac{1-\alpha}{1-l} - \lambda (l -\overline{l})^{-\theta} - \mu = 0\\
         [\lambda] & \quad c - \frac{1}{1-\theta}(l - \overline{l})^{1-\theta} \leq 0 \\
-        [\mu] & \quad l - \hat{l} \hspace{10pt} ? \hspace{10pt} 0 
+        [\mu] & \quad l - \hat{l} \leq 0 \text{ and } \mu \geq 0 \text{ with C.S}
     \end{align*}
-    If $l^* - \hat{l} \leq 0$, we can see that we are left with an original optimization problem as seen before, as $\mu = 0$. However, there remains the case where $\hat{l} > l^*$. If this is the case, note that this implies that $\mu > 0 $. If this is the case, we can set $l = \hat{l}$, and thus find that the optimal solution would be:
+    Case 1: If $l^* - \hat{l} \leq 0, \mu = 0$. This implies that there is no impact on the solution. \\
+    Case 2: If $\hat{l} < l^*, \mu > 0$. Here, the indivdual would work up till the optimal amount limited by $\hat{l}$ Hence:
     \[
-    l = \hat{l} \quad c = \frac{1}{1-\theta}(\hat{l} - l)^{1-\theta}
-    \]
+    l = \hat{l} \quad c = \frac{1}{1-\theta} (\hat{l} - l   ^{1-\theta}) \quad \mu = \frac{\alpha}{c} (\hat{l} - k )^{-\theta} - \frac{1-\alpha}{1-\hat{l}}
+    \] 
 \end{subsol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
