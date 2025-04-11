@@ -375,7 +375,21 @@ plot(X,k_1)
     \end{align*}
     Therefore, we can sum all of this up and get that:
     \[
-    \sum_{t = 0}^{T} c_t = W_T \sum_{t = 0}^{T} \frac{1}{\beta^t}
+    \sum_{t = 0}^{T} c_t = W_T \sum_{t = 0}^{T} \frac{1}{\beta^{T-t}} = W_T \beta^{-T} \sum_{t = 0}^{T} \beta^t = \frac{W_T(1-\beta^T)}{\beta^T(1-\beta)}
+    \]
+    However, from the lifetime budget constraint, we can see that:
+    \begin{align*}
+        W_0 - W_{T+1} &= \frac{W_T(1-\beta^T)}{\beta^T(1-\beta)}\\
+        W_T &= \frac{W_0(1-\beta^T)}{\beta^T(1-\beta)}
+    \end{align*}
+    We can see that, 
+    \begin{align*}
+        c_T &= W_T = \frac{\beta^T (1-\beta)}{1-\beta^T}W_0\\
+        c_t &= \frac{1}{\beta^{T-t}}W_T 
+    \end{align*}
+    This implies that:
+    \[
+    c_0 = \frac{1-\beta}{1-\beta^T}W_0
     \]
 \end{subsol}
 % \begin{problem}{3}
