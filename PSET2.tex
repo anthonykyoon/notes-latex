@@ -119,14 +119,20 @@
     \[
     r_{10} = \frac{0.0068 + 0.0044 + 0.04}{3(0.073)} - 0.05 = 0.183
     \]
-    we can see that the model successfully explains the decline in the real interest. However, the model does overestimate the interest rate for both time frames, as \todo{Risk, }
+    we can see that the model successfully explains the decline in the real interest. We can see that the model slightly overestimates the interest rates for both time frames, but the average difference is congruent over both time periods. 
 \end{subprob}
 
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-    The Real Treasury Yield is not a good estimate for the Solov model's growth rate. 
-    Real Treausry Yield will be lower than the solov model, because treasury yield are risk free (low risk) and inside solov model, r is return on physical captial, which is inherentlt riskier than the treasury yield. 
+    % The Real Treasury Yield is not a good estimate for the Solov model's growth rate. 
+    % Real Treausry Yield will be lower than the solov model, because treasury yield are risk free (low risk) and inside solov model, r is return on physical captial, which is inherentlt riskier than the treasury yield. 
+    The real Treasury yield is not a suitable measure for the real interest rate $r$ in the Solow model. Treasury yields reflect returns on risk-free government debt, wheras while 
+    $r$ in the Solow model represents the return on physical capital, which is riskier and therefore commands a higher return
+
+
+    Since Treasury bonds do not account for the risk premium inherent in capital investment, their yields are typically lower than the actual return on capital. As a result, using real Treasury yields would underestimate 
+    $r$ and misrepresent investment incentives in the model.
 \end{subsol}
 
 
@@ -275,8 +281,12 @@ figure;
 
 plot(X,k_1)
     \end{lstlisting}
-
-    \todo{Consumption is higher}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{ECON20210P3Q6.pdf}
+        \caption{Graph for Part 5 of Question 3}
+        \label{fig:en1212ter-label}
+    \end{figure}
 \end{subsol}
 
 \begin{subprob}
@@ -392,7 +402,7 @@ plot(X,k_1)
         \frac{l - \overline{l}}{1-\theta} &= \frac{\alpha (1-l)}{1-\alpha}\\
         \frac{l}{1-\theta} + \frac{\alpha l}{1-\alpha} &= \frac{\alpha}{1-\alpha} + \frac{\overline{l}}{1-\theta}\\
         l \left( \frac{1}{1-\theta} + \frac{\alpha}{1-\alpha} \right) &= \frac{\alpha (1-\theta) + \overline{l} (1-\alpha)}{(1-\alpha)(1-\theta)}\\
-        l \left( \frac{1-\alpha + \alpha(1-\theta)}{(1-\theta)}(1-\alpha) \right) &= \frac{\alpha (1-\theta) + \overline{l} (1-\alpha)}{(1-\alpha)(1-\theta)}\\
+        l \left( \frac{1-\alpha + \alpha(1-\theta)}{(1-\theta)(1-\alpha)} \right) &= \frac{\alpha (1-\theta) + \overline{l} (1-\alpha)}{(1-\alpha)(1-\theta)}\\
         l &= \frac{\alpha (1-\theta) + \overline{l} (1 - \alpha)}{1-\alpha + \alpha(1-\theta)}
     \end{align*}
     This implies that:
@@ -418,7 +428,32 @@ plot(X,k_1)
     \frac{\partial l}{\partial \overline{l}} = \frac{1-\alpha}{1-\alpha + \alpha(1-\theta)} \quad 
     \frac{\partial c}{\partial \overline{l}} = -\left( \frac{\alpha(1 - \theta)}{1 - \alpha\theta} \right)^{1 - \theta} (1 - \overline{l})^{-\theta}
     \]
+    Note that $\frac{\partial l}{\partial \overline{l}} > 0$ and $\frac{\partial c}{\partial \overline{l}} < 0$ We can see that this implies that increasing $\overline{l}$ means that $l$ increases and $c$ decreases. We can also observe the same in the following diagram. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{ECON20210Q4-4.jpeg}
+        \caption{Graph for Question 4, part 4}
+        \label{fig:enter-label123423}
+    \end{figure}
+    The red denotes the shift in caused by an increase in $\overline{l}$. We can see that increasing the innate fixed cost to producing, the person must still work more to produce items to consume. The person still needs to consume items to derive utility, hence why labor increases. 
 \end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    We can see the langrangian as follows:
+    \[
+    L = \alpha \ln(c) + (1-\alpha) \ln(1-l) + \lambda \left(c - \frac{1}{1-\theta}(l - \overline{l})^{1-\theta}\right) + \mu (\hat{l} - l)
+    \]
+    We see that the followng FOCs hold:
+    \begin{align*}
+        [c] & \quad \frac{\alpha}{c} + \lambda c = 0\\
+        [l] & \quad -\frac{1-\alpha}{1-l} - \lambda (l -\overline{l})^{-\theta} - \mu = 0\\
+        [\lambda] & \quad c - \frac{1}{1-\theta}(l - \overline{l})^{1-\theta} \leq 0 \\
+        [\mu] & \quad l - \hat{l} \hspace{10pt} ? \hspace{10pt} 0 
+    \end{align*}
+    If $l - \hat{l} \leq 0$, we can see that we are left with an original optimization problem as seen before, as $\mu = 0$. However, there remains the case where $\hat{l} > l$
+\end{subsol}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
 \end{document}
