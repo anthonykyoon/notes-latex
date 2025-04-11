@@ -296,9 +296,10 @@ plot(X,k_1)
 \end{subsol}
 
 \setcounter{subproblem}{0}
-\todo{REDO}
+
+\newpage
 \begin{problem}{3}
-    Cookie Eating - Part 1
+    
 \end{problem}
 \begin{subprob}
 \end{subprob}
@@ -311,25 +312,41 @@ plot(X,k_1)
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-    Note that $W_{t+1} =  W_t - c_t$ and thus $W_t = W_{t-1} - c_{t-1}$. This implies that via a recursive arguement:
-    \[
-    W_{t+1} = W_t - c_t \implies W_{t+1} = W_0 - \sum_{t = 1}^{T} c_t 
-    \]
-    such that $W_{t+1} \geq 0 $
+    Note that:
+    \begin{align*}
+        W_{t+1} &= W_t - c_t\\
+        c_t &= W_t -W_{t+1}
+    \end{align*}
+    We can see that the net consumption is:
+    \begin{align*}
+        \sum_{t = 0}^{T} c_t  &= \sum_{t = 0}^{T} W_t - W_{t+1}\\
+        &= (W_0 - W_1)  + (W_1 - W_2) + \dots - W_t + W_{T+1}\\
+        &= W_0 - W_{T+1}
+    \end{align*}
 \end{subsol}
 \begin{subprob}
 \end{subprob}
 \begin{subsol}
-    The Langrangian is as follows:
+    We can see that the Langrangian with the following assumptions are:
     \[
-    L = s - \lambda \left( W_{t+1} - W_0 + \sum_{0}^{t} c_t \right)
+    L = \sum_{t=0}^{T} \left\{\beta^T u(c_t) + \lambda_t (W_t - W_{t+1} - c_t)\right\} + \mu W_{T+1}
     \]
-    with the following FOCs:
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    We can see now that 
     \begin{align*}
-        [c_i] & \quad \left(\frac{\partial u}{\partial c} \bigg|_{c_i}\right) \cdot \beta^i + \lambda \leq 0\\
-        [\lambda] & \quad W_{t+1} \leq W_0 - \sum_{t = 1}^{T} c_t 
+        \frac{\partial L}{\partial c_t} &= \beta^t u'(c_t) - \lambda_t = 0\\
+        \frac{\partial L}{\partial W_t} &= \lambda_t - \lambda_{t-1} = 0 \quad \forall t \in \{0,1,2,\dots,T\}\\
+        \frac{\partial L}{\partial W_{T+1}} &= -\lambda_T + \mu = 0
     \end{align*}
-    Note that $W_{t+1}$ has to be 0, as no utility is derived from $W_{t+1}$ period. 
+    We have the following complentary slackness conditions:
+    \begin{align*}
+        \mu W_{T+1} &= 0 \\
+        \lambda_t(W_t - W_{t+1} - c_t) &= 0
+    \end{align*}
+    We can see that if $\mu = 0$, that implies that every $\lambda = 0$, which is a contradiction. Therefore, we can see that $\mu > 0$ implies that $W_{t+1} = 0$, which sastifies the FOCs and complentary slackness conditions. 
 \end{subsol}
 \begin{subprob}
 \end{subprob}
@@ -348,18 +365,75 @@ plot(X,k_1)
 \begin{subsol}
     From (4), we see that 
     \[
-    \beta c_t = c_{t+1} \iff \frac{c_t}{\beta} = c_{t-1}
+    \frac{1}{c_t} = \frac{\beta}{c_{t+1}} \iff \frac{c_{t+1}}{\beta} = c_t
     \]
-    This implies that using the $[\lambda]$ condition, we are innterested in solving:
+    Therefore, we can see that since $W_{T+1} = 0$, this implies that:
+    \begin{align*}
+        c_T &= W_T\\
+        c_{T-1} &= \frac{1}{\beta} W_T \\
+        c_0 &= \frac{1}{\beta^T}W_T
+    \end{align*}
+    Therefore, we can sum all of this up and get that:
     \[
-    W_0 = \sum_{i = 0}^{t} \beta^{-i} c_t 
-    \]
-    which is equivalent to 
-    \[
-    c_t \sum_{i=0}^{t} = W_0 \iff c_t = \frac{W}{\sum_{i=0}^{t} \beta^{-i}}
+    \sum_{t = 0}^{T} c_t = W_T \sum_{t = 0}^{T} \frac{1}{\beta^t}
     \]
 \end{subsol}
-\todo{Do final part}
+% \begin{problem}{3}
+%     Cookie Eating - Part 1
+% \end{problem}
+
+% \begin{subprob}
+% \end{subprob}
+% \begin{subsol}
+%     Note that $W_{t+1} =  W_t - c_t$ and thus $W_t = W_{t-1} - c_{t-1}$. This implies that via a recursive arguement:
+%     \[
+%     W_{t+1} = W_t - c_t \implies W_{t+1} = W_0 - \sum_{t = 1}^{T} c_t 
+%     \]
+%     such that $W_{t+1} \geq 0 $
+% \end{subsol}
+% \begin{subprob}
+% \end{subprob}
+% \begin{subsol}
+%     The Langrangian is as follows:
+%     \[
+%     L = s - \lambda \left( W_{t+1} - W_0 + \sum_{0}^{t} c_t \right)
+%     \]
+%     with the following FOCs:
+%     \begin{align*}
+%         [c_i] & \quad \left(\frac{\partial u}{\partial c} \bigg|_{c_i}\right) \cdot \beta^i + \lambda \leq 0\\
+%         [\lambda] & \quad W_{t+1} \leq W_0 - \sum_{t = 1}^{T} c_t 
+%     \end{align*}
+%     Note that $W_{t+1}$ has to be 0, as no utility is derived from $W_{t+1}$ period. 
+% \end{subsol}
+% \begin{subprob}
+% \end{subprob}
+% \begin{subsol}
+%     From a $[c_{i+1}]$ and $[c_i]$, we see that:
+%     \[
+%     u'(c_{t+1})  = \frac{\lambda}{\beta^{t+1}} \quad u'(c_t) = \frac{\lambda}{\beta^t}
+%     \]
+%     This implies
+%     \[
+%     \frac{u'(c_{t})}{u'(c_{t+1})} = \frac{\frac{\lambda}{\beta^t}}{\frac{\lambda}{\beta^{t+1}}} = \beta \iff u'(c_t) = \beta u'(c_{t+1})
+%     \]
+% \end{subsol}
+% \begin{subprob}
+% \end{subprob}
+% \begin{subsol}
+%     From (4), we see that 
+%     \[
+%     \beta c_t = c_{t+1} \iff \frac{c_t}{\beta} = c_{t-1}
+%     \]
+%     This implies that using the $[\lambda]$ condition, we are innterested in solving:
+%     \[
+%     W_0 = \sum_{i = 0}^{t} \beta^{-i} c_t 
+%     \]
+%     which is equivalent to 
+%     \[
+%     c_t \sum_{i=0}^{t} = W_0 \iff c_t = \frac{W}{\sum_{i=0}^{t} \beta^{-i}}
+%     \]
+% \end{subsol}
+% \todo{Do final part}
 \setcounter{subproblem}{0}
 \begin{problem}{4}
     Crusoe’s Intratemporal Choice
@@ -418,7 +492,7 @@ plot(X,k_1)
         \end{align*}
         Therefore:
         \[
-           l = \frac{\alpha (1-\theta) + \overline{l} (1 - \alpha)}{1-\alpha + \alpha(1-\theta)} \quad c = \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta)(1 - \overline{l})}{1 - \alpha\theta} \right)^{1 - \theta}
+           l^* = \frac{\alpha (1-\theta) + \overline{l} (1 - \alpha)}{1-\alpha + \alpha(1-\theta)} \quad c^* = \frac{1}{1 - \theta} \left( \frac{\alpha(1 - \theta)(1 - \overline{l})}{1 - \alpha\theta} \right)^{1 - \theta}
         \]        
 \end{subsol}
 \begin{subprob}
@@ -451,7 +525,10 @@ plot(X,k_1)
         [\lambda] & \quad c - \frac{1}{1-\theta}(l - \overline{l})^{1-\theta} \leq 0 \\
         [\mu] & \quad l - \hat{l} \hspace{10pt} ? \hspace{10pt} 0 
     \end{align*}
-    If $l - \hat{l} \leq 0$, we can see that we are left with an original optimization problem as seen before, as $\mu = 0$. However, there remains the case where $\hat{l} > l$
+    If $l^* - \hat{l} \leq 0$, we can see that we are left with an original optimization problem as seen before, as $\mu = 0$. However, there remains the case where $\hat{l} > l^*$. If this is the case, note that this implies that $\mu > 0 $. If this is the case, we can set $l = \hat{l}$, and thus find that the optimal solution would be:
+    \[
+    l = \hat{l} \quad c = \frac{1}{1-\theta}(\hat{l} - l)^{1-\theta}
+    \]
 \end{subsol}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
