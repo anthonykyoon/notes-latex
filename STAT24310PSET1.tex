@@ -23,6 +23,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbff{Z}}
 \newcommand{\st}{\text{s.t}}
+\newcommand{\proj}[2]{\mathrm{proj}_{{#2}}\,{#1}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,7 +152,35 @@
     
 \end{problem}
 \begin{sol}
-
+    Let $a_1 = 2\sin (\pi x) + \sin(\pi x)$ and $a_2 = -3 \sin(\pi x) + \sin(2 \pi x)$. Let $q_1 = \frac{a_1}{\|a_1\|}$. Thus, we can proceed with the folloiwng computation:
+    \begin{align*}
+        \langle a_1, a_1 \rangle &= \langle  2\sin (\pi x) + \sin(\pi x),  2\sin (\pi x) + \sin(\pi x)\rangle \\
+        &= \int_{0}^{1} (2\sin(2\pi x) + \sin(\pi x))^2 dx\\
+        &= \int_{0}^{1} 4\sin^2(2\pi x) + 4\sin(\pi x) \sin(2\pi x) + \sin^2(\pi x)dx\\
+    \end{align*}
+    Note that $\int_{0}^{1} \sin(\pi x) \sin( 2\pi x) dx = 0$. Thus, we can see that:
+    \begin{align*}
+        \langle a_1, a_1 \rangle &= \int_{0}^{1} 4\sin^2(2\pi x) + 4\sin(\pi x) \sin(2\pi x) + \sin^2(\pi x)dx \\
+        &= \int_{0}^{1} 4\sin^2(2\pi x) + \sin^2(\pi x)dx \\
+    \end{align*}
+    Note $\int_{0}^{1} \sin^2( n \pi x) = 0.5, \forall n \in \N$. Thus, we can see that:
+    \[
+        \langle a_1, a_1 \rangle = \int_{0}^{1} 4\sin^2(2\pi x) + \sin^2(\pi x)dx = 2 + 0.5 = \frac{5}{2}
+    \]
+    This implies that:
+    \[
+    q_1 = \sqrt{\frac{2}{5}} (2\sin(2\pi x) + \sin(\pi x))
+    \]
+    How, we must consider solving the following $v_2 = a_2 - \proj{q_1}{a_2} = a_2 - \langle a_2, q_1 \rangle q_1$. We now the following the integral;
+    \begin{align*}
+        \sqrt{\frac{2}{5}} \int_{0}^{1} (2\sin(2\pi x) + \sin(\pi x))(\sin(2\pi x) - 3\sin(\pi x))dx &= \sqrt{\frac{2}{5}} \int_{0}^{1} 2\sin^2(2\pi x) - 3\sin^2(\pi x)dx\\
+        &= \sqrt{\frac{2}{5}} * \frac{-1}{2}\\
+        &= - \sqrt{\frac{1}{10}}
+    \end{align*}
+    Thus, we see that $v_2 = a_2 - \proj{q_1}{a_2} = a_2 - \langle a_2, q_1 \rangle q_1 = a_2 + \left( \sqrt{\frac{1}{10}} \right) \left( \sqrt{\frac{2}{5}} \right)a_1 = a_2 + 0.2a_1$. Simplifying the vectors, we can see that we can simplify to:
+    \[
+    -3 \sin (\pi x) + \sin(2\pi x) + 0.2 (2 \sin(2\pi x) + \sin(\pi x)) = \frac{-14}{5} \sin(\pi x) + \frac{7}{5} \sin(2\pi x)
+    \] 
 \end{sol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
