@@ -181,6 +181,17 @@
     \[
     -3 \sin (\pi x) + \sin(2\pi x) + 0.2 (2 \sin(2\pi x) + \sin(\pi x)) = \frac{-14}{5} \sin(\pi x) + \frac{7}{5} \sin(2\pi x)
     \] 
+    We now proceed with the following calcuation:
+    \begin{align*}
+        \int_{0}^{1} \left( \frac{7}{5} (-2\sin(\pi x) + \sin(2 \pi x)) \right)^2 dx &= \frac{49}{25} \int_{0}^{1} 4\sin^2 (\pi x) + \sin^2(2\pi x) dx \\
+        &=  \frac{49}{25} \left( 2 + \frac{1}{2} \right)\\
+        &= \frac{49}{10}
+    \end{align*}
+    We see that $\| v_2\| = \frac{7}{\sqrt{10}}$. Therefore, we can see that 
+    \[
+    q_1 = \sqrt{\frac{2}{5}} (2\sin (2\pi x) + \sin(\pi x)), q_2 = \frac{7}{\sqrt{10}} \left( \sin(2 \pi x) - 2\sin(\pi x) \right)
+    \]
+    Note that $r_{11} = \sqrt{\frac{5}{2}}$, $r_{12} = \frac{\langle a_2, q_1 \rangle}{\|q_1\|} = -\frac{1}{\sqrt{10}}, r_{22} = \frac{7}{\sqrt{10}} = \|v_2\|$. 
 \end{sol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
