@@ -3,6 +3,7 @@
 \documentclass[12pt]{article}
  \usepackage[margin=1in]{geometry} 
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\usepackage{float}
 \pagestyle{fancy}
 \setlength{\headheight}{65pt}
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
@@ -81,7 +82,7 @@
     \]
     Therefore, since $k_{rel} = k_{abs} \cdot \frac{\|x\|_1}{\|f(x)\|_1}$, we see that:
     \[
-    k_{abs} = \max \{ |x_2 + 2x_1| , |x_1 + e^{x_2}|, |\cos(x_3)|\} \cdot \frac{|x_1| + |x_2| + |x_3|}{|x_2 + 2x_1| + |x_1 + e^{x_2}| + |\cos(x_3)|}
+    k_{abs} = \max \{ |x_2 + 2x_1| , |x_1 + e^{x_2}|, |\cos(x_3)|\} \cdot \frac{|x_1| + |x_2| + |x_3|}{|x_1 x_2 + \sin(x_3) + x_1^2 + 7 + e^{x_2}|}
     \]
 \end{sol}
 
@@ -101,9 +102,9 @@
     \]
     Thus, showing that  $\| \cdot \|_a$ and $\| \cdot \|_b$ are indeed equivalent. 
 \end{sol}
-
+\newpage
 \begin{problem}{3}
-    WIP
+    
 \end{problem}
 \begin{sol}
     If $p = q$, the statement is obvious. We aim to prove that the $1$ norm is equivalent to the $p$ norm and use transitivity of norms to prove the statement. First, consider $p, q \in \R, p > q \geq 1$. We can consider the following for any $x \in \R^n$ (or $\C^n$):
@@ -147,7 +148,7 @@
     \]
     Thus, we have proved that $1$ norm and the $p$ norm is equivalnet. Thus, by transitive of norms, we can see that $1$ and $q$ are equivalent, which implies that $p$ and $q$ are equivalent norms.
 \end{sol}
-
+\newpage
 \begin{problem}{4}
     
 \end{problem}
@@ -183,15 +184,122 @@
     \end{align*}
     We can take the supremum of $\frac{\|ABx\|_{a}}{\|x\|_b}$, and we can see that:
     \[
-    \|AB\|_{a \leftarrow b} = \|A\|_{a \leftarrow c} \|B\|_{c \leftarrow b}
+    \|AB\|_{a \leftarrow b} \leq \|A\|_{a \leftarrow c} \|B\|_{c \leftarrow b}
     \]
 \end{sol}
-
+\newpage
 \begin{problem}{5}
-    WIP
+    
 \end{problem}
+\begin{sol}
+    Consider the subspace of $V_1$ and $V_2$ spanned by the basis $\{ \cos (n \pi x), \sin (\sin (n \pi x))\}$. We can $f \in \{ \cos (n \pi x), \sin (\sin (n \pi x))\}$ is a linear combination, denoted as follows:
+    \[
+    f = a_n \sin(n \pi x) b_n + \cos (n \pi x)
+    \]
+    Thus, 
+    \[
+    \frac{d}{dx} f = n \pi (a_n \cos(n \pi x)  - b_n \sin (n \pi x))
+    \]
+    Thus, we can see that:
+    \[
+    T_nf = \begin{bmatrix}
+        0 & n \pi \\
+        - n \pi 0 
+    \end{bmatrix} \begin{bmatrix}
+        a_n \sin (n \pi x) \\ b_n \cos( n \pi x)
+    \end{bmatrix} = \begin{bmatrix}
+        (a_n \cos(n \pi x) \\ - b_n \sin (n \pi x))
+    \end{bmatrix}
+    \]
+    Which implies that
+    \[
+    T_n = \begin{bmatrix}
+        0 & n \pi \\
+        - n \pi & 0 
+    \end{bmatrix}
+    \]
+    Which implies that the $T$ is:
+    \[
+    T = \begin{bmatrix}
+        T_1 & 0 & 0 & \dots \\
+        0 & T_2 & 0 & \dots \\
+        \vdots & \vdots & \ddots & \dots \\
+        0 & 0 & 0 & T_n
+    \end{bmatrix}
+    \]
+    where $T_n$ is defined as above. Note that any function in $V_1$ can be defined as follows:
+    \[
+    f = \sum_{i = 1}^{k} a_n \sin( n \pi x) + b_n \cos ( n \pi x)
+    \]
+    We now compute $\langle f , f \rangle$. 
+    \begin{align*}
+        \langle f , f \rangle &= \int_{0}^{1} \left( \sum_{i=1}^{k} a_n \sin(n \pi x) + b_n \cos (n \pi x) \right)^2\\
+    \end{align*}
+    \[
+        = \int_{0}^{1} \sum_{n, m}^k a_n a_m \sin(n \pi x) \sin(m \pi x) + b_n b_m \cos (n \pi x) \cos( m \pi x) + 2a_n b_m \sin(n \pi x) \cos(n \pi x)
+    \]
+    Note that:
+    \[
+    \int_{0}^{1} \sin(n \pi x) \sin(m \pi x) = \begin{cases}
+        0.5 & n = m \\
+        0 & n \neq m
+    \end{cases}
+    \]
+    \[
+    \int_{0}^{1} \cos(n \pi x) \cos(m \pi x) = \begin{cases}
+        0.5 & n = m \\
+        0 & n \neq m
+    \end{cases}
+    \]
+    \[
+    \int_{0}^{1} \sin(n \pi x) \cos( n \pi x) = 0, \forall n, m
+    \]
+    Thus, this implies that:
+    \[
+    \langle f , f \rangle = \frac{1}{2} \sum_{i = 1}^{k} (a_i^2 + b_i^2)
+    \]
+    By a similar logic, we can find that:
+    \[
+    \langle Tf, Tf \rangle = \frac{1}{2} \sum_{n=1}^{k} (n\pi)^2 (a_n^2 + b_n^2)
+    \]
+    Therefore, we can see that:
+    \[
+    \left( \frac{\|Tf\|}{\|f\|} \right)^2 = \frac{\sum_{n=1}^{k} (n^2 \pi^2) (a_n^2 + b_n^2)}{\sum_{n=1}^{k} (a_n^2 + b_n^2)}
+    \]
+    Note that $\sup_f \left( \frac{\|Tf \|}{\|f\|} \right) = k \pi$, where this maximum is obtained when $a_n, b_n = 0$ when $n \neq k$, and $a_k, b_k = 1$, as this is the sum of all weighted averages, and the maximum is achived when we put all the weight when $n = k$. This implies that $\|T \| = k\pi$. We first also wish to prove the existance of a $T^{-1}$. Note that the deriative is a bjiective function, which implies that $T^{-1}$ exists. In this case, we can see that $T^{-1}$ can be defined as follows:
+    \[
+    T_n^{-1} = \begin{bmatrix}
+        0 & \frac{-1}{n \pi} \\
+        \frac{1}{n \pi} & 0
+    \end{bmatrix}
+    \]
+    where:
+    \[
+    T^{-1} = \begin{bmatrix}
+        T_1^{-1} & 0 & 0 & \dots \\
+        0 & T_2^{-1} & 0 & \dots \\
+        \vdots & \vdots & \ddots & \dots \\
+        0 & 0 & 0 & T_n^{-1}
+    \end{bmatrix}
+    \]
+    Let $Tf = g$, where $g, f \in V_1$. We can see that:
+    \[
+    \sup_g \left( \frac{\|T^{-1}g\|}{\|g\|} \right)^2 = \sup \left( \frac{\|f\|}{\|Tf\|} \right)^2 = \sup_n \left( \frac{1}{(n\pi)^2} \right) = \frac{1}{\pi^2}
+    \]
+    Thus, this implies that $\|T^{-1}\| = \frac{1}{\pi}$ Thus, we see that:
+    \[
+    \max k_{rel} = \|T\| \|T^{-1}\| = k
+    \]
+    Thius, this implies that $k_{rel} = O(k)$, as the bounded function as follows:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{MOVETHISPNG.png}
+        \caption{Showing that the relative condition is $O(k)$}
+        \label{fig:enter-label}
+    \end{figure}
 
-
+\end{sol}
+\newpage
 \begin{problem}{6}
     
 \end{problem}
@@ -233,7 +341,7 @@
     \end{align*}
     We see that $\| v_2\| = \frac{7}{\sqrt{10}}$. Therefore, we can see that 
     \[
-    q_1 = \sqrt{\frac{2}{5}} (2\sin (2\pi x) + \sin(\pi x)), q_2 = \frac{7}{\sqrt{10}} \left( \sin(2 \pi x) - 2\sin(\pi x) \right)
+    q_1 = \sqrt{\frac{2}{5}} (2\sin (2\pi x) + \sin(\pi x)), q_2 = \frac{\sqrt{10}}{5} \left( \sin(2 \pi x) - 2\sin(\pi x) \right)
     \]
     Note that $r_{11} = \sqrt{\frac{5}{2}}$, $r_{12} = \frac{\langle a_2, q_1 \rangle}{\|q_1\|} = -\frac{1}{\sqrt{10}}, r_{22} = \frac{7}{\sqrt{10}} = \|v_2\|$. Thus, this implies that:
     \[
