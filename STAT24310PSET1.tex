@@ -22,6 +22,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbff{Z}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\st}{\text{s.t}}
 \newcommand{\proj}[2]{\mathrm{proj}_{{#2}}\,{#1}}
 
@@ -104,6 +105,48 @@
 \begin{problem}{3}
     WIP
 \end{problem}
+\begin{sol}
+    If $p = q$, the statement is obvious. We aim to prove that the $1$ norm is equivalent to the $p$ norm and use transitivity of norms to prove the statement. First, consider $p, q \in \R, p > q \geq 1$. We can consider the following for any $x \in \R^n$ (or $\C^n$):
+    \[
+    \|x \|_q^q = \sum_{i}^n |x_i|^q = \sum_{i =1}^{n} 1 \cdot |x_i|^q
+    \]
+    By holder's inequality, we know that:
+    \[
+    \sum_{i=1}^{n} 1 \cdot (x_i)^q \leq \left( \sum_{i = 1}^{n} 1^a \right)^\frac{1}{a} \left( \sum_{i = 1}^{n} (|x_i|^q)^b \right)^\frac{1}{b}
+    \]
+    such that $\frac{1}{a} + \frac{1}{b} = 1$. Since the choice of $a$ and $b$ are arbitary, we can let $b$ a value such that $b^{-1} = \frac{q}{p}$. From here, we can perform the following algebra to see that:
+    \[
+    a = \frac{b }{b-1} = \frac{p}{p-q}
+    \]
+    and thus:
+    \begin{align*}
+        \|x\|_q^q & \leq \left( \sum_{i = 1}^{n} 1^a \right)^\frac{1}{a} \left( \sum_{i = 1}^{n} (|x_i|^q)^b \right)^\frac{1}{b}\\
+        \|x\|_q^q &\leq \left( \sum_{i = 1}^{n} 1 \right)^\frac{p-q}{p} \left( \sum_{i = 1}^{n} |x_i|^p \right)^\frac{q}{p}\\
+        \|x\|_q^q  & \leq n^\frac{p-q}{q} \| x\|_p^q\\
+        \|x\|_q & \leq n^\frac{p-q}{pq} \|x\|_p
+    \end{align*}
+    Let $q = 1$ and $p > 1$. we know aim to bound $\|x\|_1$ from below. Let $\{e_1, e_2, \dots, e_n\}$ denote the standard basis vectors of $\R^n$. Let $x = (x_1, x_2, \dots, x_n)$. and we can see that:
+    \[
+    x = \sum_{i=1}^{n} e_i x_i
+    \]
+    Thus, we can see that:
+    \[
+    \|x\|_p = \left\| \sum_{i=1}^{n} x_i e_i \right \|_p 
+    \]
+    By the triangle inequality and the properties of the norm, we know that:
+    \[
+        \left\| \sum_{i=1}^{n} x_i e_i \right \|_p \leq \sum_{i=1}^{n} \|x_i e_i\|_p = \sum_{i=1}^{n} |x_i| \cdot \|e_i\|_p
+    \]
+    Let $M = \max_{i \in 1,2,\dots, n} \|e_i\|_p$ Thus, it follows that:
+    \[
+    \|x\|_p \leq \sum_{i=1}^{n}  |x_i| \cdot \|e_i\|_p \leq M \sum_{i=1}^{n} |x_i| = M \|x\|_1
+    \]
+    Thus, we can see that:
+    \[
+    \frac{1}{M} \|x\|_p \leq \|x\|_1 \leq n^\frac{p-1}{p} \|x\|_p
+    \]
+    Thus, we have proved that $1$ norm and the $p$ norm is equivalnet. Thus, by transitive of norms, we can see that $1$ and $q$ are equivalent, which implies that $p$ and $q$ are equivalent norms.
+\end{sol}
 
 \begin{problem}{4}
     
@@ -145,8 +188,9 @@
 \end{sol}
 
 \begin{problem}{5}
-    
+    WIP
 \end{problem}
+
 
 \begin{problem}{6}
     
