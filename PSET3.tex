@@ -1,0 +1,111 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[12pt]{article}
+ \usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\pagestyle{fancy}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+
+\newcounter{subproblem}
+% \renewcommand{\thesubproblem}{\alph{subproblem}} % letters 
+\renewcommand{\thesubproblem}{\arabic{subproblem}} % numbers
+\newenvironment{subprob}[1][]{
+  \refstepcounter{subproblem}
+  \begin{trivlist}
+  \item[\hskip \labelsep {\bfseries (\thesubproblem)}]
+}{
+  \end{trivlist}
+}
+\newenvironment{subsol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength {\marginparwidth }{2cm}
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{gray!10},
+  frame=single,
+  breaklines=true,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  numbers=left,            
+  numberstyle=\tiny\color{gray}, 
+  numbersep=10pt 
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+\lhead{Class: ECON 20210}
+\chead{Assignment: 3}
+\rhead{Anthony Yoon \\ Min Seo Kim \\ Pratuysh Sharma \\ Sam Konkel} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Copy the following block of text for each problem in the assignment.
+\setcounter{subproblem}{0}
+\begin{problem}{1}
+
+\end{problem}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    The Langrangian is as follows:
+    \[
+    L = \sum_{t = 0}^{\infty} \beta^t u(c_t) + \sum_{i=0}^{\infty} \lambda_t (w_t - c_t - w_{t+1}) 
+    \]
+    with the following FoCs
+    \begin{align*}
+        [c_t] & \quad \beta^t u(c_t) = \lambda_t\\
+        [\lambda_t] & \quad w_t = c_t + w_{t+1}\\
+        [w_{t+1}] & \quad \lambda_{t+1} = \lambda_t
+    \end{align*}
+    We can see that we can derive the Euler equation,
+    \begin{align*}
+        \beta^{t+1} u'(c_t) &= \beta^t u'(c_t)\\
+        \beta u'(c_{t+1}) &= u'(c_t)
+    \end{align*}
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    We aim to extend the findings from the Finite Horizon model to the Infinite Horizon Model. Consider the following version of the finte horizon model. 
+\end{subsol}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter anything below this line.
+\end{document}
