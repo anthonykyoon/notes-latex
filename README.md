@@ -10,7 +10,7 @@ These are my notes that I typed up from my time at the University of Chicago. Th
 
 These will have a lot of typos, so be advised. You can also see how my style of notes have evolved overtime. 
 
-Any unlabled PSET at the current moment is most likely ECON 20210 PSETs
+Any unlabled PSET at the current moment is most likely ECON 20210 PSETs. Probably will label those who are different. 
 
 My current LaTeX template is `hw_template.tex`. `latex_aux_clear.py` is a python script I use to clean all auxilary files created by LaTeX compilation.  
 
