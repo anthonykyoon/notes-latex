@@ -105,6 +105,92 @@
 \end{subprob}
 \begin{subsol}
     We aim to extend the findings from the Finite Horizon model to the Infinite Horizon Model. Consider the following version of the finte horizon model. 
+    \[
+    L = \sum_{t = 0}^{T} \left \{ \beta^T u(c_t) + \lambda_t (w_t - w_{t+1} - c_t) + \mu w_{t+1}\right\}
+    \]
+    where we impose the condition $w_{t+1} \geq 0$. We have the following FOCs:
+    \begin{align*}
+        [c_t] & \quad \beta&t u'(c_t) - \lambda_t = 0\\
+        [w_t] & \quad \lambda_t - \lambda_{t-1} = 0, \forall t \in \{0,1,2, \dots, T\}
+        [w_{T+1}] & \quad -\lambda_T + \mu = 0
+    \end{align*}
+    with the complentary slackness condition where $\mu w_{t+1} = 0$. From the FOCs, we see that 
+    \[
+    \lambda_t \lambda_{t+1} \implies \lambda w_{t+1} = 0 \implies \beta^t u'(c_t) w_{t+1} = 0 
+    \]
+    and when we extend this idea to the infinite horizon, the following holds:
+    \[
+    \lim_{t \to \infty} \beta^t u'(c_t) w_{t+1} = 0
+    \]
+    Note that this is more of an assumption that we impose in the derivation. The intuition of this is that in the long run, we consume all our resources such that we maximize our utility in the long run.  We can see this in the following manner, assume that:
+    \[
+    \lim_{n \to \infty} \beta^t u'(c_t) < 0
+    \]
+    the above does not hold from the assumptions on the utility function. 
+    \[
+        \lim_{n \to \infty} \beta^t u'(c_t) > 0
+    \]
+    this implies that more room for consumption which implies that there can be more utility be consumed. Hence, by letting the limit equal 0, we imply there are no more room for optimization for the maximization of utility. 
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    $u(c) = \ln (c)$ and thus $u'(c) = \frac{1}{c}$ Therefore, using the Euler Equation, we find that:
+    \begin{align*}
+        u'(c_t) &= \beta u'(c_{t+1})\\
+        \frac{1}{c_t} &= \frac{\beta}{c_{t+1}}\\
+        c_{t+1} &= \beta c_t
+    \end{align*}
+    Note that if the consumer wants to maximize their utility, they should aim to consume all the goods. Thus, 
+    \[
+    \sum_{t = 0}^{\infty} c_t = w_0
+    \]
+    expanding the above, we can see that: 
+    \[
+    \sum_{t = 0 }^{\infty} \beta^t c_0 = w_t \iff c_0 = (1-\beta)w_0 
+    \] 
+    this implies that 
+    \[
+    c_t = \beta^t (1-\beta)w_0
+    \]
+\end{subsol}
+\begin{problem}{2}
+    
+\end{problem}
+\begin{problem}{3}
+    
+\end{problem}
+
+\setcounter{subproblem}{0}
+\begin{problem}{4}
+    
+\end{problem}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    The transversality condition is the following:
+    \[
+    \lim_{t \to \infty} \lambda_t K_t = \lim_{t \to \infty} \beta^t u'(c_t) K_t = 0
+    \]
+    The intution is that we want to maximize all of the resources given to us, with no room left to spend or to save. 
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    At steady state, we can see that:
+    \[
+    f(k) - c -\delta k = 0 \iff c = f(k) - \delta k
+    \]
+    We what to maximize with respect to $c$, so we see that:
+    \[
+    \frac{\partial c}{\partial k} = f'(k) -\delta = 0 \implies f'(k) = 0
+    \]
+    Thus, if 
+    \[
+    \frac{\partial c}{\partial k} < 0
+    \]
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
