@@ -322,10 +322,91 @@ for \textbf{8}, we see that $k_t \to 0$ and $c_t \to \infty$ and similarly, \tex
 \begin{subsol}
     Note that:
     \[
-        k =\left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha} \quad \frac{c_{t+1}}{c_t} = \alpha k^{\alpha - 1}_{t+1} + 1 - \delta - \gamma - \rho
+        k =\left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha} \quad  c_t = k_t^\alpha - k_t(\gamma + \delta) - g_t
     \]
+    note that nothing changes when $\Delta c_t = 0$, however when $\Delta k  = 0$, we can see that $g_t$ will decrease, which implies that the $\Delta k$ curve will shift upwards as we see that $g_t$ will decrease. We also see that when we increase the producitivity, we want to shift down $c$ and $k$ at the time of the shock, as we can see that doing this will allow us to adjust to the new steady state path. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{MVTHIS1234567890.jpeg}
+        \caption{Change in Phase Diagram}
+        \label{fig:enter-label12}
+    \end{figure}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{MVTHIS312.jpeg}
+        \caption{Change in Conusmption and $k$}
+        \label{fig:enter1212-label}
+    \end{figure}
+    The intution is that when we have an massive increase in producitivity, but when we introduce this new level of productivity, to adopt this level of producitivty, there will be a drop in production. This in turn, will incentivize consumers to adjust to consumption to be lower for this new increases of producitivity, with the promise of increasing producitivity yielding higher rewards in the higher the long run. 
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    Note that:
+    \[
+        k =\left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha} \quad  c_t = k_t^\alpha - k_t(\gamma + \delta) - g_t
+    \]
+    We see that $\Delta c$ will shift to the left and the $\Delta k$ will shift downwards. 
 \end{subsol}
 
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    
+Assume
+\[
+Y_t = A_t K_t^\alpha.
+\]
+
+The Lagrangian is:
+\[
+\mathcal{L} = \sum_{t=0}^{\infty} \beta^t \ln C_t + \lambda_t \left( A_t K_t^\alpha - C_t - G_t - K_{t+1} + (1 - \delta) K_t \right).
+\]
+
+From the first-order conditions:
+
+For \( C_t \):
+\[
+\beta^t \frac{1}{C_t} - \lambda_t = 0
+\]
+
+For \( K_{t+1} \):
+\[
+\lambda_{t+1} \left( \alpha A_{t+1} K_{t+1}^{\alpha - 1} + (1 - \delta) \right) - \lambda_t = 0
+\]
+
+From the Euler equation:
+From the Euler equation:
+\[
+\beta^t \frac{1}{C_t} = \beta^{t+1} \frac{1}{C_{t+1}} \left( \alpha A_{t+1} K_{t+1}^{\alpha - 1} + (1 - \delta) \right)
+\]
+
+Rewriting:
+\[
+\frac{C_{t+1}}{C_t} = \beta \left( \alpha A_{t+1} K_{t+1}^{\alpha - 1} + (1 - \delta) \right)
+\]
+
+\textbf{Resource Constraint:}
+\[
+K_{t+1} = (1 - \delta) K_t + A_t K_t^\alpha - C_t - G_t
+\]
+
+\textbf{Notice:}
+\[
+\frac{C_{t+1}}{C_t} = \beta \left( \alpha A_{t+1} K_{t+1}^{\alpha - 1} + (1 - \delta) \right)
+\]
+
+If \( \Delta C_t = 0 \), then:
+\[
+\frac{1}{\beta} = \alpha A_{t+1} K_{t+1}^{\alpha - 1} + (1 - \delta)
+\]
+
+But since \( A_{t+1} \) is evolving, this doesn't make sense in a steady state.
+\end{subsol}
+
+\newpage
 \setcounter{subproblem}{0}
 \begin{problem}{3}
 
