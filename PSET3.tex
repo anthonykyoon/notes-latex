@@ -5,6 +5,7 @@
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
 \usepackage{float}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{pdfpages}
 
 \pagestyle{fancy}
 \setlength{\headheight}{65pt}
@@ -347,7 +348,13 @@ for \textbf{8}, we see that $k_t \to 0$ and $c_t \to \infty$ and similarly, \tex
     \[
         k =\left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha} \quad  c_t = k_t^\alpha - k_t(\gamma + \delta) - g_t
     \]
-    We see that $\Delta c$ will shift to the left and the $\Delta k$ will shift downwards. \todo{Have to todo}
+    We see that $\Delta c$ will shift to the left and the $\Delta k$ will shift downwards. Now we have two cases: 
+    \includepdf[pages=1]{ps3 graphs.pdf}
+    \includepdf[pages=2]{ps3 graphs.pdf}
+    There are two cases: saddle path above previous steady state and saddle path below previous steady state. In each case, consumption adjusted for technology will either spike up or jump down abruptly to reposition the economy back on the saddle path to reach the new steady state. 
+
+
+    Intuition: Think of the rate of technological advancement in processor chips. Technology started advancing rapidly within the 21st century and we are using more and more chips every year - but adjusted to the rate of technoligial progress, our consumption of chips has reduced. Think: given how good a chip was in 1950s, how much money did we spend on it v/s now, given how good a chip is, how much money are we spending on it. This is why consumption and capital overall have gone up significantly, but adjusted for research, we're investing and consuming less than we had to 75 years ago.
 \end{subsol}
 
 \begin{subprob}
