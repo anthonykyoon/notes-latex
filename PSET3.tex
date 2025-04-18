@@ -241,11 +241,54 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.75\linewidth]{IMG_8EF9F0F00E27-1.jpeg}
-        \caption{Graph for Question 5}
+        \caption{Graph for Question 2.5}
         \label{Question 2.5}
     \end{figure}
 \end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    If $\delta k = 0$, we find that:
+    \begin{align*}
+        k^\alpha - k(\gamma + \delta) &= c_t + g_t\\
+        k^\alpha - k(\gamma + \delta) - g &= c_t\\
+        \frac{\partial c_t}{\partial k} &= \alpha k^{\alpha - 1} - (\gamma + \delta)\\
+        \frac{\partial^2 c_t}{\partial k^2} &= \alpha (\alpha -1 )k^{\alpha - 2} < 0
+    \end{align*}  
+    Since $\frac{\partial^2 c_t}{\partial k^2}$, the shape is indeed hump shaped, and has a peak. which can be derived as follows:
+    \begin{align*}
+        0 &= \alpha k^{\alpha -1} - (\gamma + \delta)\\
+        \gamma + \delta &= \alpha k^{\alpha - 1}\\
+        \frac{\gamma + \delta}{\alpha} &= k^{\alpha - 1}\\
+        k &= \left( \frac{\alpha}{\gamma + \delta} \right)^\frac{1}{1-\alpha}
+    \end{align*}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{IMG_77F6F09843C1-1.jpeg}
+        \caption{Question for Question 2.6}
+        \label{Question 2.6}
+    \end{figure}
+\end{subsol}
 
+\begin{subprob}
+    
+\end{subprob}
+
+\begin{subsol}
+    Note that:
+    \[
+    k_{ss} = \left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha} < \left( \frac{\alpha}{\gamma + \delta} \right)^\frac{1}{1-\alpha} = k_g
+    \]
+    which immplies that the steady state is indeed to the left. Intuively, this makes sense, as we have to factor in the discount rate of future consumption, $\rho$. The left hand of the inequality has a $\rho$ in it, indicating that we tend to consume more in the present because we discount consumption in future periods. The above is held with strict equality if $\rho = 0$, or where future and present consumption are the same to both individuals. 
+\end{subsol}
+\begin{subprob}
+    Recall this equation, we can see that:
+    \[
+        \frac{c_{t+1}}{c_t} = \alpha k^{\alpha - 1}_{t+1} + 1 - \delta - \gamma - \rho
+    \]
+    This implies that if $k$ decreases, than $c$ must increases, hence promoting the north west direction. This cannot happen in equilbrium as $k_t \to 0$ and consumption $c_t \to \infty$, as noted from above, which violates the resource constraints. 
+\end{subprob}
 
 \begin{problem}{3}
     
