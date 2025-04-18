@@ -328,7 +328,7 @@ for \textbf{8}, we see that $k_t \to 0$ and $c_t \to \infty$ and similarly, \tex
 
 \setcounter{subproblem}{0}
 \begin{problem}{3}
-    
+
 \end{problem}
 
 \newpage
@@ -394,6 +394,32 @@ for \textbf{8}, we see that $k_t \to 0$ and $c_t \to \infty$ and similarly, \tex
     \[
     \lim_{t \to \infty} u'(c_0) \Pi_{s=1}^t (1+f'(k_s) - \delta)^{-1} k_{t+1} = 0
     \]
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    Note from above, that following the given assumptions:
+    \begin{align*}
+        f'(k_{t+1}) &< \delta \\
+        f'(k_{t+1}) - \delta + 1 &< 1\\
+        \frac{1}{f'(k_{t+1}) - \delta + 1 } &> 1
+    \end{align*}
+    However, from the $[k_t]$ condition in \textbf{3}, we know that this implies:
+    \[
+    \lambda_t < \lambda_{t+1}
+    \]
+    This imlpies that with the growth of capital that $\lim_{t \to \infty} \lambda_t K_t \neq 0$
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    As $\lim_{t\to\infty} = k_{ss}$ along the steady state path, and since $k_ss < k_g$, we know that by invoking a similar logic to \textbf{2} that:
+    \[
+    \lim_{k \to k_ss} f'(k) > \delta \iff \frac{1}{1 + f'(k_t) -\delta} < 1
+    \]
+    since in $ \beta^t u'(c_t) \Pi_{s=1}^t (f'(k_s) + 1 - \delta)$, everything is a constant but $\frac{1}{1 + f'(k_t) -\delta}$, which decreases, it implies that the TVC is sastified. 
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
