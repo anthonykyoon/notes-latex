@@ -378,7 +378,6 @@ For \( K_{t+1} \):
 \]
 
 From the Euler equation:
-From the Euler equation:
 \[
 \beta^t \frac{1}{C_t} = \beta^{t+1} \frac{1}{C_{t+1}} \left( \alpha A_{t+1} K_{t+1}^{\alpha - 1} + (1 - \delta) \right)
 \]
@@ -411,6 +410,50 @@ But since \( A_{t+1} \) is evolving, this doesn't make sense in a steady state.
 \begin{problem}{3}
 
 \end{problem}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    We begin with the following Langrangian.
+    \[
+    L = \sum_{t = 0}^{\infty} \beta^t \ln(c_t) + \lambda_t (K_t^\alpha - C_t - K_{t+1} + (1-\delta) K_t - G_t)
+    \]
+    We get the following FOCs:
+    \begin{align*}
+        [c_t] & \quad \frac{\beta^t}{C_t} = \lambda_t\\
+        [K_{t+1}] & \quad -\lambda_t + \lambda_{t+1}(\alpha K^{\alpha - 1}_{t+1} + 1 - \delta) = 0
+    \end{align*}
+    This implies that:
+    \[
+    \frac{\beta^t}{C_t} = \lambda_{t+1} (\alpha k^{\alpha - 1}_{t+1} + 1 - \delta) \iff \frac{C_{t+1}}{C_t} = \beta (\alpha k^{\alpha -1}_{t+1} + 1 -\delta)
+    \]
+    Using this above condition, if $\Delta C_t = 0 $, this means that:
+    \[
+    k = \left( \frac{\alpha}{\beta^{-1} -1 + \delta} \right)^\frac{\alpha}{1-\alpha}
+    \]
+    Using the resource constraint we can derive that if $\Delta K_t = 0$:
+    \[
+    C = K^\alpha - \delta K - G
+    \]
+    Thus, if there is an increase in $G$, we must shift downwards the $\Delta K_t$ curve, hence yielding the following graph. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{IMG_B5EF755193C9-1.jpeg}
+        \caption{Graph for Question 3.1}
+        \label{fig:enter12-label12s}
+    \end{figure}
+\end{subsol}
+\begin{subprob}
+\end{subprob}
+\begin{subsol}
+    We can note that consumption does indeed jump right away so that the individual can reach the steady state path, as the change in $G$ is sudden and thus, the change in consumption must change immediately. We can see this at $t = 0$, the consumption will drop to $A$ and then go to $B$ then to $C$ to encourage the economy to be on the steady state path. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{IMG_23B3A3A11651-1.jpeg}
+        \caption{caption}
+        \label{fig:enter-1342label}
+    \end{figure}
+\end{subsol}
+
 
 \newpage
 \setcounter{subproblem}{0}
