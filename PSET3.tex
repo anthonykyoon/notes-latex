@@ -110,8 +110,8 @@
     \]
     where we impose the condition $w_{t+1} \geq 0$. We have the following FOCs:
     \begin{align*}
-        [c_t] & \quad \beta&t u'(c_t) - \lambda_t = 0\\
-        [w_t] & \quad \lambda_t - \lambda_{t-1} = 0, \forall t \in \{0,1,2, \dots, T\}
+        [c_t] & \quad \beta t u'(c_t) - \lambda_t = 0\\
+        [w_t] & \quad \lambda_t - \lambda_{t-1} = 0, \forall t \in \{0,1,2, \dots, T\}\\
         [w_{T+1}] & \quad -\lambda_T + \mu = 0
     \end{align*}
     with the complentary slackness condition where $\mu w_{t+1} = 0$. From the FOCs, we see that 
@@ -161,6 +161,7 @@
     
 \end{problem}
 
+\newpage
 \setcounter{subproblem}{0}
 \begin{problem}{4}
     
@@ -185,13 +186,44 @@
     \]
     We what to maximize with respect to $c$, so we see that:
     \[
-    \frac{\partial c}{\partial k} = f'(k) -\delta = 0 \implies f'(k) = 0
+    \frac{\partial c}{\partial k} = f'(k) -\delta = 0 \implies f'(k) = \delta
     \]
-    Thus, if 
+    Thus, we see that:
     \[
-    \frac{\partial c}{\partial k} < 0
+    \delta = f'(k_{gr}) > f'(k)
     \]
+\end{subsol}
+\begin{subprob}
     
+\end{subprob}
+\begin{subsol}
+    Consider the Household's maximization problem. We see that:
+    \begin{align*}
+        L = \max_{c_t, k_t}  \sum_{t = 0}^{\infty} u(c_t) + \lambda_t (k_{t+1} - f(k_t) -c_t + (1 - \delta)k_t) 
+    \end{align*}
+    with the following FoCs:
+    \begin{align*}
+        [c_t] & \quad \lambda_t = \beta^t u'(c_t)\\
+        [k_t] & \quad \lambda_{t-1} = \lambda_t(f'(k_t) + 1 - \delta)
+    \end{align*}
+    From here, we can combine the above expressions to derive the Euler Equation, 
+    \[
+    u'(c_t) = \beta u'(c_{t+1})(f'(k_{t+1}) + 1 - \delta)
+    \]
+    Note the following:
+    \begin{align*}
+        u'(c_0) &= \beta u'(c_1)(f'(k_1) + 1 -\delta)\\
+        &= \beta(\beta u'(c_2)(f'(k_2) + 1 - \delta))(f'(k_{1} + 1 - \delta))\\
+        &\implies \beta^t u'(c_t) \Pi_{s=1}^t (f'(k_s) + 1 - \delta)
+    \end{align*}
+    Thus, we can see that 
+    \[
+    \beta^t u'(c_t) = u'(c_0) \Pi_{s=1}^t (f'(k_s) + 1 -\delta)^{-1}
+    \]
+    Therefore, 
+    \[
+    \lim_{t \to \infty} u'(c_0) \Pi_{s=1}^t (1+f'(k_s) - \delta)^{-1} k_{t+1} = 0
+    \]
 \end{subsol}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
