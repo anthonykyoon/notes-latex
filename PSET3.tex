@@ -154,9 +154,99 @@
     c_t = \beta^t (1-\beta)w_0
     \]
 \end{subsol}
+\newpage
+\setcounter{subproblem}{0}
 \begin{problem}{2}
     
 \end{problem}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    Since $K_{t+1} - (1-\delta)K_t = I_t$, we find that:
+    \begin{align*}
+        \max & \quad \sum_{t = 0 }^{\infty} \beta^t \ln(c_t)\\
+        \st & \quad C_t + K_{t+1} - (1-\delta)K_t + G_t = A_{t}^{1-\alpha}K_t^\alpha
+    \end{align*}
+    with the following Langrangian:
+    \[
+    L = \sum_{t=0}^{\infty} \beta^t \ln(c_t) + \sum_{t = 0}^{\infty} \lambda_t (A_t^{1-\alpha}K_t^{\alpha} - C_t - K_{t+1} + (1-\delta)K_t - G_t)
+    \]
+    Thus, we derive the following FOCs:
+    \begin{align*}
+        [C_t] & \quad \frac{\beta^t}{C_t} = \lambda_t\\
+        [K_{t+1}] &  \quad  \lambda_{t+1} ((1-\delta) + \alpha A^{1-\alpha}_{t+1} K_{t+1}^{\alpha -1}) = \lambda_t
+    \end{align*}
+\end{subsol}
+
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    Note using the $[C_t]$ and the $[K_{t+1}]$ conditions, we can derive the following:
+    \[
+    \frac{1}{C_t} = \frac{\beta}{C_{t+1}} (\alpha A^{1-\alpha}_{t+1}K_{t+1}^{\alpha - 1} + 1 - \delta)
+    \]
+    Intuively, we can see that at optimum, consuming today must have have the same marginal benefit as consuming in the next time period, assuming we adjust for all discount factors and such. 
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    Define $k_t = \frac{K_t}{A_t}$, $c_t = \frac{C_t}{A_t}$, $y_t = \frac{Y_t}{A_t}$, $g_t = \frac{G_t}{A_t}$. Using the budget constraint, we can see:
+    \begin{align*}
+        A_t \left( \frac{K_t^\alpha}{A_t^\alpha} \right) &= C_t + K_{t+1} - K_t (1-\delta) + G_t\\
+        k_t^\alpha &= c_t + K_{t+1} A_t^{-1} - k_t(1-\delta) + g_t\\
+        k_t^\alpha &= c_t + \frac{K_{t+1} A_{t+1}}{A_{t+1}A_t} - k_t (1-\delta) + g_t\\
+        k_t^\alpha &= c_t + k_{t+1} (1+\gamma) - k_t(1-\delta) + g_t\\
+        k_t^\alpha &= c_t + k_{t+1}(\gamma + \delta) + g_t
+    \end{align*}
+    Using the Euler's equation, we find that 
+    \begin{align*}
+        \frac{1}{C_t} &= \frac{\beta}{C_{t+1}} (\alpha A^{1-\alpha}_{t+1}K_{t+1}^{\alpha - 1} + 1 - \delta)\\
+        C_{t+1} &= C_t (\beta) (\alpha A_{t+1}^{1-\alpha} K_{t+1}^{\alpha - 1} + 1- \delta) 
+    \end{align*}
+    Since $k_t A_t = K_t$ and $c_t A_t = C_t$, we see that:
+    \begin{align*}
+        A_{t+1} C_{t+1} &= A_t c_t \beta (\alpha A_{t+1}^{1-\alpha} K_{t+1}^{\alpha - 1} + 1- \delta) \\
+        c_{t+1} (1+\gamma) &= \beta c_t (\alpha A_{t+1}^{1-\alpha} K_{t+1}^{\alpha - 1} + 1- \delta) \\
+        \frac{c_{t+1}}{c_t} &= \frac{(\alpha A_{t+1}^{1-\alpha} K_{t+1}^{\alpha - 1} + 1- \delta)}{(1+p)(1+\gamma)}
+    \end{align*}
+    Thus, we can see that if we let the approximation hold, we get the following;
+    \[
+    \frac{c_{t+1}}{c_t} = \alpha k^{\alpha - 1}_{t+1} + 1 - \delta - \gamma - p
+    \]
+\end{subsol}
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    We can define the balanced steady state as the following, we want consumption and $k$ to stop growing, which implies that $\frac{c_{t+1}}{c_t} = 1$. Therefore, we can solve for the following:
+    \begin{align*}
+        1 &= \alpha k^{\alpha -1} + 1 - \delta - \gamma - \rho\\
+        \gamma + \delta + \rho &= \alpha k^{\alpha -1} \\
+        k &=\left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha}
+    \end{align*}
+    and thus using the fact that $k_t^\alpha = c_t + k_{t+1}(\gamma + \delta) + g_t$, we find that
+    \[
+    c = \left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{\alpha}{1-\alpha} - \left( \frac{\alpha}{1\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha}(\gamma + \delta) - g
+    \]
+\end{subsol}
+
+\begin{subprob}
+    
+\end{subprob}
+\begin{subsol}
+    We see that in steady state, or when $\delta c_t = 0$, we find that $k =\left( \frac{\alpha}{\gamma + \delta + \rho} \right)^\frac{1}{1-\alpha}$, which implies that we can draw the following graph. 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\linewidth]{IMG_8EF9F0F00E27-1.jpeg}
+        \caption{Graph for Question 5}
+        \label{Question 2.5}
+    \end{figure}
+\end{subsol}
+
+
 \begin{problem}{3}
     
 \end{problem}
