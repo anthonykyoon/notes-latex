@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
+\documentclass[12pt]{article}
+ \usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, color, comment, graphicx, environ}
+\usepackage{float}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\setlength{\headheight}{65pt}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{sol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
+\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
+
+\newcounter{subproblem}
+% \renewcommand{\thesubproblem}{\alph{subproblem}} % letters 
+\renewcommand{\thesubproblem}{\arabic{subproblem}} % numbers
+\newenvironment{subprob}[1][]{
+  \refstepcounter{subproblem}
+  \begin{trivlist}
+  \item[\hskip \labelsep {\bfseries (\thesubproblem)}]
+}{
+  \end{trivlist}
+}
+\newenvironment{subsol}
+    {\emph{Solution:}
+    }
+    {
+    \qed
+    }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength {\marginparwidth }{2cm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{gray!10},
+  frame=single,
+  breaklines=true,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  showstringspaces=false,
+  numbers=left,            
+  numberstyle=\tiny\color{gray}, 
+  numbersep=10pt 
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Fill in the appropriate information below
+% \lhead{Class: STAt 24310}
+% \chead{Notes}
+% \rhead{Anthony Yoon} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+\title{STAT 24310 Notes}
+\author{Anthony Yoon}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter this block.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+\tableofcontents
+\begin{abstract}
+    Notes from STAT24310. Taught by Professor Yuehaw Khoo. I try to include most things in here, including some related proofs and ideas. I'm also presuming some basic linear algebra knowledge. 
+\end{abstract}
+\newpage
+\section{Lecture 1: Complexity/Accuracy/Stability/Condition Number}
+This class is heavily based on \href{https://www.stat.uchicago.edu/~lekheng/courses/309/books/Trefethen-Bau.pdf}{Trefethen and Bau's Textbook}. Take a look at it if you have the time. \\
+When we run an algorithm, we often are interested in how long it takes to run the algorithm. For example, if we have a matrix $A \in \R^{n \times n}$ an $x, b \in \R^n$, and we are interested in solving 
+\[
+Ax = b
+\]
+and $n$ is very large, say $ n = 100,000$, a concern is that the algorithm takes forever to run. In this case, we may be worried about the worst case time complexity, denoted as \emph{big O notation}. In this case, solving $x = A^{-1} b$ is $\mathcal{O}(n^3)$. But what is this notation: 
+
+\begin{definition}
+  If there exists a $C \in \R$ such that for $f g$, where $g \geq 0$, where for all sufficiently $t$ large enough, such that $|f(t)| \leq C \cdot g(t)$, then $f(t) \mathcal{O}(g(t))$ 
+\end{definition}
+or equivantly:
+\begin{definition}
+  If there exists a constant \( C \in \mathbb{R} \) and a real number \( t_0 \) such that for all \( t \geq t_0 \), \( |f(t)| \leq C \cdot g(t) \), where \( g(t) \geq 0 \), then we write \( f(t) = \mathcal{O}(g(t)) \) as \( t \to \infty \).
+\end{definition}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Do not alter anything below this line.
+\end{document}
