@@ -19,6 +19,7 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -137,6 +138,45 @@ Also a refresher on what the Taylor's Theorem in 1D is.
   L = \sup_{\xi \in [x,a]} \left| \frac{\partial^{k+1} f(x)}{\partial x^k} \right|
   \]
 \end{definition}
-note that if $|x-a|$ is sufficiently small, we can discard the remainder the term (the one with the $L$ in it). Note that also that if the $(k+1)$ derivative is bounded, then we can approximate $f$ with the kth order polynomial. We can also consider the case of the special case of the third order 
+note that if $|x-a|$ is sufficiently small, we can discard the remainder the term (the one with the $L$ in it). Note that also that if the $(k+1)$ derivative is bounded, then we can approximate $f$ with the kth order polynomial. We can also consider the case of the special case of the third order taylor polynomial expansion. 
+\begin{definition}
+  For $f: \R^n \to \R$, and $f$ has a bounded 3rd deriative, the expansion is as follows
+  \[
+  f(x) = f(a) + \frac{\partial f(a)}{\partial x} (x-a) + \frac{1}{2}(x-a^T) H(a)(x-a) + \mathcal{O}(\|x-a\|^3)
+  \]
+  where we define
+  \[
+  H(a)_{ij} = \frac{\partial f(a)}{\partial x_i \partial x_j}
+  \]
+  where $H(a)$ is $n \times n$
+\end{definition}
+To illustrate the nature of the Hessian Matrix, we can visualize $f$ locally to see that we can use a contour map. The Hessian usually shows the directions of the biggest changes in direction, given by the Eigenvalues. \todo{Need to fix}
+
+
+However, we can see that if our function is convex and smooth, then \emph{optimality is guarantted based on the local deriative}. We can see this in the following proof:
+\begin{proof}
+  if $f$ is convex and differentiable, we can see that if we let $a,b$ be in the domain of $f$. we can see that we are left with the following inequality. 
+  \[
+  f(b) \geq f(a) + \frac{\partial f(a)}{\partial x}(b-a)
+  \]
+  by the definition of convexity. If we choose $a$ such that $f'(a) = 0$, we see that we have guarnteed an optimal solution. 
+\end{proof}
+However, we can see that if we are working with a strongly convex differentiable solution, we can use the same assumptions as above to see in the following proof. 
+\begin{proof}
+  We are given that $f$ is strongly convex and differentiable. Thus, we can see that for the following taylor expansions 
+  \[
+  f(b) \geq f(a) + \frac{\partial f(a)}{\partial x}(b-a) + \frac{a}{2} \|b - a\|_2^2
+  \]
+  We see that we can choose a point such that $\frac{\partial f(a)}{\partial x} = 0$, which implies that 
+  \begin{align*}
+    f(b) &\geq f(a) + \frac{a}{2} \|b - a\|^2\\
+    \implies  & f(b)  > f(a), \forall b, b \neq a
+  \end{align*}
+  Since we know that the function is strongly convex and thus, we know that for any point $b$ and $a$. the last inequality holds, we can see that we have indeed foound the unique optimizer.
+\end{proof}
+\begin{remark}
+  Strongly convex implies strictly convex, but not the other way around. 
+\end{remark}
+\subsection{Applications of convexity}
 
 \end{document}
