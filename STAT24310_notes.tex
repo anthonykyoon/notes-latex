@@ -121,6 +121,22 @@ A natural expansion of this is when $f$ is convex, then $f \left( \sum_{i = 1}^{
 \begin{definition}
   Locally Convex: $f: \Omega \to \R$, where $f$ is convex over some $S \subseteq \Omega$
 \end{definition}
-
+\subsection{Taylor's Theorem}
+We begin with an introduction of smoothness.
+\begin{definition}
+  A function is said to be $C^n$ if it is contionus and differentiable $n$ number of times. 
+\end{definition}
+Also a refresher on what the Taylor's Theorem in 1D is. 
+\begin{definition}
+  if $f: \R \to \R$ is $(k+1)$ times differentiable at $x = a$, then 
+  \[
+  f(x) = f(a) + \frac{\partial f(a)}{\partial x}(x-a) + \dots + \frac{1}{k!} \frac{\partial^k f(x)}{\partial x^k}(x-a)^k + \frac{L}{(k+1)!}(x-a)^{k+1}
+  \]
+  where 
+  \[
+  L = \sup_{\xi \in [x,a]} \left| \frac{\partial^{k+1} f(x)}{\partial x^k} \right|
+  \]
+\end{definition}
+note that if $|x-a|$ is sufficiently small, we can discard the remainder the term (the one with the $L$ in it). Note that also that if the $(k+1)$ derivative is bounded, then we can approximate $f$ with the kth order polynomial. 
 
 \end{document}
