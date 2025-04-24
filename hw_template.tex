@@ -5,7 +5,9 @@
 \usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, fancyhdr, color, comment, graphicx, environ}
 \usepackage{float}
 \usepackage[colorinlistoftodos]{todonotes}
-
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
 \pagestyle{fancy}
 \setlength{\headheight}{65pt}
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
@@ -60,7 +62,7 @@
 %Fill in the appropriate information below
 \lhead{Class:}
 \chead{Assignment: XYZ}
-\rhead{Anthony Yoon} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
+\rhead{Name?} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 
 
@@ -116,6 +118,28 @@ Write your solution here.
       disp('Hello from MATLAB!');
   end
   \end{lstlisting}
+%Example pseudocode algorithm block
+
+\begin{algorithm}[H]
+\caption{An algorithm with caption}\label{alg:cap}
+\begin{algorithmic}
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Do not alter anything below this line.
 \end{document}
