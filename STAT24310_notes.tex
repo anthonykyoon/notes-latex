@@ -1,63 +1,24 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Do not alter this block of commands.  If you're proficient at LaTeX, you may include additional packages, create macros, etc. immediately below this block of commands, but make sure to NOT alter the header, margin, and comment settings here. 
-\documentclass[12pt]{article}
- \usepackage[margin=1in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb,amsfonts, enumitem, color, comment, graphicx, environ}
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref} 
+\usepackage{amsmath}
+\usepackage{ gensymb }
+\usepackage{ amssymb }
+% \usepackage{parskip}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{tikz}
 \usepackage{float}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{amsmath}
-\usepackage{hyperref}
-\setlength{\headheight}{65pt}
-\newenvironment{problem}[2][Problem]{\begin{trivlist}
-\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
-\newenvironment{sol}
-    {\emph{Solution:}
-    }
-    {
-    \qed
-    }
-\specialcomment{com}{ \color{blue} \textbf{Comment:} }{\color{black}} %for instructor comments while grading
-\NewEnviron{probscore}{\marginpar{ \color{blue} \tiny Problem Score: \BODY \color{black} }}
 
-\newcounter{subproblem}
-% \renewcommand{\thesubproblem}{\alph{subproblem}} % letters 
-\renewcommand{\thesubproblem}{\arabic{subproblem}} % numbers
-\newenvironment{subprob}[1][]{
-  \refstepcounter{subproblem}
-  \begin{trivlist}
-  \item[\hskip \labelsep {\bfseries (\thesubproblem)}]
-}{
-  \end{trivlist}
-}
-\newenvironment{subsol}
-    {\emph{Solution:}
-    }
-    {
-    \qed
-    }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setlength {\marginparwidth }{2cm}
+\setlength{\parindent}{0pt}
+
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
-
-
-\usepackage{listings}
-\usepackage{xcolor}
-\lstset{
-  basicstyle=\ttfamily\small,
-  backgroundcolor=\color{gray!10},
-  frame=single,
-  breaklines=true,
-  keywordstyle=\color{blue},
-  commentstyle=\color{gray},
-  stringstyle=\color{red},
-  showstringspaces=false,
-  numbers=left,            
-  numberstyle=\tiny\color{gray}, 
-  numbersep=10pt 
-}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
@@ -65,23 +26,13 @@
 \newcommand{\Z}{\mathbff{Z}}
 \newcommand{\st}{\text{s.t}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Fill in the appropriate information below
-% \lhead{Class: STAt 24310}
-% \chead{Notes}
-% \rhead{Anthony Yoon} %replace XYZ with the homework course number, semester (e.g. ``Spring 2019"), and assignment number.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
 \title{STAT 24310 Notes}
 \author{Anthony Yoon}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Do not alter this block.
 \begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \maketitle
 \tableofcontents
 \begin{abstract}
-    Notes from STAT24310. Taught by Professor Yuehaw Khoo. I try to include most things in here, including some related proofs and ideas. I'm also presuming some basic linear algebra knowledge. 
+  Notes for STAT24310 taught by Professor Yuehaw Khoo. Prior Linear Algebra knowledge will be assumed. 
 \end{abstract}
 \newpage
 \section{Lecture 1: Complexity/Accuracy/Stability/Condition Number}
@@ -90,8 +41,7 @@ When we run an algorithm, we often are interested in how long it takes to run th
 \[
 Ax = b
 \]
-and $n$ is very large, say $ n = 100,000$, a concern is that the algorithm takes forever to run. In this case, we may be worried about the worst case time complexity, denoted as \emph{big O notation}. In this case, solving $x = A^{-1} b$ is $\mathcal{O}(n^3)$. But what is this notation: 
-
+and $n$ is very large, say $ n = 100,000$, a concern is that the algorithm takes forever to run. In this case, we may be worried about the worst case time complexity, denoted as \emph{big O notation}. In this case, solving $x = A^{-1} b$ is $\mathcal{O}(n^3)$. But what is this notation? 
 \begin{definition}
   If there exists a $C \in \R$ such that for $f g$, where $g \geq 0$, where for all sufficiently $t$ large enough, such that $|f(t)| \leq C \cdot g(t)$, then $f(t) \mathcal{O}(g(t))$ 
 \end{definition}
@@ -99,9 +49,78 @@ or equivantly:
 \begin{definition}
   If there exists a constant \( C \in \mathbb{R} \) and a real number \( t_0 \) such that for all \( t \geq t_0 \), \( |f(t)| \leq C \cdot g(t) \), where \( g(t) \geq 0 \), then we write \( f(t) = \mathcal{O}(g(t)) \) as \( t \to \infty \).
 \end{definition}
+Both are equivalent. 
+\section{Lecture 9: Introduction to Optimization}
+Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
+\[
+x^* = \arg \min_{x \in \Omega} f(x)
+\]
+where we say that $\Omega$ is the objective domain. The intuition is that we want to find the input that would minimize the value of the function. 
+\subsection{Examples}
+Consider the nonlinear inverse problem used within physics. \todo{Explain this better}
+\subsection{Classes of Optimization Problems}
+Given a domain $\Omega$ that we want to optimize over, we have the following scenarios:
+\begin{itemize}
+  \item a set of discrete points, which is discrete optimization
+  \item $\Omega \subseteq \R^n, \subseteq \R^n$, a constrained optimization problem. An example of this would be induced norms. 
+  \item $\Omega = \R^n$, a unconstrained optimization problem. An example of this would be the Least Squares Regression Problem. 
+\end{itemize}
+We can often times utilize properties of the function, which is where we can introduce the idea of convexity. 
+\begin{definition}
+  $f$ is convex over $S$ if for any $x_1, x_2 \in S$ and $t \in [0,1]$, $f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2)$
+\end{definition}
+This concept can be illustrated in the following diagram:
+\begin{center}
+  \begin{tikzpicture}[scale=2]
+    % Axes
+    \draw[->] (-0.2,0) -- (2.4,0) node[right] {$s$};
+    \draw[->] (0,-0.2) -- (0,2.2) node[above] {$f(x)$};
+  
+    % Points on the x-axis
+    \coordinate (X1) at (0.5,0);
+    \coordinate (X2) at (2,0);
+    \fill (X1) circle (1pt) node[below] {$x_1$};
+    \fill (X2) circle (1pt) node[below] {$x_2$};
+  
+    % Function curve (convex parabola)
+    \draw[domain=0.5:2,smooth,variable=\x,thick] plot ({\x},{0.8*(\x - 0.5)*(\x - 2) + 1.4});
+  
+    % Points on the function
+    \coordinate (FX1) at (0.5,1.4);
+    \coordinate (FX2) at (2,1.4);
+    \fill (FX1) circle (1pt) node[left] {$f(x_1)$};
+    \fill (FX2) circle (1pt) node[right] {$f(x_2)$};
+  
+    % RHS (linear interpolation)
+    \draw[dashed] (FX1) -- (FX2);
+  
+    % Point on RHS (midpoint of the segment)
+    \coordinate (RHS) at (1.25,1.4);
+    \fill (RHS) circle (1pt);
+    \node[above right] at (RHS) {RHS};
+  
+    % LHS point (on the function)
+    \coordinate (LHS) at (1.25,1.05);
+    \fill (LHS) circle (1pt);
+    \node[below] at (LHS) {LHS};
+  
+    % Dashed lines from x1 and x2 to function
+    \draw[dotted] (X1) -- (FX1);
+    \draw[dotted] (X2) -- (FX2);
+  
+    % Inequality annotation
+    \node at (2.5,1.05) {LHS $\leq$ RHS};
+  
+  \end{tikzpicture}
+\end{center}
+We can then expand the definition of convexity as follows:
+\begin{definition}
+    $f$ is strongly convex over $S$ if for any $x_1, x_2 \in S$ and $t \in [0,1]$, $f(tx_1 + (1-t)x_2) < tf(x_1) + (1-t)f(x_2)$
+\end{definition}
+A natural expansion of this is when $f$ is convex, then $f \left( \sum_{i = 1}^{n} t_i x_i \right) \leq \sum_{i = 1}^{n} t_i f(x_i)$ where $\sum_{i = 1}^{n} t_i = 1$ such that $t_i \geq 0$. We can also consider the following definition of convexity:
+\begin{definition}
+  Locally Convex: $f: \Omega \to \R$, where $f$ is convex over some $S \subseteq \Omega$
+\end{definition}
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Do not alter anything below this line.
 \end{document}
