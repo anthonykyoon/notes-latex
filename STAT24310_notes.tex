@@ -36,7 +36,7 @@
   Notes for STAT24310 taught by Professor Yuehaw Khoo. Prior Linear Algebra knowledge will be assumed. 
 \end{abstract}
 \newpage
-\section{Lecture 1: Complexity/Accuracy/Stability/Condition Number}
+\section{Lecture 1: Introduction}
 This class is heavily based on \href{https://www.stat.uchicago.edu/~lekheng/courses/309/books/Trefethen-Bau.pdf}{Trefethen and Bau's Textbook}. Take a look at it if you have the time. \\
 When we run an algorithm, we often are interested in how long it takes to run the algorithm. For example, if we have a matrix $A \in \R^{n \times n}$ an $x, b \in \R^n$, and we are interested in solving 
 \[
@@ -178,5 +178,15 @@ However, we can see that if we are working with a strongly convex differentiable
   Strongly convex implies strictly convex, but not the other way around. 
 \end{remark}
 \subsection{Applications of convexity}
+Consider the following:
+\[
+f(x) = \frac{1}{2} ax^2 - bx, a > 0
+\]
+and consider the following:
+\begin{align*}
+  f(x) &= \frac{1}{2}ax^2 - bx\\
+  f(y) - f(x) &= \frac{1}{2}a(y^2 - x^2) - b(y-x)
+\end{align*}
+
 
 \end{document}
