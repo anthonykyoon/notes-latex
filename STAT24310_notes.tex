@@ -14,6 +14,10 @@
 \usepackage{tikz}
 \usepackage{float}
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{algorithm}
+\usepackage{tikz}
+\usetikzlibrary{matrix, decorations.pathreplacing}
+\usepackage{algpseudocode}
 
 \setlength{\parindent}{0pt}
 
@@ -387,7 +391,110 @@ now we can proceed to the properties of the Unitary matrix. First, we can introd
 \begin{definition}
  A matrix that is orthonormal and square is unitary. 
 \end{definition}
-We can see the following properties of orthonormal and orthogonal matrices 
+We can see the following properties of orthonormal and orthogonal matrices, where $Q^* Q = I_n$, $K(Q) = 1$ and $\|Qx\|_2 = \|x\|_2$
+\subsection{Basis interpretation of Q being orthogonal}
+Let $x = Qz$, where $z \in \C^n$. We assume that $Q$ is an unitary matrix and $x \in Range(Q)$. Thus, we see that by the definition of matrix vector multiplication, we see that:
+\[
+x = \sum_{i = 1}^{n} z_i Q_i
+\]
+However, note that:
+\[
+\langle Q_i, x \rangle = \langle Q_i , \sum_{i = 1}^{n} z_i Q_i \rangle = \sum_{i = 1}^{n} z_i \langle Q_i, Q_j \rangle 
+\]
+Thus, using this idea, we can see that 
+\begin{align*}
+  x &= \sum_{i = 1}^{n} z_i Q_i\\
+  &= \sum_{i = 1}^{n} Q_i \langle Q_i , x \rangle \\
+  &= \sum_{i = 1}^{n} Q_i Q_i^* x
+\end{align*}
+thus, we can see that $Q Q^*$ acts like an indentity matrix. 
+\begin{definition}
+  We can see that if we let $Q$ to be orthonormal, we find that $QQ^*$ is the orthogonal projector to the subspace $span(Q_1, Q_2, \dots, Q_n) = range (Q)$ if $Q \not \in range(Q)$. 
+\end{definition}
+\begin{remark}
+  We can see that $(I - QQ^*)v$ represents the perpendicular aspect of the vector, or rather the part that is not projected into the subspace.
+\end{remark}
+\section{Lecture 6: QR decomposition}
+Refer to \href{https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process#The_Gram%E2%80%93Schmidt_process}{this article}, does a very good of explaning it. The intution is we keep removing all perpednicualr parts of each vector in the basis to ensure we have an orthonormla basis. We have the following algorthim to solve it. 
+
+\begin{algorithm}[H]
+  \caption{Gram-Schmidt Orthogonalization (Matrix Form)}
+  \begin{algorithmic}[1]
+  \Require Linearly independent vectors $\{a_1, a_2, \dots, a_n\} \subseteq \mathbb{C}^m$
+  \Ensure Orthonormal matrix $Q = [q_1 \ q_2 \ \dots \ q_n] \in \mathbb{C}^{m \times n}$ such that $\text{span}(q_1, \dots, q_k) = \text{span}(a_1, \dots, a_k)$ for all $k$
+  
+  \State $q_1 \gets \dfrac{a_1}{\|a_1\|}$
+  \For{$j = 2$ to $n$}
+      \State Let $Q_{1:j-1} \gets [q_1 \ q_2 \ \dots \ q_{j-1}]$
+      \State $v_j \gets \left(I - Q_{1:j-1} Q_{1:j-1}^*\right)a_j$
+      \State $q_j \gets \dfrac{v_j}{\|v_j\|}$
+  \EndFor
+  \State \Return $Q = [q_1 \ q_2 \ \dots \ q_n]$
+  \end{algorithmic}
+\end{algorithm}
+we can also find an upper triangular matrix of $A$, whose columns are $\{a_1, a_2, \dots a_n \}$, where we can consider the following algorithm\footnote{Not explicity explained by Professor Khoo, but nice to know}
+\begin{algorithm}[H]
+  \caption{QR Decomposition via Gram-Schmidt (Matrix Form)}
+  \begin{algorithmic}[1]
+  \Require Linearly independent vectors $\{a_1, a_2, \dots, a_n\} \subseteq \mathbb{C}^m$
+  \Ensure $Q \in \mathbb{C}^{m \times n}$ with orthonormal columns, and upper triangular $R \in \mathbb{C}^{n \times n}$ such that $A = QR$
+  
+  \State Initialize $Q \gets 0_{m \times n}$, $R \gets 0_{n \times n}$
+  \For{$j = 1$ to $n$}
+      \State $v_j \gets a_j$
+      \For{$i = 1$ to $j-1$}
+          \State $R_{i,j} \gets \langle q_i, a_j \rangle$
+          \State $v_j \gets v_j - R_{i,j} q_i$
+      \EndFor
+      \State $R_{j,j} \gets \|v_j\|$
+      \State $q_j \gets \dfrac{v_j}{R_{j,j}}$
+      \State Set column $j$ of $Q$ to $q_j$
+  \EndFor
+  \State \Return $(Q, R)$ such that $A = QR$
+  \end{algorithmic}
+\end{algorithm}
+The complexity of calculating the norm is $\bigO{m}$. Note the matrix multiplciation of $Q_{1 : j-1}Q^*_{1:j-1}$ is $\bigO{m(j-1)}$. Thus, performing we can see that:
+\[
+\bigO{m} + \bigO{m(j-1)} + \bigO{m(j-1)} = \bigO{m + 2m(j-1)} = \bigO{m(j-1)} = \bigO{mn}
+\]
+note we do the operation $n$ times via the for loop, and we see that the final compleixty is $\bigO{mn^2}$. However, note the division sign. This means that algorithm is unstable as values could exponentially increase geivn a small enough norm magnitude. From here, we can introduce a more stable procedure, the Householder Reflection. 
+\subsection{HouseHolder Relfection}
+Refer to the visualzaition:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    % Original matrix A
+    \matrix[matrix of math nodes, left delimiter={[}, right delimiter={]}, row sep=0.25cm, column sep=0.3cm] (A) at (0,0)
+    {
+      a_{11} & a_{12} & a_{13} & \cdots \\
+      a_{21} & a_{22} & a_{23} & \cdots \\
+      a_{31} & a_{32} & a_{33} & \cdots \\
+      \vdots & \vdots & \vdots & \ddots \\
+    };
+  
+    % Arrow indicating transformation
+    \node at (3.2,0) {$\xrightarrow{H_1}$};
+  
+    % Transformed matrix HA
+    \matrix[matrix of math nodes, left delimiter={[}, right delimiter={]}, row sep=0.25cm, column sep=0.3cm] (HA) at (6.5,0)
+    {
+      * & * & * & \cdots \\
+      0 & * & * & \cdots \\
+      0 & * & * & \cdots \\
+      \vdots & \vdots & \vdots & \ddots \\
+    };
+  
+    % Label A
+    \node at (0,-1.6) {$A$};
+    \node at (6.5,-1.6) {$H_1 A$};
+  
+    % Bracket and label for "Householder zeroed part"
+    \draw[decorate,decoration={brace,amplitude=6pt}, thick] (HA-2-1.south west) -- (HA-4-1.south west)
+      node[midway,left=6pt] {\footnotesize Zeroed by $H_1$};
+  
+  \end{tikzpicture}
+\end{figure}
+
 
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
