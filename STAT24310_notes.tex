@@ -24,6 +24,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbff{Z}}
 \newcommand{\st}{\text{s.t}}
 
@@ -50,7 +51,235 @@ or equivantly:
 \begin{definition}
   If there exists a constant \( C \in \mathbb{R} \) and a real number \( t_0 \) such that for all \( t \geq t_0 \), \( |f(t)| \leq C \cdot g(t) \), where \( g(t) \geq 0 \), then we write \( f(t) = \mathcal{O}(g(t)) \) as \( t \to \infty \).
 \end{definition}
-Both are equivalent. 
+Both are equivalent. For example, consider a problem that is $\mathcal{O}(n^3)$. If we were to increase the dimension of the problem, say a 100 times, then the algorithm would take 10000000 times longer to run. However, how do we visualize this? We do so by plotting the log-log plot, where we can note that:
+\begin{align*}
+  t &= \mathcal{O}(n^3)\\
+  \log t &= 3 \log n + C
+\end{align*}
+where $C$ is some constant. 
+\begin{center}
+  \begin{tikzpicture}[scale=1.5]
+    % Draw axes
+    \draw[->] (0,0) -- (3,0) node[right] {$\log n$};
+    \draw[->] (0,0) -- (0,3) node[above] {$\log t$};
+    
+    % Draw the line y = x
+    \draw[thick, domain=0:3] plot (\x,\x);
+    
+    % Add ticks if you want
+    \foreach \x in {1,2}
+      \draw (\x,0.05) -- (\x,-0.05) node[below] {\small $\x$};
+    \foreach \y in {1,2}
+      \draw (0.05,\y) -- (-0.05,\y) node[left] {\small $\y$};
+  \end{tikzpicture}
+
+\end{center}
+where we can see that the slope gives the exponent in time complexity. 
+\subsection{Accuracy} 
+When we are dealing with algorithms, we can also be concerned with how accurate it is. For example, consider $f: X \to Y$, where we are interested $f(x)$ for $x \in X$. However, pratically, we cannot calculate the exact values, take $\sqrt{x}$ for example, so a computer must make an approximation, usually denoted as $\tilde{f}(x)$. We can consider the relative accuracy, defined as follows:
+\begin{definition}
+  Given an approximation of a function $\tilde{f}(x)$, we define relative accuracy as:
+  \[
+  \frac{\|\tilde{f}(x) - f(x)\|}{\|f(x)\|}
+  \]
+  where $\| \cdot \|$ is the norm of choosing. 
+\end{definition}
+A natural extension of accuracy are the follwing topics: \textbf{Stability and Conditional Number}. Intuively, stability is usually related to the algorithm $(\tilde{f}(x))$ used to solve the problem and the condition number is related to the actual setup of the problem $(f(x))$. We can consider the following defintions:
+\begin{definition}
+  Backwards Stability: if $x \in X$. $\tilde{f}(x) = f(\tilde{x})$ for some $\frac{\| \tilde{x} - x \|}{\|x\|} = \mathcal{O}(\epsilon)$
+\end{definition}
+Intuively, this above definition says that the problem will give the good enough answer to a slight deviation in the input. This definition is usually easier to prove. 
+\begin{definition}
+  Absoulte Conditional Number: for $(f, x)$l we can consider the Absolute condition number as follows:
+  \[
+  \hat{K}(f, x) = \lim_{\delta \to 0} \sup_{\|\delta x \| \leq \delta} \frac{\|f(x+\delta x) -f(x)\|}{\|\delta x\|} 
+  \]
+\end{definition}
+\begin{definition}
+  Relative Conditional Number: for $(f,x)$, we define the relative condition number as:
+  \[
+  \lim_{\delta \to 0} \sup_{\frac{\| \delta x \|}{\|x\|} \leq \delta} \frac{\frac{\|f(x + \delta) - f(x)\|}{\|f(x)\|}}{\frac{\| \delta x \|}{\|x\|}} = \frac{\|f(x+ \delta x) - f(x)\| \|x\|}{\| f(x) \| \|\delta x \|}
+  \]
+\end{definition}
+We can consider the diagram as follows:
+\begin{center}
+  \begin{tikzpicture}[scale=2]
+
+    % Left side: domain space
+    \coordinate (x) at (0,0);
+    \draw[fill=black] (x) circle (0.02) node[below left] {$x$};
+    \draw[dashed] (x) circle (0.3); % inner delta ball
+    \node at (-0.1,0.3) {$\delta$};
+    \draw[thick] (x) circle (0.6); % outer bound
+  
+    % Right side: codomain space
+    \coordinate (fx) at (3,0);
+    \draw[fill=black] (fx) circle (0.02) node[below right] {$f(x)$};
+    \draw[dashed] (fx) circle (0.6); % inner k delta ball
+    \node at (3.6,0.2) {$\kappa \delta$};
+    \draw[thick] (fx) circle (1.2); % outer bound
+  
+    % Arrows showing mapping
+    \draw[dash dot] (0.25,0.25) .. controls (1.5,0.6) .. (2.75,0.5);
+    \draw[dash dot] (-0.25,-0.25) .. controls (1.5,-0.6) .. (3.1,-0.5);
+  
+    % Label for mapping
+    \node at (1.5, 0.65) {$f$};
+  
+  \end{tikzpicture}
+\end{center}
+We can see that the condition number measures how senstive the actual problem is to a change in $x$, as seen above. The larger the problem is, the more sensitive the problem is. Think of the diameter of the circles as how values go between each set. If the condition number is large, then the diameter is larger and thus, there is chance that the small pertrepuabation lands in a different area than original output. 
+\begin{remark}
+  Note if $f$ is a function from $\R^n - \R^m$, we can define the following:
+  \[
+  K_{abs} = J_f \quad K_{rel} = J_f \cdot \frac{\|x\|}{\|f(x)\|}
+  \]
+\end{remark}
+
+
+We can observe the following. If $\tilde{f}$ is backwards stable with accuracy $\epsilon$, and if $f$ has a relative condition number $k$. then $\tilde{f}$ is accurate with the follwoing relation:
+\[
+\frac{\| \tilde{f}(x) - f(x) \|}{\|f(x)\|} = \mathcal{O}(k \epsilon)
+\]
+\begin{proof}
+
+  If \( \tilde{f} \) is backward stable, then there exists a point \( y \in (x - \delta, x + \delta) \), with \( \|\delta\| = \mathcal{O}(\epsilon \|x\|) \), such that:
+  \[
+  \tilde{f}(x) = f(y)
+  \]
+  This means the computed value \( \tilde{f}(x) \) is the exact value of \( f \) evaluated at a slightly perturbed input \( y \).
+  
+  Now, using the definition of the relative condition number \( \kappa \) of \( f \), we know that for small perturbations:
+  \[
+  \frac{\|f(y) - f(x)\|}{\|f(x)\|} \leq \kappa \cdot \frac{\|y - x\|}{\|x\|} + \mathcal{O}\left(\left(\frac{\|y - x\|}{\|x\|}\right)^2\right)
+  \]
+  Since \( \|y - x\| / \|x\| = \mathcal{O}(\epsilon) \), it follows that:
+  \[
+  \frac{\|\tilde{f}(x) - f(x)\|}{\|f(x)\|} 
+  = \frac{\|f(y) - f(x)\|}{\|f(x)\|} 
+  = \mathcal{O}(\kappa \epsilon)
+  \]
+\end{proof}
+\section{Lecture 2: Norms}
+We begin with following definition of a norm in a general vector space. 
+\begin{definition}
+  Let $X$ denote a vector space. A norm $\| \cdot \| : X \to R$ sastisfies
+  \begin{itemize}
+    \item Positivity: $\| x\| \geq 0$, $\| x \| = 0$ iff $x = 0$
+    \item Homogenuity: $\| \alpha x \| = |alpha| \| x \|$ 
+    \item Triangle inquality: $\| x + y \| \leq \| x \| + \| y \|$
+  \end{itemize}
+\end{definition}
+We can also define the $l_p$ norm
+\begin{definition}
+  \begin{itemize}
+    \item $\| x\|_p = \left( \sum_{i = 1}^{n} |x_i|^p \right)^\frac{1}{p}$, where $0 < p < \infty$
+    \item $\|x \|_0$ refers to number of non-zero elements of $X$. 
+    \item $\| x \|_\infty = \max_j \{ |x_j| \}$
+  \end{itemize}
+\end{definition}
+We also have the following definitions: 
+\begin{definition}
+  Inner product on $\C^n$: $\langle x, y \rangle = \sum_{i = 1}^{m} \overline{x}_i y_i$
+\end{definition}
+\begin{definition}
+  Cauchy Schwartz inequality: $| \langle x, y \rangle | \leq \|x \| \|y \|$
+\end{definition}
+
+\begin{definition}
+  Holder's inequality: $| \langle x, y \rangle \leq \|x\|_p \|y\|_q$ is $\frac{1}{p} + \frac{1}{q} = 1$
+\end{definition}
+We can also define the equivalence of norms:
+\begin{definition}
+  $\| \cdot \|_a, \| \cdot \|_b$ are equivalent if for $c_2 \geq c_1 \geq 0$:
+  \[
+  C_1 \|x \|_b \leq \|x \|_a \leq C_2 \|x\|_b
+  \]
+\end{definition}
+We can prove that all norms are equivalent. This will be left as an exercise to the reader. 
+\subsection{Matrix Norms}
+We can also introduce the notion of norms on matrices. 
+\begin{definition}
+  Frobenious norm: $\|A \|_F = \left( \sum_{i = 1, j = 1}^{m, n} |A_{ij}|^2 \right)^\frac{1}{2}$
+\end{definition}
+\begin{definition}
+  Induced norm: Given $A \in \C^{m \times n }, x \in \C^n$. We define the induced norm as follows:
+  \[
+  \|A \|_{a \to b} = \sup_{x \neq 0} \frac{\|Ax\|_a}{\|x\|_b} = \sup_{\|x\|_b = 1} \|Ax \|_a
+  \]
+\end{definition}
+\begin{remark}
+  By definition, we can see that: 
+  \[
+  \|Ax \|_a \leq \|A\|_{a \to b} \|x\|_b \quad \|A\|_a = \|A\|_{a \to a}
+  \]
+\end{remark}
+We also have the follwing properties:
+\begin{definition}
+  \begin{itemize}
+    \item $\|A\|_1 = \max_{1 \leq j \leq n} \| A(:,j)\|_1$, which is just the maximum column sum.
+    \item $\|A\|_\infty = \max_{1 \leq i \leq m} \|A(i, :)\|_1$  Which is the max of the row sum. 
+  \end{itemize}
+\end{definition}
+We also have the Cauchy Schwartz inequality for the matrix norm:
+\begin{definition}
+  $\|AB\|_2 \leq \|A\|_2 \|B\|_2$ and $\|AB\|_f \leq \|A\|_F\|B\|_f$ and $\|AB\|_f \leq \|A\|_2 \|B\|_F$
+\end{definition}
+We can prove the fact $\|AB\|_2 \leq \|A\|_2 \|B\|_2$, which is as follows:
+\begin{proof}
+  $\|AB\|_2 \leq \|A\|_2 \|B\|_2$. To show this note, 
+  \begin{align*}
+    \sup_{\|x \| = 1} \|ABx\|_2 & \leq \|Ay\|_2 \leq \| A\|_2 \|y\|_2 \leq \|A\|_2 
+  \end{align*}
+\end{proof}
+\section{3: linear Transform}
+In numerical linear algebra, most problems and algorithms consist of linear maps. 
+\begin{definition}
+  Linear Transform is a function from $T: X \to Y$ where
+  \begin{itemize}
+    \item $T(\alpha x + \beta y) = \alpha T(x) + \beta T(y)$ 
+    \item $T(v) = Av$ where $A \in \C^{m \times n}, v \in \C^n$
+  \end{itemize}
+\end{definition}
+For example consider the following example. \\
+\textbf{Example}\\
+Let $P_k(x) = x^k$, where it is monomial, where $k \in \N \cup \{ 0\}$, where $X = span \{ P_0, P_1, P_2\}$ and $Y = span \{P_0, P_1, P_2, P_3$. Note that if $q \in X$. this means that $q$ is equivalent to a linear combination of the polynomials, where we can see that $Tq = (q + 1)q$ It is trivial to show that $T$ is a linear transform. Thus, we aim to find the matrix for this. Consider the following
+\[
+Tp_1 = p_2 + p_1 \quad Tp_2 = p_3 + p_2
+\] 
+where we can construct the matrix as follows\footnote{Professor Khoo did some weird proof about the change of basis here, and frankly I don't think its worth putting here as an FYI}
+\[
+A = \begin{bmatrix}
+  1 & 0 & 0\\
+  1 & 1 & 0 \\
+  0 & 1 & 1\\
+  0 & 0 & 1
+\end{bmatrix}
+\]
+where columns vector is $\{p_0, p_1, p_2, p_3\}$ and row vectors are $\{p_0, p_1, p_2\}$. 
+\subsection{Inner Products}
+We can introduce the inner product as follos. 
+\begin{definition}
+  Given a inner product $\langle \cdot , \cdot \rangle $ where $v \in \C^n$, we can see that 
+  \begin{itemize}
+    \item It sastifies bilinearity 
+    \item $\langle v, w \rangle = \langle w , v \rangle$
+    \item $\langle v, v \rangle \geq 0$ if and only if $v = 0$
+  \end{itemize}
+  Note that $\langle v, v \rangle = \| v \|^2$ . We can also define $\langle v, v \rangle_M = v^T M V$ where $M$ is a positive definite matrix.
+\end{definition}
+\begin{definition}
+  A matrix is positive definite if and only if all the eigenvalues are positive. 
+\end{definition}
+\begin{definition}
+  A matrix is negative definite if and only if all the eigenvalues are negative. 
+\end{definition}
+\begin{definition}
+  Hermitian matrix is the complex analgue to the transpose of a matrix. Symmmetric matrix is $A^T = A$ and Hermitian matrix is $A = A^*$ \footnote{The ${}^*$ superscript denotes the complex conjugate, where every entry of the matrix is conjugated.}
+\end{definition}
+\subsection{Different kinds of multiplication}
+
+
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
