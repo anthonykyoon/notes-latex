@@ -21,12 +21,14 @@
 \newtheorem{definition}{Definition}[section]
 \newtheorem{remark}{Remark}[section]
 
+
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
-\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbff{Z}}
 \newcommand{\st}{\text{s.t}}
+\newcommand{\bigO}[1]{\mathcal{O}\left(#1\right)}
 
 \title{STAT 24310 Notes}
 \author{Anthony Yoon}
@@ -34,7 +36,7 @@
 \maketitle
 \tableofcontents
 \begin{abstract}
-  Notes for STAT24310 taught by Professor Yuehaw Khoo. Prior Linear Algebra knowledge will be assumed. 
+  Notes for STAT 24310 taught by Professor Yuehaw Khoo. Prior Linear Algebra knowledge will be assumed.  MATLAB notation for matrices will be extensively used. 
 \end{abstract}
 \newpage
 \section{Lecture 1: Introduction}
@@ -172,6 +174,7 @@ We begin with following definition of a norm in a general vector space.
 \end{definition}
 We can also define the $l_p$ norm
 \begin{definition}
+  The $l_p$ is defined as:
   \begin{itemize}
     \item $\| x\|_p = \left( \sum_{i = 1}^{n} |x_i|^p \right)^\frac{1}{p}$, where $0 < p < \infty$
     \item $\|x \|_0$ refers to number of non-zero elements of $X$. 
@@ -216,6 +219,7 @@ We can also introduce the notion of norms on matrices.
 \end{remark}
 We also have the follwing properties:
 \begin{definition}
+  We can also denote the following p norms. 
   \begin{itemize}
     \item $\|A\|_1 = \max_{1 \leq j \leq n} \| A(:,j)\|_1$, which is just the maximum column sum.
     \item $\|A\|_\infty = \max_{1 \leq i \leq m} \|A(i, :)\|_1$  Which is the max of the row sum. 
@@ -278,8 +282,101 @@ We can introduce the inner product as follos.
   Hermitian matrix is the complex analgue to the transpose of a matrix. Symmmetric matrix is $A^T = A$ and Hermitian matrix is $A = A^*$ \footnote{The ${}^*$ superscript denotes the complex conjugate, where every entry of the matrix is conjugated.}
 \end{definition}
 \subsection{Different kinds of multiplication}
+Refer to my \href{https://github.com/anthonykyoon/notes-latex/blob/main/notes/STAT24300.pdf}{STAT 24300} notes. Covers all the definition in Lectures 1 and 5. The only extension we have to be concerned about is the complexity of each operation. We can characterize it as follows:
+\begin{itemize}
+  \item Inner product $\bigO{n}$, as we are multiplying ad summing $n$ times
+  \item Matrix vector product is $\bigO{mn}$ as we are doing the dot product over $m$ rows. 
+  \item Matrix Matrix product is $\bigO{mnp}$, where $A \in \C^{m \times n}, B \in \C^{n \times p}$, as we are doing matrix vector product $p$ times. 
+\end{itemize}
+\section{4: Conditioning of the Linear Transform}
+Let us consider $T(x) = Ax$. To analyze behavior of the matrix, we decompose is $A = F_1 F_2 \dots F_n$. We have the following key decompositions. 
+\begin{itemize}
+  \item For a square matrix, we have Eigenvalue Decomposition (EVD), where if we have a diagnolzaible matrix A where\footnote{Diag is shorthand for a diagnol matrix} \[
+  A = V \Lambda V^{-1} \quad \Lambda = diag(\lambda_1, \lambda_2, \dots, \lambda_n)
+  \]
+  where $V$ have columns are linearly independent vectors. Let $v_i$ be a column of the eigenbasis, then we see that $Av_i = \lambda_i v_i$ as 
+  \[
+  \det(A - \lambda I) = 0 \implies \quad \exists \quad v \st \quad (A - \lambda I)v = 0 \iff Av = \lambda v
+  \]
+  \item SVD, where we have $A \in \C^{m \times n}$ where $A = U \Sigma V^*$, where $U \in \C^{m \times m}$ and $\Sigma \in \C^{m \times n}$ and $V \in \C^{n \times n}$ and where $\Sigma = diag(\sigma_1, \sigma_2, \dots, \sigma_n)$. 
+\end{itemize}
+The SVD is something that we discuss heavily in this class. For the time being, assume that $U$ and $V$ is unitary, which means that $U^T U = V^T V = I_n$. This will be covered later. For both cases, the number of eigenvaues or singular values equals the rank of the matrix. 
+\subsection{Spectral Radius}
+Given a matrix $A \in \C^{n \times n}$, we can define the spectral norm
+\begin{definition}
+  We define the spectral norm as 
+  \[
+  \rho (A) := \max_{j \in \{1, 2, \dots, m\}} \left| \lambda_j(A)\right|
+  \]
+\end{definition}
+\begin{remark}
+  Note that $\|A\|_p \geq \rho(A)$. As let $v$ be an eigenvector of A,
+  \begin{align*}
+    \|Av\|_p = \|\lambda v \|_p &\leq \|A\|_p \|v\|_p \\
+    |\lambda| &\leq \|A\|_p
+  \end{align*}
+\end{remark}
+We can prove that $\|A\|_2^2 = \sigma_1$.
+\begin{proof}
+  Let \( A \in \mathbb{C}^{m \times n} \), and let the singular value decomposition (SVD) of \( A \) be:
 
+\[
+A = U \Sigma V^*
+\]
 
+where:
+\begin{itemize}
+    \item \( U \in \mathbb{C}^{m \times m} \), \( U^* U = I_m \) (unitary),
+    \item \( V \in \mathbb{C}^{n \times n} \), \( V^* V = I_n \) (unitary),
+    \item \( \Sigma \in \mathbb{R}^{m \times n} \) is diagonal with nonnegative entries \( \sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r > 0 \), the singular values of \( A \).
+\end{itemize}
+
+Recall that the operator 2-norm (spectral norm) of \( A \) is defined by:
+
+\[
+\|A\|_2 := \sup_{\|x\|_2 = 1} \|Ax\|_2
+\]
+
+Using the SVD \( A = U \Sigma V^* \), and noting that \( U \) and \( V \) are unitary (thus preserve the 2-norm), we compute:
+
+\[
+\|A\|_2 = \sup_{\|x\|_2 = 1} \|A x\|_2 
+= \sup_{\|x\|_2 = 1} \|U \Sigma V^* x\|_2
+= \sup_{\|x\|_2 = 1} \|\Sigma V^* x\|_2
+\]
+
+Let \( y = V^* x \). Since \( V \) is unitary, \( \|y\|_2 = \|x\|_2 = 1 \). So:
+
+\[
+\|A\|_2 = \sup_{\|y\|_2 = 1} \|\Sigma y\|_2
+\]
+
+Now, \( \Sigma \) is a diagonal matrix with singular values \( \sigma_1, \dots, \sigma_r \), so for any unit vector \( y = (y_1, \dots, y_n) \), we have:
+
+\[
+\|\Sigma y\|_2^2 = \sum_{i=1}^{r} \sigma_i^2 |y_i|^2 \leq \sigma_1^2 \sum_{i=1}^{r} |y_i|^2 \leq \sigma_1^2
+\]
+
+The supremum is achieved when \( y = e_1 \), so:
+
+\[
+\|A\|_2^2 = \sup_{\|y\|_2 = 1} \|\Sigma y\|_2^2 = \sigma_1^2
+\]
+\end{proof}
+Using a very similar logic, we can see that $\|A^{-1}\|_2 = \frac{1}{\sigma_n}$
+\section{Lecture 5: Unitary Matrix}
+We begin with the proof of the unitary matrix. 
+\begin{proof}
+  Consider the definition of the relative condition number, where we see that 
+  \[
+  K = \lim_{\delta \to 0} \sup_{\|\delta x\| \leq \delta} \frac{\|x\|}{\|Ax\|} \frac{\|A \delta x\|}{\| \delta x\|}
+  \]
+  and we see that the above is equivalent to:
+  \[
+  k(A) = \|A^{-1}\| \|A\|
+  \]
+  Note that if $\| \cdot \| = \| \cdot \|_2$
+\end{proof}
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
