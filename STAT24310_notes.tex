@@ -375,8 +375,20 @@ We begin with the proof of the unitary matrix.
   \[
   k(A) = \|A^{-1}\| \|A\|
   \]
-  Note that if $\| \cdot \| = \| \cdot \|_2$
+  Note that if $\| \cdot \| = \| \cdot \|_2$, then we see that:
+  \[
+  k_{rel} = \frac{\sigma_1}{\sigma_n}
+  \]
 \end{proof}
+now we can proceed to the properties of the Unitary matrix. First, we can introduce the properties of an orthogonal matrix:
+\begin{definition}
+  Let \( Q \in \mathbb{R}^{m \times n} \) with \( m > n \), where $q_i$ denotes the columns of $Q$. we see that $\forall q_i$, $\|q_i\| = 1$, $\langle q_1 , q_j \rangle = \delta_{ij}$. A such matrix is called orthonormal. 
+\end{definition}
+\begin{definition}
+ A matrix that is orthonormal and square is unitary. 
+\end{definition}
+We can see the following properties of orthonormal and orthogonal matrices 
+
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
