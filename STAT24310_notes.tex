@@ -459,7 +459,7 @@ The complexity of calculating the norm is $\bigO{m}$. Note the matrix multiplcia
 \]
 note we do the operation $n$ times via the for loop, and we see that the final compleixty is $\bigO{mn^2}$. However, note the division sign. This means that algorithm is unstable as values could exponentially increase geivn a small enough norm magnitude. From here, we can introduce a more stable procedure, the Householder Reflection. 
 \subsection{HouseHolder Relfection}
-Refer to the visualzaition:
+Refer to the visualzaition for intuition of the Householder transformation. 
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}
@@ -491,11 +491,48 @@ Refer to the visualzaition:
     % Bracket and label for "Householder zeroed part"
     \draw[decorate,decoration={brace,amplitude=6pt}, thick] (HA-2-1.south west) -- (HA-4-1.south west)
       node[midway,left=6pt] {\footnotesize Zeroed by $H_1$};
-  
   \end{tikzpicture}
 \end{figure}
+With the householder reflection decomposition, we aim to reduce problem of the QR decomposition to 
+\[
+A^{(1)} = Q^{(1)} A^{(0)} \quad A^{(2)} = Q^{(2)}A^{(1)}
+\]
+\[
+Q^{(n)} Q^{(n-1)} \dots Q^{(1)} A = R
+\]
+where if $Q^{(i)}$ is an unitary matrix, that we are left with a QR factorization. 
 
 
+We want our string of unitary matrices to be in the following form:
+\[
+Q^{(1)} = \begin{bmatrix}
+  I_{j-1} & 0 \\ 0 & F^{(1)}
+\end{bmatrix}
+\]
+where $F$ is $(m - j + 1) \times (m - j + 1)$. We want this $F$ to act on the lower half of $A$ to ensure that we elimnate the entries below to ensure that we have the RREF like structure of the above diagram. Or more specfically, 
+\[
+A^{(j-1)} = \begin{bmatrix}
+  U^{(j-1)} \\ L^{(j-1)}
+\end{bmatrix}
+\]
+where $U^{(j-1)}$ is $(j-1) \times (j-1)$ and $L^{(j-1)}$ is $(m - j + 1) \times (m - j + 1)$. Thus, we can see that:
+\[
+A^{(j-1)} = Q^{(j)} A^{(j-1)} = \begin{bmatrix}
+  U^{(j-1)} \\ F^{(j)} L^{(j-1)}
+\end{bmatrix} 
+\]
+We also want to make $F$ an orthonomral matrix to enforce that the bigger $Q$. However, to reinforce the RREF like nature, we have the following subproblem. 
+\begin{center}
+  We want to solve the problem of $Fx = z \|x\| e_1$
+\end{center}
+where $|z| = 1$. The geonetric intuition of this is 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{MOVETHIS.jpeg}
+    \caption{Intution of the householder reflection}
+    \label{fig:enter-label}
+\end{figure}
+The householder reflection. Let $v = \|x\|e - x$
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
@@ -556,7 +593,6 @@ This concept can be illustrated in the following diagram:
   
     % Inequality annotation
     \node at (2.5,1.05) {LHS $\leq$ RHS};
-  
   \end{tikzpicture}
 \end{center}
 We can then expand the definition of convexity as follows:
@@ -634,4 +670,4 @@ and consider the following:
 \end{align*}
 
 
-\end{document}
+\end{document} 
