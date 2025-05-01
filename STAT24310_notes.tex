@@ -568,15 +568,90 @@ When we want to solve a system of general linear equations, we can generalize ou
   It can be shown that $A^\dagger$ can be used to solve the Least Squares Problem. This will be shown later in the future 
 \end{remark}
 \subsection{Naive solution to solving system of linear equations}
-We could find a solution by analyzing solving for $A^{-1}$ or $A^\dagger$, but this solution is very computationally expensive. Thus, we can proceed with a more optimized method: Gaussian Elimination. 
+We could find a solution by analyzing solving for $A^{-1}$ or $A^\dagger$, but this solution is very computationally expensive. Thus, we can proceed with a more optimized method: Gaussian Elimination.  
+\subsection{Gaussian Elimination}
+Consider the follwing analogy. We want to solve for 
+\[
+\arraycolsep=6pt
+\begin{array}{cccccc}
+\begin{bmatrix}
+2 & 1 & \vrule & 5 \\
+4 & -6 & \vrule & -2
+\end{bmatrix}
+& \xrightarrow{R_2 \leftarrow R_2 - 2R_1} &
+\begin{bmatrix}
+2 & 1 & \vrule & 5 \\
+0 & -8 & \vrule & -12
+\end{bmatrix}
+\\[1.5em]
+\begin{bmatrix}
+2 & 1 & \vrule & 5 \\
+0 & -8 & \vrule & -12
+\end{bmatrix}
+& \xrightarrow{\substack{R_1 \leftarrow \frac{1}{2}R_1 \\ R_2 \leftarrow -\frac{1}{8}R_2}} &
+\begin{bmatrix}
+1 & \frac{1}{2} & \vrule & \frac{5}{2} \\
+0 & 1 & \vrule & \frac{3}{2}
+\end{bmatrix}
+\\[1.5em]
+\begin{bmatrix}
+1 & \frac{1}{2} & \vrule & \frac{5}{2} \\
+0 & 1 & \vrule & \frac{3}{2}
+\end{bmatrix}
+& \xrightarrow{R_1 \leftarrow R_1 - \frac{1}{2}R_2} &
+\begin{bmatrix}
+1 & 0 & \vrule & 1 \\
+0 & 1 & \vrule & \frac{3}{2}
+\end{bmatrix}
+\end{array}
+\]
+We aim to replicate the above by creating a triangular matrix and utilizing back substitution to solve for the other variables. The whole idea is we eliminate entries from the augmented matrix and then utilize back substitution to solve for all variables. We do so by using each pivot point. The following is algorthim for this. 
+\begin{algorithm}[H]
+  \caption{Gaussian Elimination using Back Substitution with no Pivoting}
+  \begin{algorithmic}[1]
+    \Require $A \in \mathbb{R}^{n \times n}$, $y \in \mathbb{R}^n$
+    \Ensure $x$ such that $x = A^{-1}y$
+    
+    \State Let $U \gets A$, $L \gets I_n$
+    \Comment{LU decomposition}
+    \For{$j = 1$ to $n-1$}
+        \For{$i = j+1$ to $n$}
+            \If{$U_{j,j} = 0$}
+                \State \textbf{stop} the program \Comment{Zero pivot element}
+            \EndIf
+            \State $L_{i,j} \gets \frac{U_{i,j}}{U_{j,j}}$
+            \State $U_{i, j:n} \gets U_{i, j:n} - L_{i,j} \cdot U_{j, j:n}$
+        \EndFor
+    \EndFor
+
+    \State Initialize $z \in \mathbb{R}^n$
+    \Comment{Forward substitution to solve $Lz = y$}
+    \For{$i = 1$ to $n$}
+        \State $z_i \gets y_i - \sum_{j=1}^{i-1} L_{i,j} z_j$
+    \EndFor
+
+    \State Initialize $x \in \mathbb{R}^n$
+    \Comment{Back substitution to solve $Ux = z$}
+    \For{$i = n$ to $1$ with step size $-1$}
+        \State $x_i \gets \left(z_i - \sum_{j=i+1}^{n} U_{i,j} x_j \right) / U_{i,i}$
+    \EndFor
+  \end{algorithmic}
+\end{algorithm}
+\begin{remark}
+  Here, we comment on the structure on what the $L$ matrix looks like during the Gaussian Elimination. We can see hat the inverse of $L$ is also lower triangular. \todo{Do later. Just know that it replcaites the operations done to reduce a matrix}
+\end{remark}
+\subsection{Characteristics of the LU decomposition}
+We finally get that $A = LU$, where we could use this find solutions to linear systems. We can also find the complexity of each step of the algorithm, where we see that in the Gaussian Elmination step, we can take some assumptions about the structure of the matrix to find that the complexity of this step. 
+
+
+Assume each matrix is apporximatly $n \times n$. We see that we utilize matrix multiplication, which yields $\bigO{n^2}$ per $j$ row. However, we do $j$ n times, and we can see that the total cost would be $\bigO{n^3}$. We can find a similar relation with the backwards substitution, which would be $\bigO{n^2}$ as we can see that we also do multiplication n times. 
+\section{Lecture 8: LSQ}
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
 x^* = \arg \min_{x \in \Omega} f(x)
 \]
 where we say that $\Omega$ is the objective domain. The intuition is that we want to find the input that would minimize the value of the function. 
-\subsection{Examples}
-Consider the nonlinear inverse problem used within physics. \todo{Explain this better}
 \subsection{Classes of Optimization Problems}
 Given a domain $\Omega$ that we want to optimize over, we have the following scenarios:
 \begin{itemize}
