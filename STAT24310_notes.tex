@@ -38,10 +38,10 @@
 \author{Anthony Yoon}
 \begin{document}
 \maketitle
-\tableofcontents
 \begin{abstract}
   Notes for STAT 24310 taught by Professor Yuehaw Khoo. Prior Linear Algebra knowledge will be assumed.  MATLAB notation for matrices will be extensively used. 
 \end{abstract}
+\tableofcontents
 \newpage
 \section{Lecture 1: Introduction}
 This class is heavily based on \href{https://www.stat.uchicago.edu/~lekheng/courses/309/books/Trefethen-Bau.pdf}{Trefethen and Bau's Textbook}. Take a look at it if you have the time. \\
@@ -525,14 +525,50 @@ We also want to make $F$ an orthonomral matrix to enforce that the bigger $Q$. H
 \begin{center}
   We want to solve the problem of $Fx = z \|x\| e_1$
 \end{center}
-where $|z| = 1$. The geonetric intuition of this is 
+where $|z| = 1$.  Let $v = \|x\|e - x$, which we call the householder vector. The geonetric intuition of this is that $v$ points in the direction of $\|x\|e$ to from x, and we can reflect the point accross the line to get the vector mapped onto $\|x\|e$, which is equivalent to zeroing out entries. 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.75\linewidth]{MOVETHIS.jpeg}
     \caption{Intution of the householder reflection}
     \label{fig:enter-label}
 \end{figure}
-The householder reflection. Let $v = \|x\|e - x$
+However, we are interested in the quantity $v = \|x\|e - x$. Thus, we find the reflection matrix as follows: 
+\[
+I - \frac{2v v^*}{\|v\|^2} 
+\]
+where the multiplication of two is derived from the fact that we are interested in a vector pointing in the opposite direction original vector. Now, a natural question that may arise from this is \emph{what is the optimal choice of z?}. To ensure numeric stabilitty, we choose $z \in \{-1, 1\}$ such that $z$ has the opposite sign of $x$. The pseudocode for this decomposition is as follows:
+\begin{algorithm}[H]
+  \caption{Householder Relfection QR decomposition}
+  \begin{algorithmic}[1]
+    \Require $A \in \C^{m \times n}$
+    \Ensure $Q_1 Q_2 \dots Q_n A = R$
+    \State Let $A^{0} = A$
+    \State Let $Q_0 = I_m$
+    \State Intialize 
+    \For{$j$ in $1:min(m,n)$}
+      \State $x = A^{j-1}_{(j:m, j)}$
+      \State Let z be opposite sign of x 
+      \State Let $\tilde{v}^j = \frac{v^j}{\|v\|^j}$
+      \State $\gamma = I - 2\tilde{v}^j (\tilde{v}^j)^T) A^{j-1}_{j:m, j:m}$
+      \State Let $H = I_{m \times m}$
+      \State Let $H_{j:m, j:m} = \gamma$
+      \State $A^{j} = H A^{j-1}$
+      \State $Q^{j} = Q^{j-1} H^T$
+    \EndFor
+    \State \Return $A, Q$ where $A = R$ in the QR decomposition. 
+  \end{algorithmic}
+\end{algorithm}
+The complexity of this algorithm is $\mathcal{O}(mn^2)$ as we have matrix multiplicatio and a for loop. 
+\section{Lecture 7: Linear System}
+When we want to solve a system of general linear equations, we can generalize out the the definition of the Pseudoinverse. 
+\begin{definition}
+  The Moore Rose Pseudoinerse is $A = V \Sigma^T U^T$ where $A = U\Sigma V^T$, or the SVD decomposition. If $A$ is invertible, than $A^{-1} = A^{\dagger}$ 
+\end{definition}
+\begin{remark}
+  It can be shown that $A^\dagger$ can be used to solve the Least Squares Problem. This will be shown later in the future 
+\end{remark}
+\subsection{Naive solution to solving system of linear equations}
+We could find a solution by analyzing solving for $A^{-1}$ or $A^\dagger$, but this solution is very computationally expensive. Thus, we can proceed with a more optimized method: Gaussian Elimination. 
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
