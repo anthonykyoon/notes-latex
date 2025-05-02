@@ -644,8 +644,9 @@ We aim to replicate the above by creating a triangular matrix and utilizing back
 We finally get that $A = LU$, where we could use this find solutions to linear systems. We can also find the complexity of each step of the algorithm, where we see that in the Gaussian Elmination step, we can take some assumptions about the structure of the matrix to find that the complexity of this step. 
 
 
-Assume each matrix is apporximatly $n \times n$. We see that we utilize matrix multiplication, which yields $\bigO{n^2}$ per $j$ row. However, we do $j$ n times, and we can see that the total cost would be $\bigO{n^3}$. We can find a similar relation with the backwards substitution, which would be $\bigO{n^2}$ as we can see that we also do multiplication n times. 
+Assume each matrix is apporximatly $n \times n$. We see that we utilize matrix multiplication, which yields $\bigO{n^2}$ per $j$ row. However, we do $j$ n times, and we can see that the total cost would be $\bigO{n^3}$. We can find a similar relation with the backwards substitution, which would be $\bigO{n^2}$ as we can see that we also do multiplication n times.  
 \section{Lecture 8: LSQ}
+Will fill in later
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
