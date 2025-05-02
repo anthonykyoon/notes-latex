@@ -39,7 +39,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-  Notes for STAT 24310 taught by Professor Yuehaw Khoo. Prior Linear Algebra knowledge will be assumed.  MATLAB notation for matrices will be extensively used. 
+  Notes for STAT 24310 taught by Professor Yuehaw Khoo. Prior Linear Algebra and some basic multivariate calculus knowledge will be assumed.  MATLAB notation for matrices will be extensively used. 
 \end{abstract}
 \tableofcontents
 \newpage
@@ -780,6 +780,57 @@ and consider the following:
   f(x) &= \frac{1}{2}ax^2 - bx\\
   f(y) - f(x) &= \frac{1}{2}a(y^2 - x^2) - b(y-x)
 \end{align*}
+\section{Lecture 10: Introduction to Gradient Descent}
+As noted before, we can see that when we are given a convex function, say $f(x) = 0.5ax^2 - bx$ where $a > 0, b > 0$, we are left with a convex function where we can use the deriative of the function to solve for the extrema values. Now we aim to expand this out to a multivariate case. The anaolgue of a positive value matrix is a \emph{positive definite matrix}, or where all the eigenvalues are all positive. We can show that if $M$ is a positive definite symmetric matrix, than $f$ is a strongly convex function. 
+\begin{proof}
+  We are given the function $f(x) = \frac{1}{2} M - b^T x$, which is a natural analogue to the 1-d case. We can see that $M = U \Lambda U^T$ , where $U$ is orthogonal. Thus, we can see that
+  \[
+  f(x) = \frac{1}{2}x^T U \Lambda U^T x - b^T(UU^T)x
+  \]
+  and let $\tilde{x} = U^Tx$ and $\tilde{b} = U^Tb$. Thus, we are left with the following:
+  \[
+  \sum_{i=1}^n \frac{1}{2} \lambda_{ii} \tilde{x}_i^2 - \tilde{b}_i \tilde{x}_i
+  \]
+  which is equiavlent to the 1d case, where 
+  \[
+  \sum_{i = 1}^{n} f_i(\tilde{x}_i)
+  \]
+  where each $f_i$ is strongly convex. Since the sum of strongly convex functions are still strongly convex, then we know that $f$ is strongly convex. 
+\end{proof}
+\begin{remark}
+  We are familar with the least squares problem, or when 
+  \[
+  x = \arg \min_{x} \|Ax -b \|^2
+  \]
+  \todo{Fill in this in later after confirming }
+\end{remark}
+\subsection{How to solve for the extrema}
+If we are given a strongly convex function where there exists a $x$ such that $\nabla f(x) = 0$. then x must be the unique minimizer. On a computer, we have the following methods:
+\begin{itemize}
+  \item \textbf{Netwon's Type Method}: Note that we are interested in solving the system of equations where \[
+  \nabla f(x) = Mx - b
+  \]
+  where $M$ denotes the Jacobian of a matrix. To compute this problem, we see that we have to solve for $x^* = M^{-1}b$, which is compuationally expensive, as proved before it takes $\mathcal{O}(n^3)$ to solve such a system. 
+  \item \textbf{Gradient based minimization thorugh iterative algorithm}: We use the gradient multiplized by some arbitary value to travel down the fucntion to see if we can converge on the minima value. For example, we want a solution that converges to the optimal value, say $x^*$. 
+\end{itemize}
+Ultimately for the gradient method, we want to create a sequence of $x$ that converegs to the optimal value $x^*$. To do so, we must define some sort of relationship between successive values in the sequence. Therefore, we must introduce an \emph{updating scheme}. We define the updating scheme as follows:
+\[
+x^{k+1} = x^k - s_k Df(x^k)
+\]
+where $s_k$ is the step size. Now a natural question that may follow is "How do we choose the step size?". 
 
 
+This depends heavily on the shape and structure of the function. Consider the strongly convex framework that we are very familar with. We can define an objective function, where we want to minimize the difference in function values of the sequence values and the actual minimizer. Consider the following:
+\[
+f(x) = \frac{1}{2}(x-x^k)^T < (x - x^k) + \xi 
+\]
+where $\xi$ is some constant. We can see that the above simplifes to:
+\[
+f(x) = \frac{1}{2}\|x - x^k\|^2_M + \xi
+\]
+without a loss of generality, we can set the above function as $f(x) = \frac{1}{2}\|x-x^k\|^2_M$. If we want to show that the fucntion linear converges to some magnitude, we can see that:
+\[
+\|x^{k+1} - x^*\| \leq C \|x^k - x^*\|^q
+\]
+We have two cases, linear convergence and quadratic convergence. Linear convergence is when $q = 1$ and $C \in [0,1]$. Similarly, quadratic convergence is when $q = 2$ and $C > 0$
 \end{document} 
