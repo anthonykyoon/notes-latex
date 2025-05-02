@@ -832,5 +832,17 @@ without a loss of generality, we can set the above function as $f(x) = \frac{1}{
 \[
 \|x^{k+1} - x^*\| \leq C \|x^k - x^*\|^q
 \]
-We have two cases, linear convergence and quadratic convergence. Linear convergence is when $q = 1$ and $C \in [0,1]$. Similarly, quadratic convergence is when $q = 2$ and $C > 0$
+We have two cases, linear convergence and quadratic convergence. Linear convergence is when $q = 1$ and $C \in [0,1]$. Similarly, quadratic convergence is when $q = 2$ and $C > 0$. We begin to prove that this gradient descent has linear convergence is we pick a step size such that $s_k \in (0, \frac{1}{\lambda_{max}(M)})$ 
+\begin{proof}
+  For notational sake, let $M$ be the Jacobian matrix and. Note that:
+  \[
+  \nabla f(x) = Mx - b
+  \]
+  Thus, 
+  \begin{align*}
+    \|x^{k+1} - x^*\|^2 &= \|x^k - s(Mx^k - b) - x^*\|^2\\
+    &= \|x^k - x^* -s(Mx^k - Mx^*)\|^2\\
+    &= \|(I - sM)(x^k - x^*)\|^2
+  \end{align*}
+\end{proof}
 \end{document} 
