@@ -646,7 +646,61 @@ We finally get that $A = LU$, where we could use this find solutions to linear s
 
 Assume each matrix is apporximatly $n \times n$. We see that we utilize matrix multiplication, which yields $\bigO{n^2}$ per $j$ row. However, we do $j$ n times, and we can see that the total cost would be $\bigO{n^3}$. We can find a similar relation with the backwards substitution, which would be $\bigO{n^2}$ as we can see that we also do multiplication n times.  
 \section{Lecture 8: LSQ}
-Will fill in later
+Consider the following problem:
+\[
+Ax = b
+\]
+where $A \in \R^{n \times n}$. As noted previously, we could use the LU decomposition to solve this as we can 
+\begin{enumerate}
+  \item Solve $A = LU$
+  \item Set up the equation as $LU x = b$
+  \item Let $Ux = y$ and solve $Ly = b$ for $y$
+  \item Then solve $Lx = y$ where $x$ is the solution to the system. 
+\end{enumerate}
+Note the above only holds when the $A_{1:k, 1:k}$ is always nonsingular. Now we ask the question where we change $A \in \R^{n \times n}$ to $A \in \R^{m \times n}$. Now we have an issue where we may have more measurement than what we need, or an \emph{overdetermined system}. This means that there is a case where there may not exist an $x$ within the range of $A$ that causes this happen. This means that we have to find a line of best fit that may minimize error, which introduces the following problem:
+\subsection{Least Squares} 
+We aim to 
+\[
+\min \|Ax - b \\^2_2
+\]
+\begin{remark}
+  The above problem will always have a solution, but not always unique. However, if $A$ is full rank, than the above problem will have an unique solution. 
+\end{remark}
+We can prove the second part of the remark as follows:
+\begin{proof}
+  We begin with the contrapositive proof of the statement. So we aim to prove that if $A$ has less than rank $n$ then there exists no solution. Assume that $rank(A) \neq n$, which means that $ker(A) \neq 0$, which implies that there exists a $z$ such that $Az = 0$ Assume that $x^*$ is the solution to the LS squares. Then we know that $\|Ax^* - b\|$ is the minimum. Therefore, we can see that:
+  \begin{align*}
+    \|Ax^* - b\| &= \|Ax^* - Az - b\| \\
+    &= \|A(x^* + z) - b\|
+  \end{align*}
+  we see that there exists more than one minimizing argumenet. 
+\end{proof}
+\begin{remark}
+  Note that the least squares approximation is one of the most widely done things
+  \begin{itemize}
+    \item Even with a very noisy $b$, we can make an approximation
+    \item Calculating the exact inverse is also expensive, but we can approximate it but pay some price in approximation.
+  \end{itemize}
+\end{remark}
+With that we begin with an analysis of the problem. Let $x^* = \arg \min \|Ax - b\|$. If $x^* \in range(A)$, then we know that there exists some solution such that 
+\[
+\|Ax - b\|^2 = \|p (Ax - b)^2\| + \|(I- P)(Ax -b)\|^2 = \|p(Ax - b)\|^2 + \|(I - p)b\|^2 = \|Ax - pb\|^2 + C
+\]
+where $p$ is the projection matrix onto the vector $A$ and $C$ is a constant. Thus, to solve the least squares problem is equivalent to$range(A) \perp Ax - b$ which is equivalent $Ax - b \in null(A)$ This implies that 
+\[
+A^*(Ax - b) = A^* A x = A^* b
+\]
+Note that if $A$ has full rank, this means that $A^* A$ has full rank. This implies that
+\[
+x^* = (A^* A)^{-1} A^* b
+\]
+We can define $(A^* A)^{-1} A^*$ as the Moorse Penrose Pseudo-inverse. We can calculate this in one of two ways 
+\subsection{Calculating the Pseudo-inverse via the SVD}
+We define that $A = U \Sigma V^*$ where we can see that 
+\[
+A^* A = V^* \Sigma^* \Sigma V 
+\]
+
 \section{Lecture 9: Introduction to Optimization}
 Last class, we showed that there existed a solution to the Least Squares problem, or rather $\min \|Ax - b\|^2_2$ through a combination of the QR and LU decomposition. We can consider the following general optimization problem, where we define $f: \Omega \to \R$:
 \[
@@ -844,5 +898,19 @@ We have two cases, linear convergence and quadratic convergence. Linear converge
     &= \|x^k - x^* -s(Mx^k - Mx^*)\|^2\\
     &= \|(I - sM)(x^k - x^*)\|^2
   \end{align*}
+  Note that:
+  \[
+  \|(I - sM)(x^k - x^*)\|^2 \leq \|I - sM\|^2 \|(x^k - x^*)\|^2
+  \]
+  By the property of the spectral norm, we can bound the above equation as:
+  \[
+    \|(I - sM)(x^k - x^*)\|^2 \leq \|I - sM\|^2 \|(x^k - x^*)\|^2 \leq \lambda(I_n - sM)^2 \|x^k - x^*\| 
+  \]
+  Note that $\lambda(I_n - sM)^2$ will be less than 1 if $s \in (0 , \frac{2}{\lambda_{max}(M)})$, thus implying convergence. 
 \end{proof}
+Let $s = \frac{1}{\lambda_{max}(M)}$. We can see that:
+\[
+1 - s\lambda_{max}(M) = 1 - \frac{\lambda_{min}(M)}{\lambda_{max}(M)} = 1 - \frac{1}{\kappa}
+\]
+\section{Lectures 11, 12: Conjugate Gradient Descent}
 \end{document} 
