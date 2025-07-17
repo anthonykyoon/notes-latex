@@ -2,6 +2,7 @@ import os
 
 root_dir = "/Users/anthonyyoon/Documents/LaTeX"
 
+# Auxiliary extensions to be deleted.
 aux_extensions = {
     ".aux",
     ".log",
@@ -17,6 +18,7 @@ aux_extensions = {
     ".tdo"
 }
 
+# Deleting files
 for foldername, subfolders, filenames in os.walk(root_dir):
     for filename in filenames:
         if any(filename.endswith(ext) for ext in aux_extensions):
