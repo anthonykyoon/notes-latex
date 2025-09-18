@@ -15,4 +15,5 @@ Any unlabled PSET at the current moment is most likely ECON 20210 PSETs. Probabl
 My current LaTeX template is `hw_template.tex`. `latex_aux_clear.py` is a python script I use to clean all auxilary files created by LaTeX compilation.
 
 # Previous Years PSETS
-Due to concerns about academic integrity, I take down PSETs I use as temporary storage from here. If you wish to use them, please free to contact me. 
+If you want to see my PSETs for any purpose, feel free to contact me. Throughout the school year, I keep my problem sets here as a means for storage, but will take them down as soon as the quarter is over. 
+
