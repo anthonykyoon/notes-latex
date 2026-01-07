@@ -1,0 +1,118 @@
+\documentclass[a4paper,9pt]{extarticle}
+\usepackage{amsfonts}
+% Packages
+\usepackage[utf8]{inputenc} % For input encoding
+\usepackage{geometry} % For page margins
+\geometry{a4paper, margin=0.76in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{hyperref} % For hyperlinks
+
+% Formatting
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbff{Z}}
+\newcommand{\st}{\text{s.t}}
+
+\begin{document}
+\pagestyle{empty}
+
+%Header 
+\begin{center}
+    \textbf{\Large Anthony Yoon}\\[2pt] % Name
+    \href{anthonykyoon@uchicago.edu}{anthonykyoon@uchicago.edu} $|$ 310-897-4293 $|$ \href{anthonykyoon.github.io}{Personal Website}
+    % \href{https://www.linkedin.com/in/johndoe}{linkedin.com/in/johndoe} |  % Contact info
+\end{center}
+\section*{Education}
+\noindent
+\textbf{University of Chicago}, Chicago, Illinois \hfill Enrolled: Sept 2023 $|$ Expected: June 2027\\ % University name and location
+B.S Computational and Applied Math, B.S Statistics \hfill GPA: 3.66% Degree and GPA    
+\section*{Experience}
+\noindent
+\textbf{Student Researcher} \hfill Chicago, Illinois\\
+\textit{University of Chicago Department of Statistics} \hfill June 2024 - Present
+\begin{itemize}
+    \item Implemented a high dimensional data compression pipeline using tensor decomposition methods in MATLAB, Julia, and Python. Wrote unit tests to validate and measure error tolerances. 
+    \item Proved validity and convergence of adaptive cross matrix decomposition and its higher-dimensional applications under the guidance of Prof. Yuehaw Khoo, Dr. Nils Strand, and PhD student Ziang Yu.
+    \item Researching tensor cross decomposition for particle simulations to reduce computational complexity and memory usage; receiving training in academic paper presentation and research skills.
+    \item Implemented the DMRG Matrix Product State algorithm in Julia to model electron spin chains; studied tensor trains, matrix product states, and convolutional neural network applications to scientific problems.
+\end{itemize}
+\noindent
+\textbf{Charactour} \hfill Chicago, Illinois\\ % Company name and location
+\textit{AI and Data Science Intern} \hfill June 2024 - September 2024 % Position and duration
+\begin{itemize}
+    \item Developed and implemented an evaluation pipeline on AWS for the evaluation of LLMs and Transformer Models.
+    \item Developed a Python web scraping script that transcribes social media videos using yt-dlp and OpenAI’s Whisper API. 
+    \item Created SQL queries to analyze data for the use in pitch decks used in 50,000-dollar contract negotiations with Pepsi. 
+    \item  Created a web-scraping script using BeautifulSoup to gauge market interest in certain marketing techniques.
+\end{itemize}
+\noindent
+\textbf{Khomtchouk Bioinformatics Lab} \hfill Chicago, Illinois\\ % Company name and location
+\textit{Research Intern} \hfill January 2024 - June 2024 % Position and duration
+\begin{itemize}
+    \item Performed many types of GWAS and performed data cleaning on genomic data to aid in the battle of combating cardiovascular diseases in underrepresented indigenous groups. 
+    \item Conducted literature reviews to find and revitalize abandoned drugs that can be used to treat heart disease.  
+\end{itemize}
+\section*{Activities}
+\textbf{Summer Resident Assistant} \hfill Chicago, Illinois \\
+\textit{Summer Resident Assistant} \hfill May 2025 - August 2025
+\begin{itemize}
+    \item Mentored high school students in a summer academic program, providing support for both academic and residential life
+    \item Organized educational and social events to promote community and engagement 
+\end{itemize}
+\noindent
+\textbf{Uncommon Hacks} \hfill Chicago, Illinois \\
+\textit{Marketing and Sponsorship Co-lead} \hfill September 2024 - Present
+\begin{itemize}
+    \item Created marketing campgains and helped coordinate and run UChciago's Premier Hackathon 
+    \item Negotiated sponsorships and secured funding for prizes. Built and developed sponsorship relationships for future events. 
+\end{itemize}
+\noindent
+\textbf{UChi Smash President} \hfill Chicago, Illinois \\
+\textit{President} \hfill September 2023 - Present 
+\begin{itemize}
+    \item Managed club finances, equipment logistics, member communications, negotiated with venues, and helped run weekly tournaments for the wider Hyde Park region. 
+\end{itemize}
+\noindent
+\textbf{University Symphony Orchestra} \hfill Chicago, Illinois \\
+\textit{Violinist} \hfill September 2023 - Present
+\begin{itemize}
+    \item Rehearse weekly and perform in concerts held twice per academic quarter
+    \item Occasionally serve as a substitute soloist during rehearsals
+\end{itemize}
+\section*{Course Assistant Experiences}
+\begin{itemize}
+    \item Grader, Autumn 2025, MATH 20400, Real Analysis in $\R^n$ II
+    \item Grader, Autumn 2025, STAT 24300, Numerical Linear Algebra (Upcoming)
+    \item Grader, Spring 2024, MATH 15250, Mathematical Methods for Economics, Prof. Harris Khan
+    \item Grader, Winter 2024, MATH 15250, Mathematical Methods for Economics, Prof. Seyed Zoalroshd
+    \item Grader, Autumn 2024, MATH 15250, Mathematical Methods for Economics, Prof. Seyed Zoalroshd
+\end{itemize}
+\section*{Relevant Cousework}
+\begin{itemize}
+    \item MATH 20400 - 20500: Analysis in $\R^n$
+    \item MATH 20320: Analysis in $\R^n$ Inquiry Based Learning
+    \item STAT 24310: Numerical Linear Algebra, Introduction to Computation 
+    \item STAT 24300: Numerical Linear Algebra
+    \item ECON 20010-20110-20210: Elements of Economic Analysis Honors I - III
+    \item MATH 19620: Linear Algebra
+    \item MATH 15910 Introduction to Proofs in Analysis
+    \item MATH 15300: Calculus III
+    \item MATH 15250: Mathematical Methods for Economic Analysis
+    \item CMSC 14200: Introduction to Computer Science II
+    \item DATA 13600: Introduction to Data Engineering 
+    \item DATA 11800-11900: Introduction to Data Science I - II
+\end{itemize}
+\section*{Skills}
+\textbf{Programming:} Python, Julia, \LaTeX, SQL, R, Javascript, MATLAB, Pytorch\\
+\textbf{Software:} Google Suite, Microsoft Suite, Git, Github \\
+\textbf{Language}: English: Native Profiency, Korean: Working Profiency\\ 
+% \section*{References}
+% Available upon request
+
+\end{document}
