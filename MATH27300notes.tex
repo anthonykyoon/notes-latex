@@ -1,118 +1,212 @@
-\documentclass[a4paper,9pt]{extarticle}
-\usepackage{amsfonts}
-% Packages
-\usepackage[utf8]{inputenc} % For input encoding
-\usepackage{geometry} % For page margins
-\geometry{a4paper, margin=0.76in} % Set paper size and margins
-\usepackage{titlesec} % For section title formatting
-\usepackage{enumitem} % For itemized list formatting
-\usepackage{hyperref} % For hyperlinks
-
-% Formatting
-\setlist{noitemsep} % Removes item separation
-\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
-\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip}
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref} 
+\usepackage{amsmath}
+\usepackage{ gensymb }
+\usepackage{ amssymb }
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{float}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbff{Z}}
 \newcommand{\st}{\text{s.t}}
+\newcommand{\bigO}[1]{\mathcal{O}\left(#1\right)}
+\newcommand{\fP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+
+
+
+\title{MATH 27300 Notes}
+\author{Anthony Yoon}
 
 \begin{document}
-\pagestyle{empty}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\section{Lecture 1}
+\subsection{Prereqs}
+This class assumes familiarity in linear algebra, calculus, and analysis. The concepts that are of note are as follows:
+\subsubsection{Linear Algebra Prereqs}
+We assume familiarity with 
+\begin{itemize}
+    \item $\R^n$ and abstract vectors spaces 
+    \item Determinants, traces. and the characteristic polynomial. 
+    \item Jordan Normal Form and Jordan Block Form 
+\end{itemize}
+These have the following definitions/theorems:
+\begin{definition}
+    An abstract vector space $V$ is a set over a field $F$ equipped with vector addition and scalar multiplication. It has the following properties for all $u, v, w \in V$ and all $a,b \in F$:
+    \begin{itemize}
+        \item Closure of vector addition: $u + v \in V$
+        \item Commutativity of vector addition: $u + v = v + u$
+        \item Associativity of vector addition: $u + (v + w) = (u + v) + w$
+        \item Additive Identity: There exists an element $0 \in V$ such that $0 + v = v$
+        \item Additive Inverse: for all $u$, there exists a $-u \in V$ such that $u + -u = 0$
+        \item Closure of scalar multiplication: $av \in V$
+        \item Associativity of scalar multiplication: $a(bu) = (ab)u$
+        \item Identity scalar: There exists a element $1 \in F$ such that $1 u = u$
+        \item Distributivity over scalar multiplication: $(a + b)u = au + bu$
+        \item Distributivity over vector addition: $a(u + v) =au + vu$
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Linear Transformation is a function between two vector spaces that preserves vector addition and scalar multiplication. 
+\end{definition}
+\begin{definition}
+    The trace is defined to be for a matrix as $Tr(A) = \sum a_{ii} = \sum \lambda$ 
+\end{definition}
+\begin{definition}
+    Characteristic Polynomial of a matrix is $\det(A - I \lambda)$
+\end{definition}
+\begin{definition}
+    Jordan Normal Form for a $A \in \R^{n \times n}$ is a matrix in the form 
+    \[
+J_k(\lambda)
+=
+\begin{pmatrix}
+\lambda & 1      & 0      & \cdots & 0 \\
+0       & \lambda & 1      & \cdots & 0 \\
+\vdots  &        & \ddots & \ddots & \vdots \\
+0       & \cdots & 0      & \lambda & 1 \\
+0       & \cdots & \cdots & 0      & \lambda
+\end{pmatrix}
+\]
+where $J_k$ is similar to $A$s
+\end{definition}
+\subsubsection{Calculus / Analysis}
+\begin{itemize}
+    \item Familiarity of the manipulation of complex numbers such as $z = x + iy = re^{i \theta}$ and $e^{i \pi} = -1$
+    \item Evaluating intgrals and partial fraction decomposition 
+    \item Metric Spaces, $\epsilon - \delta$ contuinity
+    \item Compact sets and complete metric space. 
+    \item Implicit and inverse function theorem. 
+\end{itemize}
+\begin{definition}[Metric Space]
+A metric space is a pair $(X,d)$ where $d:X\times X\to\mathbb{R}$ satisfies
+for all $x,y,z\in X$:
+\[
+\begin{aligned}
+&d(x,y) \ge 0, \\
+&d(x,y)=0 \iff x=y, \\
+&d(x,y)=d(y,x), \\
+&d(x,z) \le d(x,y)+d(y,z).
+\end{aligned}
+\]
+\end{definition}
+\begin{definition}
+    A function is continous if for all $\epsilon > 0$ there exists a $\delta > 0$ such that $|a - b| < \delta, |f(a) - f(b)| < \epsilon$
+\end{definition}
+\begin{definition}
+    Let $(X,d)$ be a metric space. We say a set $A$ is a compact set in $X$ if for every open cover contains a finite subcover.
+\end{definition}
+\begin{remark}
+    A subset of $\R^n$ is compact if and only if it is closed and bounded. (Heine Borel)
+\end{remark}
+\begin{definition}
+A subset $K \subseteq X$ is said to be \emph{sequentially compact}
+if every sequence in $K$ has a convergent subsequence whose limit
+lies in $K$.
+\end{definition}
+\begin{theorem}[Inverse Function Theorem]
+Let $U \subseteq \mathbb{R}^n$ be open and let
+$f : U \to \mathbb{R}^n$ be continuously differentiable.
+Suppose $x_0 \in U$ and the derivative $Df(x_0)$ is invertible.
+Then there exist open neighborhoods $V$ of $x_0$ and $W$ of $f(x_0)$
+such that $f : V \to W$ is a bijection with a continuously
+differentiable inverse $f^{-1} : W \to V$.
+Moreover,
+\[
+D(f^{-1})(f(x_0)) = [Df(x_0)]^{-1}.
+\]
+\end{theorem}
+\begin{theorem}[Implicit Function Theorem]
+Let $U \subseteq \mathbb{R}^{n+m}$ be open and let
+$F : U \to \mathbb{R}^m$ be continuously differentiable.
+Suppose there exists a  $(x_0,y_0) \in U$ that satisfies
+\[
+F(x_0,y_0) = 0
+\]
+and the partial derivative $D_y F(x_0,y_0)$ is invertible.
+Then there exist open neighborhoods $V \subseteq \mathbb{R}^n$ of $x_0$
+and $W \subseteq \mathbb{R}^m$ of $y_0$ and a continuously differentiable
+function $g : V \to W$ such that
+\[
+F(x,g(x)) = 0 \quad \text{for all } x \in V,
+\]
+and $g(x_0) = y_0$.
+\end{theorem}
+\subsection{Introduction to ODEs}
+There are two types of differential equations: Ordinary and Partial. Ordinary differential equations have deriatives with one variable; partial has deriatives with resepect to many variables. 
 
-%Header 
-\begin{center}
-    \textbf{\Large Anthony Yoon}\\[2pt] % Name
-    \href{anthonykyoon@uchicago.edu}{anthonykyoon@uchicago.edu} $|$ 310-897-4293 $|$ \href{anthonykyoon.github.io}{Personal Website}
-    % \href{https://www.linkedin.com/in/johndoe}{linkedin.com/in/johndoe} |  % Contact info
-\end{center}
-\section*{Education}
-\noindent
-\textbf{University of Chicago}, Chicago, Illinois \hfill Enrolled: Sept 2023 $|$ Expected: June 2027\\ % University name and location
-B.S Computational and Applied Math, B.S Statistics \hfill GPA: 3.66% Degree and GPA    
-\section*{Experience}
-\noindent
-\textbf{Student Researcher} \hfill Chicago, Illinois\\
-\textit{University of Chicago Department of Statistics} \hfill June 2024 - Present
-\begin{itemize}
-    \item Implemented a high dimensional data compression pipeline using tensor decomposition methods in MATLAB, Julia, and Python. Wrote unit tests to validate and measure error tolerances. 
-    \item Proved validity and convergence of adaptive cross matrix decomposition and its higher-dimensional applications under the guidance of Prof. Yuehaw Khoo, Dr. Nils Strand, and PhD student Ziang Yu.
-    \item Researching tensor cross decomposition for particle simulations to reduce computational complexity and memory usage; receiving training in academic paper presentation and research skills.
-    \item Implemented the DMRG Matrix Product State algorithm in Julia to model electron spin chains; studied tensor trains, matrix product states, and convolutional neural network applications to scientific problems.
-\end{itemize}
-\noindent
-\textbf{Charactour} \hfill Chicago, Illinois\\ % Company name and location
-\textit{AI and Data Science Intern} \hfill June 2024 - September 2024 % Position and duration
-\begin{itemize}
-    \item Developed and implemented an evaluation pipeline on AWS for the evaluation of LLMs and Transformer Models.
-    \item Developed a Python web scraping script that transcribes social media videos using yt-dlp and OpenAI’s Whisper API. 
-    \item Created SQL queries to analyze data for the use in pitch decks used in 50,000-dollar contract negotiations with Pepsi. 
-    \item  Created a web-scraping script using BeautifulSoup to gauge market interest in certain marketing techniques.
-\end{itemize}
-\noindent
-\textbf{Khomtchouk Bioinformatics Lab} \hfill Chicago, Illinois\\ % Company name and location
-\textit{Research Intern} \hfill January 2024 - June 2024 % Position and duration
-\begin{itemize}
-    \item Performed many types of GWAS and performed data cleaning on genomic data to aid in the battle of combating cardiovascular diseases in underrepresented indigenous groups. 
-    \item Conducted literature reviews to find and revitalize abandoned drugs that can be used to treat heart disease.  
-\end{itemize}
-\section*{Activities}
-\textbf{Summer Resident Assistant} \hfill Chicago, Illinois \\
-\textit{Summer Resident Assistant} \hfill May 2025 - August 2025
-\begin{itemize}
-    \item Mentored high school students in a summer academic program, providing support for both academic and residential life
-    \item Organized educational and social events to promote community and engagement 
-\end{itemize}
-\noindent
-\textbf{Uncommon Hacks} \hfill Chicago, Illinois \\
-\textit{Marketing and Sponsorship Co-lead} \hfill September 2024 - Present
-\begin{itemize}
-    \item Created marketing campgains and helped coordinate and run UChciago's Premier Hackathon 
-    \item Negotiated sponsorships and secured funding for prizes. Built and developed sponsorship relationships for future events. 
-\end{itemize}
-\noindent
-\textbf{UChi Smash President} \hfill Chicago, Illinois \\
-\textit{President} \hfill September 2023 - Present 
-\begin{itemize}
-    \item Managed club finances, equipment logistics, member communications, negotiated with venues, and helped run weekly tournaments for the wider Hyde Park region. 
-\end{itemize}
-\noindent
-\textbf{University Symphony Orchestra} \hfill Chicago, Illinois \\
-\textit{Violinist} \hfill September 2023 - Present
-\begin{itemize}
-    \item Rehearse weekly and perform in concerts held twice per academic quarter
-    \item Occasionally serve as a substitute soloist during rehearsals
-\end{itemize}
-\section*{Course Assistant Experiences}
-\begin{itemize}
-    \item Grader, Autumn 2025, MATH 20400, Real Analysis in $\R^n$ II
-    \item Grader, Autumn 2025, STAT 24300, Numerical Linear Algebra (Upcoming)
-    \item Grader, Spring 2024, MATH 15250, Mathematical Methods for Economics, Prof. Harris Khan
-    \item Grader, Winter 2024, MATH 15250, Mathematical Methods for Economics, Prof. Seyed Zoalroshd
-    \item Grader, Autumn 2024, MATH 15250, Mathematical Methods for Economics, Prof. Seyed Zoalroshd
-\end{itemize}
-\section*{Relevant Cousework}
-\begin{itemize}
-    \item MATH 20400 - 20500: Analysis in $\R^n$
-    \item MATH 20320: Analysis in $\R^n$ Inquiry Based Learning
-    \item STAT 24310: Numerical Linear Algebra, Introduction to Computation 
-    \item STAT 24300: Numerical Linear Algebra
-    \item ECON 20010-20110-20210: Elements of Economic Analysis Honors I - III
-    \item MATH 19620: Linear Algebra
-    \item MATH 15910 Introduction to Proofs in Analysis
-    \item MATH 15300: Calculus III
-    \item MATH 15250: Mathematical Methods for Economic Analysis
-    \item CMSC 14200: Introduction to Computer Science II
-    \item DATA 13600: Introduction to Data Engineering 
-    \item DATA 11800-11900: Introduction to Data Science I - II
-\end{itemize}
-\section*{Skills}
-\textbf{Programming:} Python, Julia, \LaTeX, SQL, R, Javascript, MATLAB, Pytorch\\
-\textbf{Software:} Google Suite, Microsoft Suite, Git, Github \\
-\textbf{Language}: English: Native Profiency, Korean: Working Profiency\\ 
-% \section*{References}
-% Available upon request
-
+Typically with ODEs, we want to find a function $\varphi$ subject to some constraints on its values and deriatives with respect to one variable. 
+\begin{definition}
+    $\phi$ is a mapping from $I$ to $U$ where $I \subseteq \R$ and $U \subseteq \R^n$. We can think of $I$ as a time axis. 
+\end{definition}
+Typically, ODEs have a solution $\varphi$ that solves the equation. This is often referred to as 
+\[
+F(t, \varphi(t), \varphi^{(1)}(t), \dots, \varphi^{(n)}(t)) = 0
+\]
+where $n$ denotes the highest order deriative. This is the order of the ODE. 
+\begin{remark}
+    There exists an maneuver that allows us to reduce equations of arbitary order to a system of ifrst order equations. \footnote{Will be covered later}. This means that any theorems that are proven for first order ODEs implies that it holds for higher order definitions. 
+\end{remark}
+These equations can be studied using the notion of vector fields. 
+\begin{definition}
+    Let $U \subseteq \R^n$ be an open set. A vector field on $U$ is a function $\vec{v} : U \to \R^n$. This is analogous to assigning a vector to every point in the set $U$
+\end{definition}
+\begin{definition}
+    A time depedent vector field is a function $I \times U \to \R^n$ where $I \subseteq \R$ is an open interval. A vector field that does not have a dependence on time is an autonomous vector field. 
+\end{definition}
+\begin{definition}
+    The set $U \subseteq \R^n$ is called the phase space of the vector field. We can denote $I \times U$ as the extended phase space of an ODE. The extended phase space only applies to time depeendent vector fields. 
+\end{definition}
+\begin{definition}
+    The integral curve of $\vec{v}(t, \vec{x})$ on $U$ is a differentiable function $\\varphi: I \subseteq \R^n \to U \supseteq \R^n$ such that $\varphi'(t) = \vec{v}(t, \varphi(t))$ Ommiting $t$ here is equivalent for autonmous vector fields. \footnote{The vector field here assigns a "velocity vector" to each point. So in a sense, the vector field dictates the form of the ODE.}
+\end{definition}
+\begin{remark}
+    The above means that for a vector field, the associated ODE is $\varphi'(t) = \vec{v}(t, \varphi(t))$. The integral curve itself is a solution to the ODE. 
+\end{remark}
+\begin{definition}
+    The phase curve is the trajectory of the particle through space. 
+\end{definition}
+\begin{remark}
+    The graph of an integral curve naturally sits in an extended phase space. 
+\end{remark}
+The above holds because $T_\varphi = \{(t, \varphi(t) \in I \times U)\}$, which is exactly the graph of the integral curve. 
+\subsection{Example of ODEs}
+Consider a 1D ODE. This means that $U \to \R$ and $V: \R \to \R$. 
+\subsubsection{Constant Vector Field}
+Consider the vector field $v$ where $v(x) = a$ where $a$ is some constant. A diagram is provided below 
+% TODO INSERT DIAGRAM HERE 
+We thus have to find an integral curve $\varphi: I \to \R$ has to ssastify $\varphi(t)$ has to sastify $d \varphi(t)/ dt = a$. This implies that $\varphi(t) = at + b$ determined by condition $\varphi(0) = b$
+\begin{definition}
+    Classicaly, we denote $\dot{x} = d\varphi / dt$ and $\ddot{x}  = d^2 \varphi / dt^2$
+\end{definition}
+\subsubsection{Equation of normal growth}
+For some $k \neq 0$, consider the vector field $v(x) = kx$. We can see that the ODE here is $\dot{x} = kx$. Therefore, we can see that the solution to this ODE is $x(t) = ce^{kt}$ where $x(0) = c$
+\subsection{Solving solution to ODEs}
+So far, we provided intuition based solutions. But, we have no introduced actual solutions to these problems. We have the following "Informal Method", where if we follow the follwing computations:
+\begin{align*}
+    \frac{dx}{dt} &= kx \\
+    \frac{dx}{x} &= kdt \\
+    \int \frac{dx}{x} &= k \int dt\\
+    \log(x) + c &= k(t+ c') \iff x = Ce^{kt} 
+\end{align*}
+where $C$ is a function of $c$ and $c'$. Additionally, we can find solutions to ODEs using ones we already know. For example, if we know that $\dot{x} = kx$ and we let $y(t) = e^{-kt} \cdot x(t)$. Note that:
+\[
+\dot{y} = -ke^{-kt}x + e^{-kt} \cdot \dot{x} \cdot kx = (k - k)e^{-kt}x = 0
+\]
+which implies that $y(t) = c$ for some constant. 
 \end{document}
