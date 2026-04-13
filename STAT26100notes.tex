@@ -1,0 +1,715 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref} 
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{textcomp}
+\usepackage{ gensymb }
+\usepackage{ amssymb }
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage{float}
+
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\st}{\text{s.t}}
+\newcommand{\bigO}[1]{\mathcal{O}\left(#1\right)}
+\newcommand{\fP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\text{Var}}
+\newcommand{\Cov}{\text{Cov}}
+\newcommand{\iid}{\overset{\text{i.i.d.}}{\sim}}
+
+\title{STAT 26100 Notes}
+\author{Anthony Yoon}
+\date{3/24/26}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\noindent
+\section*{Prerequristes and Notation}
+This course assumes you have some basic statistics background I.E STAT 244 and 245. I have the following notation:
+\begin{itemize}
+	\item $X_{[1:n]} = X_1, X_2, X_3, \dots, X_n$
+	\item \textbf{Bold math variable} denote vectors or matrices.
+\end{itemize}
+\newpage
+\section{Lecture 1}
+\subsection{Introduction}
+In this class, we study time dependent data. Recall from an earlier statisitics course that if we have $X_{[1:n]} \iid \mathcal{N}(\mu, \sigma^2)$ and we are interested in the null hypothesis that $H_0: \mu_0 = \mu$, we can use
+\[
+	\frac{\sqrt{n}(\bar{X} - \mu_0)}{\sigma}
+\]
+as the test statistics when variance is known and 
+\[
+	\frac{\sqrt{n}(\bar{X} - \mu_0)}{\hat{\sigma}}
+\]
+when variance is not known. These tests statitiscs are heavily derived from the assumption that all data is identically and indepedently distributed. Often times, this is not the case in real life. Tobler (1979) said that "everything is related to everything else, but near things are more related than distant things". 
+\subsection{Types of Time Series Analysis}
+There are two main types of time series analysis: \textit{Time Domain} and \textit{Spectral Fourier Transform}. They go as follows:
+\begin{itemize}
+	\item \textbf{Time Domain}: We analyze data based on it's indices. More specfically, we are interested in the relatinship between different $X_i$. For example, we can let $\gamma_t= \Cov(X_1, X_t)$ and analyze things from there. 
+	\item \textbf{Spectral Fourier Transform}: We can apply the fourier transform to the time series itself \footnote{Not too sure, fix once more sure}. We have expressions like $S_n(\lambda)  = \sum_{t = 1}^n X_t e^{-it\lambda_t}$ and $f(\lambda) = \sum_{k = -\infty}^\infty \gamma_k e^{ik \lambda}$ where $\lambda \in [0,2\pi]$, where we do analysis on $S_n$ and $\lambda$ itself. 
+\end{itemize}
+\subsection{Example 1, Time Series Model}
+First we define what white noise is. 
+\begin{definition}[White Noise]
+A time series $\{\varepsilon_t\}$ is called \emph{white noise} if it satisfies:
+\[
+\mathbb{E}[\varepsilon_t] = 0, \quad 
+\operatorname{Var}(\varepsilon_t) = \sigma^2 < \infty, \quad 
+\operatorname{Cov}(\varepsilon_i, \varepsilon_{j}) = 0 \quad i \neq j
+\]
+\end{definition}
+\noindent
+It is important to note that white noise is uncorrelated. This means that knowing information from the present derived white noise tells you nothing about the present or past. Now, we consider an example of the simplest nonlinear time series process.
+
+Assume $\epsilon_i \iid \mathcal{N}(0,1)$ for all $i$. Let $X_i = \epsilon_i \epsilon_{i -1}$. We show that $X_i$ is indeed white noise, as 
+\[
+	\E[X_i] = \E[\epsilon_t \epsilon_{t-1}] = \E[\epsilon_t]\E[\epsilon_{t-1}] = 0
+\]
+and since $\E[X_i^2] = 1$, this means that $\Var(X_i) = 1$. Note that $\Cov(X_i, X_j) = 0$ where $j \geq i + 2$ as by construction, the $X_i$ and $X_j$ are independent. Note that it suffices to show that $\Cov(X_i, X_{i+1}) = 0$. We can do so by considering the following 
+\[
+	\Cov(X_i, X_{i+1}) = \E[X_iX_{i+1}]= \E[\epsilon_{i-1}] \E[\epsilon_i^2] \E[\epsilon_{i+1}] = 0
+\]
+which shows that $X_i$ is indeed white noise. Now, consider the random variable $Y_i = X_i^2 - 1$. It is easy to show that $\E[Y_i] = 0$, but it is more tricker to show whether $\Cov(Y_0, Y_i) = 0$ for all $i$. We can show that the is indeed not the case, by computing
+\begin{align*}
+	\Cov(Y_0, Y_1) &= \E[Y_0Y_1] - \E[Y_0]\E[Y_1] \\
+		       &= \E[Y_0 Y_1]\\
+		       &= \E[(X_0^2 - 1)(X_1^2 - 1)]\\
+		       &= \E[(X_0X_1)^2] - \E[X_0^2] - \E[X_1^2] + 1 \\ 
+		       &= \E[\epsilon_{-1}^2\epsilon_{0}^4\epsilon_1^2] - 1\\
+		       &= \E[\epsilon_{-1}^2]\E[\epsilon_{0}^4]\E[\epsilon_1^2] - 1\\
+		       &= (1)(4)(1) - 1 = 3
+\end{align*}
+The last equality holds as $\E[X^4] = 3\sigma^4$ where $X$ is normally distributed with mean $\mu$ and variance $\sigma^2$. Therefore, we can see that $Y_i$ is not a white noise process. 
+\subsection{Example 2: Moving Average Process}
+Using the same set up as previously for $\epsilon_i$, but we consider this random variable. 
+\[
+	X_i = \frac{\epsilon_i + \epsilon_{i-1} + \epsilon_{i - 2}}{3}
+\]
+which is indeed the average of 3 random variables. Computing the $\Cov(X_0, X_1) = \gamma_1$ can be done as follows:
+\[
+	\Cov(X_0, X_1) = \left( \frac{\epsilon_0 + \epsilon_{-1} + \epsilon_{-2}}{3}, \frac{\epsilon_1, \epsilon_0, \epsilon_{-1}}{3} \right) = \frac{1}{9}(\Var(\epsilon_{-1})+\Var(\epsilon_{0})) = \frac{2}{9}
+\]
+which shows that the moving average is not white noise. The above inequality holds because of the expansion of the covariance. We can also consider a strong version of this:
+\subsection{Example 3: Moving Average, but infinite}
+This is a more general case of the above case, but we have the following random variable:
+\[
+	X_i = \sum_{j = 0}^\infty a_j \epsilon_{i - j} 
+\]
+where $a_j \in \R$ and $a_j < 0$ and that $\sum_j a_j$ does not have to necessarily equal to 1. Each coefficeint is called the \textbf{impulse response function}. The role of these coefficients is as follows: say that $\epsilon_0$ goes up by one unit, we can see that $X_0$ will go up by $a_0$. Similarly, we can see that if $\epsilon_0$ goes up by one unit, $X_1$ will go up by $a_1$ since $X_1 = a_0 \epsilon_1 + a_1 \epsilon_0 \dots $. 
+\subsection{Example 4: Autoregressive Time Series}
+Consider the following time series: 
+\[
+	X_i = aX_{i-1} + \epsilon_i 
+\]
+note that we can recursively expand $X_i$ as follows:
+\begin{align*}
+	X_i &= aX_{i-1} + \epsilon_i\\
+	    &= \epsilon_i + a(\epsilon_{i-1} + aX_{i-2})\\ 
+	    &= \epsilon_i + a\epsilon_{i-1} + a^2X_{i-2}
+	    &\vdots \\
+	    &+ \sum_{j = 0}^\infty a^j \epsilon_{i - j}
+\end{align*}
+ Here, we can see that to ensure that the sum does not diverege, we must ensure that $|a| < 1$ to ensure convergence of the above summation. We can also introduce the following notion
+ \begin{definition}[Causality]
+A time series $\{X_t\}$ is causal if it can be expressed as a convergent linear process
+\[
+X_t = \sum_{j=0}^{\infty} \psi_j \,\varepsilon_{t-j},
+\]
+where $\{\varepsilon_t\}$ is white noise.
+\end{definition}
+We can see that this time series is casual
+\begin{itemize}
+	\item $a < 0$: negative dependence
+	\item $a = 0$: independence 
+	\item $a > 0$: positive dependence
+\end{itemize}
+\subsection{Example 5: Threshold AR procress }
+Consider the time series 
+\[
+	X_i = a|X_{i-1}| + \epsilon_i  
+\]
+\[
+	X_i = \begin{cases}
+		aX_{i-1} + \epsilon_i & x_{i-1} \geq 0 \\ 
+		-aX_{i-1} + \epsilon_i & X_{i-1} < 0 
+	\end{cases}
+\]
+we can see that this is a threshold prcoess as once $X_{i-1}$ changes sign, the equation that we use changes. 
+\subsection{Example 6 AR and order}
+Order is simply the number of prior $X$ that show up in the term $X_i$. For example:
+\[
+	X_i = aX_{i-1} + bX_{i-2} + \epsilon_i
+\]
+is an AR(2) process. 
+\subsection{Example 7: When we use a fourier domain approach}
+For a time series like this:
+\[
+	X_t = A \cos(2\pi t\omega + \theta) + \epsilon_t 
+\]
+we can use the spectral approach to analyze this. 
+\subsection{How dependence affects inference}
+To illustrate how dependence can break inference, consider the following: Say we have $X_{[1:n]} \iid \mathcal(\mu, 1)$. Assuming we want to to test the null hypothesis $\mu = 0$, it suffices to check whether $|\sqrt{n} \bar{X}| \geq 1.96$. However, consider this random variable:
+\[
+	X_i = \frac{\epsilon_i + \epsilon_{i - 1}}{\sqrt{2}} + \mu \quad \epsilon_i \iid \mathcal{N}(0,1)
+\]
+It is easy to see that $X_i \sim \mathcal{N}(\mu, 1)$, but note that $X_i$ and $X_{i+1}$ are dependent on each other. Naively, we may be tempted to apply the normal test statistics we found, but note that $\Var(\bar{X}) \neq n^{-1}$. In fact, it actually equals something else. 
+
+Let $S_n = \sum_i X_i$. Thus, we are interested in the following:
+\[
+	\frac{1}{n}\Var(S_n) = \frac{1}{n} \sum_{i = 1}^n \sum_{j = 1}^n \Cov(X_i, X_j)
+\]
+To evaluate the double summation, we see that if 
+\begin{itemize}
+	\item $i = j$: we can see that $\Cov(X_i, X_i) = \Var(X_i) = 1$
+	\item $|i- j| = 1$: we can see that \begin{align*}
+			\Cov(X_i, X_{i+1}) &= \Cov\left(\frac{\epsilon_i + \epsilon_{i-1}}{\sqrt{2}} + \mu, \frac{\epsilon_i + \epsilon_{i+1}}{\sqrt{2}} + \mu \right) \\
+					   &= \Cov\left(\frac{\epsilon_i + \epsilon_{i-1}}{\sqrt{2}}, \frac{\epsilon_i + \epsilon_{i+1}}{\sqrt{2}}\right) \\ 
+					   &= 0.5 \Cov(\epsilon_i + \epsilon_{i - 1}, \epsilon_i + \epsilon_{i + 1}) \\ 
+					   &= 0.5 \Var(\epsilon_i) = 0.5
+		\end{align*}
+	\item $|i -j | \geq 2$: we can see that $\Cov(X_i, X_{j}) = 0$
+\end{itemize}
+Thus, we can see that $\Var(S_n) = n + 0.5(2)(n-1)$ as there are $n$ instance of when $i = j$ and $2(n-1)$ instances of when $|i -j| = 1$. Thus, we can see that since $\Var(\sqrt{n}\bar{X}) = \frac{1}{n}\Var(S_n)$, the test statistics that we are interested in is for this specific $X_i$ is 
+\[
+	\frac{|\sqrt{n}\bar{X}|}{\sqrt{\frac{1}{n}(n + n-1)}}
+\]
+\section{Lecture 2}
+First, we review what the concept of an independence is. If $x \leq X$ and $y \leq Y$ are independent events, then we know that:
+\[
+	\fP[x \leq X, y \leq Y] = \fP[x \leq X] \fP[y \leq Y]
+\]
+if we find some $x, y$ such that the above does not hold, then the events are not independent. Thus, we should find some ways to measure dependence. 
+\subsection{Measure 1}
+The first measure we are interested in is:
+\[
+	\sup_{x, y} \left( \fP[x \leq X, y \leq Y] - \fP[x \leq X][y \leq Y] \right)
+\]
+if the above quantity is 0, by defnition, the events are indepednent. 
+\subsection{Measure 2}
+The second measure we are intersted in is:
+\[
+	\sup_{\text{all sets } A, B} \left( \fP[x \in A, y \in B] - \fP[x \in A]\fP[y \in B] \right)
+\]
+this is known as the \textbf{Mixing coefficient}
+\subsection{Measure 3}
+The third measure we are interested is in Covariance, which is:
+\[
+	\Cov(X, Y) = \E[X - \E[X]]\E[Y - \E[Y]] = \E[XY] - \E[X]\E[Y]
+\]
+note that the above is not a measure dependence, rather it only shows whether the random variables are linearly correlated. We have shown earlier that two radom variables can have covariance 0 and still be dependent on each other. 
+
+A variation of the above is the following:
+\[
+	\Cov(X, Y) = \iint F(x,y) - F_X(x)  F_Y(y) dy dx 
+\]
+which is known as stigler's formula. 
+% and taking the suprememum of the above is the stigler formula. \footnote{double check, not sure}
+\subsection{Discussion of the measures}
+We can see that Measure 2 will always be greater than Measure 1. This is because if we let $A = (-\infty, X]$ and $B = (-\infty, Y]$, $ \fP[x \in A, y \in B] - \fP[x \in A]\fP[y \in B]$ is equivalent to Measure 1. Thus, by the definition of the suprememum, we can see that our original assertion is true.  
+\subsection{Covariance of Moving Average Infinte}
+Let 
+\[
+	X_t = \sum_{j = 0}^\infty a_j \epsilon_{t - j} \qquad \epsilon_t \sim \mathcal{N}(0, \sigma^2)
+\]
+where $a_j$ are coefficients. Say that we want to caluclate $\Cov(X_0, X_k)$. Since $\E[X_t] = 0$, we can see that:
+\begin{align*}
+	\Cov(X_0, X_k) &= \E[X_0 X_k] \\ 
+		       &= \E \left[ \left( \sum_{j = 0}^\infty a_j \epsilon_{0-j}\right)\left(\sum_{l = 0}^\infty a_l \epsilon_{k-l}\right)\right]
+		       &= \E \left[ \sum_{j = 0}^\infty \sum_{l = 0}^\infty a_k \epsilon_{-j} a_l \epsilon_{k - l} \right]
+\end{align*}
+Now assume interchangeability of the expectation and infinite summation. Therefore, 
+\begin{align*}
+	\Cov(X_0, X_k) &= \sum_{j = 0}^\infty \sum_{l = 0}^\infty a_{-j}a_l \E[\epsilon_{-j}\epsilon_{k-l}]	\\
+\end{align*}
+Thus, we can see that in the above summation, majority of the summation is $0$ due to independece and few are non-zero. If $-j = k - l$ this means that $\E[\epsilon_{-j}\epsilon_{k - l}] = \sigma^2$, which implies that it only suffices to compute:
+\[
+	\sum_{l = 0}^\infty a_j a_{k+j} \sigma^2 
+\]
+note that $\epsilon_t$ can be white noise with variance $\sigma^2$ and the above proof still holds. This is also an example of a weakly stationary process, which will be covered later. 
+\begin{remark}
+	In practice, we cannot compute an infinte series of terms. In many cases. we have to truncate to some large value $N$. An sufficient approximation is 
+	\[
+		\tilde{\gamma_k} = \sum_{j = 0}^N a_j a_{k+j}\sigma^2
+	\]
+	where the above can be done in $\bigO{n\log(n)}$. The reason why this is because of the fact that the above looks like a convulotion, which can be solved by the Fast Fourier Transform. 
+\end{remark}
+
+\subsection{Example 1}
+Say that we have a time series 
+\[
+	X_i = \mu + X_{i - 1} + \epsilon_i \qquad X_i = 0
+\]
+above is the random walk with drift $\mu$. We can compute covariance between $X_i$ and $X_j$ where $i \leq j$ as follows: Note that $X_i = i \mu + \sum_{k = 1}^i \epsilon_i$ by construction where $\E[X_i] = i \mu$. Therefore, we can see that:
+\[
+	\Cov(X_i, X_j) = \Cov \left( \sum_{k = 1}^i \epsilon_k, \sum_{l = 1}^j \epsilon_k\right) = \sum_{k = 1}^i \Cov \left(\epsilon_k, \epsilon_k \right) = i \sigma^2
+\]
+or more generally,
+\[
+	\Cov(X_i, X_j) = \sigma^2 \cdot \min \{i, j\}
+\]
+where we can see that this is not a weekly stationary process. 
+\subsection{Correlation and Covariance Matrices}
+\subsubsection{Correlation}
+We begin with the definition of corelation as follows:
+\begin{definition}[Correlation]
+Let 
+\[
+	\rho_{X, Y} = \frac{\Cov(X, Y)}{\sqrt{\Var(X) \Var(Y)}}
+\]
+where $|\rho_{X, Y}| \leq 1$, which follows from Cauchy Schwartz
+\end{definition}
+we can similarly define the cross variance and cross correlation for random vectors. 
+\[
+	\gamma_{i,j} = \Cov(x_i, y_j) \qquad \rho_{i,j} = \frac{\gamma_{i,j}}{\sqrt{\Var(x_i)\Var(y_j)}}
+\]
+
+\subsubsection{Covariance Matrices}
+We first define the Covariance Matrix 
+\begin{definition}[Covariance Matrix]
+Let $X = (X_1, X_2, \dots, X_n)^\top$ be a random vector with finite second moments. The \emph{covariance matrix} of $X$ is defined as
+\[
+\Sigma = \Cov(X) = \E\big[(X - \E[X])(X - \E[X])^\top\big].
+\]
+Equivalently, the $(i,j)$-th entry of $\Sigma$ is
+\[
+\Sigma_{ij} = \Cov(X_i, X_j) = \E\big[(X_i - \E[X_i])(X_j - \E[X_j])\big].
+\]
+\end{definition}
+\noindent{}
+where $\E[X]$ is simply the expectation to each entry. We claim that the above matrix is a nonngetive definite
+\begin{definition}[Nonnegative Definite Matrix]
+A symmetric matrix $A \in \mathbb{R}^{n \times n}$ is called \emph{nonnegative definite} (or \emph{positive semidefinite}) if
+\[
+x^\top A x \ge 0 \quad \text{for all } x \in \mathbb{R}^n.
+\]
+equivalently, a symmetric matrix $A$ is nonnegative definite if and only if all its eigenvalues are nonnegative.
+\end{definition}
+\noindent
+We now show that the covariance matrix is nonnegative definite. 
+\begin{proof}
+Let $\Sigma = (\sigma_{ij})$ be the covariance matrix of $X = (X_1,\dots,X_n)^\top$, and let $c = (c_1,\dots,c_n)^\top \in \mathbb{R}^n$. Then
+\[
+c^\top \Sigma c
+= \sum_{i,j=1}^n c_i \sigma_{ij} c_j.
+\]
+Since $\sigma_{ij} = \Cov(X_i,X_j) = \E\big[(X_i-\mu_i)(X_j-\mu_j)\big]$, where $\mu_i = \E[X_i]$, we have
+\begin{align*}
+c^\top \Sigma c
+&= \sum_{i,j=1}^n c_i \E\big[(X_i-\mu_i)(X_j-\mu_j)\big] c_j \\
+&= \E\left[\sum_{i,j=1}^n c_i (X_i-\mu_i)(X_j-\mu_j)c_j\right] \\
+&= \E\left[\left(\sum_{i=1}^n c_i (X_i-\mu_i)\right)^2\right].
+\end{align*}
+Since a square is always nonnegative,
+\[
+\left(\sum_{i=1}^n c_i (X_i-\mu_i)\right)^2 \ge 0,
+\]
+and therefore
+\[
+c^\top \Sigma c
+= \E\left[\left(\sum_{i=1}^n c_i (X_i-\mu_i)\right)^2\right] \ge 0.
+\]
+Hence $\Sigma$ is nonnegative definite.
+\end{proof}
+\noindent 
+We now show that a nonnegative definte matrix corresponds to the covariance matrix of some random vector. Before we do so, we introduce the notion of the square root of a matrix:
+\begin{definition}[Matrix Square Root via Spectral Decomposition]
+Let $A \in \mathbb{R}^{n \times n}$ be a symmetric positive semidefinite matrix. By the spectral theorem, there exists an orthogonal matrix $Q$ and a diagonal matrix 
+\[
+\Lambda = \mathrm{diag}(\lambda_1,\dots,\lambda_n), \quad \lambda_i \ge 0,
+\]
+such that
+\[
+A = Q \Lambda Q^\top.
+\]
+The (principal) square root of $A$ is defined as
+\[
+A^{1/2} = Q \Lambda^{1/2} Q^\top,
+\quad \text{where } \Lambda^{1/2} = \mathrm{diag}(\sqrt{\lambda_1},\dots,\sqrt{\lambda_n}).
+\]
+\end{definition}
+\noindent
+And now we introduce the proof. 
+\begin{proof}
+Let $\eta \in \R^n$ whose entries are i.i.d drawn from the standard normal Gaussian, and let $\Sigma$ denote a nonnegative definite matrix. Let $x = \Sigma^\frac{1}{2} \eta$. Thus, can see that:
+\[
+	\Cov(x) = \Cov(\Sigma^\frac{1}{2} \eta) = \Sigma^\frac{1}{2} \Cov(\eta) \Sigma^\frac{1}{2} = \Sigma 
+\]
+where $\Cov(\eta) = \mathbf{I}_n$ by construction. Therefore we can see that $\Sigma$ refers to the covairance of a random vector. 
+\end{proof}
+We can see that the above proof helps assert both directions. 
+
+This style of proof can help prove results in analysis which would have taken lines of lines of computation and proof. An example of so is Schur's theorem. Say we have two nonnative matrices $A$ and $B$ of the same size. We claim that the Hammard Product (element wise multiplication) of these two matrices is still non-negative definite. 
+
+\begin{proof}
+	Let $a_{ij}$ and $b_{ij}$ denote the $i$ row and the $j$ column entry for $A$ and $B$ respectively. From the above proof, we see that $A$ is the covaraince matrix for some random vector $x$ and similarly $B$ is the covariance matrix for some random vector $y$ where $\E[x_i] = 0$ and $\E[y_i] = 0$.
+	Let $z = x \odot y$. We can see that $z_i = x_i y_i$ by definition, and thus, we can see that 
+	\[
+		\Cov(z_i, z_j) = \E[z_i z_j] - \E[z_i]\E[z_j] = \E[z_i z_j] = \E[x_ix_jy_iy_j] = \E[x_i x_j] \E[y_i y_j] = a_{ij} b_{ij}
+	\]
+	the last equality holds as $\Cov(x_i, x_j) = \E[x_i x_j] = a_{ij}$ and similarly for $y$. Therefore, since $a_{ij} b_{ij}$ corresponds to a random vector $z_i$, we can see that thus, $A \odot B$ is the covaraince matrix for some random vector $z$, which implies that $A \odot B$ is non-negative definite. 
+\end{proof}
+\subsection{Stationary Process}
+We can define a (strictly) stationay process as follows:
+\begin{definition}[Strictly Stationary]
+	A series of random variable $\{x_i\}_{i \in \N}$ is called strictly stationary if $x_{[i+1: i+m]}$ follows the same distribution as $x_{[1, m]}$. Similarly, $x_i$ should follow the same distirbution as $x_1$ for all $i \in \N$
+\end{definition}
+We can define a weakly stationary process as follows:
+\begin{definition}[Weakly Stationary]
+	A collection of random variables is weakly stationary if 
+	\begin{enumerate}
+		\item $\mu = \E[x_i]$ for all $i$ 
+		\item $\gamma_k = \Cov(x_i, x_{i+k})$ for all $i$ and a fixed $k$ 
+	\end{enumerate}
+\end{definition}
+Note that either don't imply each other. Take a Cauchy distribution, whose expectation is infinite. If we impose the second condition where the second moment is finite, we find that the strictly stationary implies weakly stationary. This holds as if the joint ditributions are the same, than the covariance remains the same. 
+\subsection{Some analysis of the covariance matrix}
+Consider the covariance function $\Gamma_n = (\Cov(x_i, x_j))_{i, j \leq n}$. We can see that if we were to rewrite the covariance matrix in terms of $\gamma_i$, we can find that we can express as follows 
+\[
+	\Gamma_n = \begin{bmatrix} 
+\gamma_0 & \gamma_1 & \gamma_2 & \cdots & \gamma_{n-1} \\ 
+\gamma_1 & \gamma_0 & \gamma_1 & \cdots & \gamma_{n-2} \\ 
+\gamma_2 & \gamma_1 & \gamma_0 & \cdots & \gamma_{n-3} \\ 
+\vdots & \vdots & \vdots & \ddots & \vdots \\ 
+\gamma_{n-1} & \gamma_{n-2} & \gamma_{n-3} & \cdots & \gamma_0 
+\end{bmatrix}
+\]
+where $\Gamma_n$ is a Topahitz matrix. 
+\begin{remark}
+The eigenvalues of $\Gamma_n$ are the image of $f(\theta)$ where $\theta \in [0,2\pi]$ and $f(\theta) = \sum_{k = -\infty}^\infty \gamma_k e^{ik\theta}$ 
+\end{remark}
+\section{Lecture 3}
+We now do some analysis on the concepts of stationary. We consider the special case $X_i \sim \mathcal{N}(\mu,\sigma^2)$ with $\gamma_{i,j} = \Cov(X_i, X_j)$. We can see that $(X_1, \dots, X_n)$ is jointly Gaussian where it was the joint pdf:
+\[
+	\frac{1}{(2\pi)^{0.5n} \sqrt{\det(\Gamma_n)}}e^{-0.5x^T\Gamma_nx}
+\]
+Say we are interested in estimating $\mu = \E[X_i]$. A natural generalization of this is to use the sample mean, where 
+\[
+	\hat{\mu} = \overline{X}_n = \frac{1}{n}\sum_{i = 1}^n X_i
+\]
+Before we continue, we define certain types of convergence. 
+\begin{definition}[In probability]
+	$\overline{X}_n \to \mu$ in probability if for for any $\delta > 0$, $\fP[|\overline{X}_n - \mu| \geq \delta) \to 0$ as $n \to \infty$
+\end{definition}
+\begin{definition}[Almost Surely]
+	$\overline{X}_n \to \mu$ almost surely if for any $\delta > 0$, $\fP[|\overline{X}_n - \mu| \geq \delta \text{ infintely often}] = 0$
+\end{definition}
+\noindent
+We claim that if $X_i$ is i.i.d $\E[|X_i|] < \infty$, then $\overline{X}_n \to \mu$ almost surely. The proof is as folllows. \footnote{Don't remember if we did the proof for this, ask in OH}
+
+To show why the naive sample mean does not necessarily hold in all cases, consider the following random variable $X_i = \epsilon_i + Z$ where $Z, \epsilon_{[1:n]} \iid \mathcal{N}(0,1)$. It is easy to see that $\mu = 0$, but covaraince requires more nuance. If $i = j$,
+\begin{align*}
+	\gamma_{i,j} &= \Cov(X_i, X_j) \\
+		     &= \Cov(\epsilon_i + Z, \epsilon_o + Z) \\
+		     &= 2
+\end{align*}
+If $i \neq j$ where $i \leq j$, 
+\begin{align*}
+	\gamma_{i,j} &= \Cov(X_i, X_j) \\
+		     &= \Cov(\epsilon_i + Z, \epsilon_j + Z) \\
+		     &= 1 
+\end{align*}
+which implies that there always exist some covariance. Therefore, we can see that $\Var(\overline{X}_n) > 1$, which implies that this estimator is not consistent with more data as we cannot gaurntee convergence. To address this, we can impose an assumption to make $\overline{X}_n \to \mu$. 
+\begin{definition}[Weakly Stationary time series with vanishing covariance implies weak law of large numbers holds]
+	If a time series is weakly stationary and $\gamma_i \to 0$ as $i \to \infty$, then $\overline{X} \to \mu$ in probability 1. 
+\end{definition}
+\begin{proof}
+By Chebyshev's inequality, we can see that:
+\[
+	\fP[|\overline{X}_n - \mu| \geq \delta] \leq \frac{\E[(\overline{X}_n - \mu)^2]}{\sigma^2}
+\]
+Note that it suffices to show that $\E[(\overline{X}_n - \mu)^2] \to 0$. W can proceed with the following computation: 
+\begin{align*}
+	\E[(\overline{X}_n - \mu)^2] &= n^{-2}\Var\left(\sum_{i = 1}^n X_i\right)\\
+				     &= \frac{1}{n^2} \sum_{1 \leq i < j \leq n} \Cov(X_i, X_j)\\
+				     &= \frac{1}{n^2}(n\gamma_0 + 2 (n-1)\sum_{i = 1}^{n-1} \gamma_i \\
+				     &\leq \frac{1}{n^2}\left(2n \sum_{i=1}^{n-1} |\gamma_i| \right) \\
+				     &= \frac{2}{n} \left(\sum_{i=1}^{n-1} |\gamma_i|\right)
+\end{align*}
+From the intial assumption that $\gamma_i \to 0$, we know that the above converges to 0 as $n \to \infty$. Therefore, we have proved the assumption. 
+\end{proof}
+\begin{remark}
+	$\sum |\gamma_k| = \infty$ is possible. For example, take $\gamma_k = k^{-1}$, which is an example of a long memory process. In this class, we mostly assume that most processes are short memory processes.
+\end{remark}
+\begin{remark}
+	Generally, $\overline{X}_n$ is not Best Linear Unbiased Estimator (BLUE). To get BLUE, we must solve for $\tilde{X}_n = \sum_{i = 1}^n \omega_ix_i $ such that $\sum_{i = 1}^n \omega_i = 1$
+\end{remark}
+\subsection{Estimating covariance}
+A natural question that arises is how do we esitmate covariance or $\gamma_k$? Assume that we know that $\mu = \E[X_i]$ is known and that $\mu = 0$ without loss of generality. We can see that if 
+\[
+	\gamma_i = \E[X_i^2] 
+\]
+then a natural guess to the estimator of $\gamma_0$ would be 
+\[
+	\hat{\gamma}_0 = \frac{1}{n}\sum_{i=1}^n X_i^2 
+\]
+as the expectation of $\hat{\gamma}$ would be simply $\gamma_0$. However, this chnages when we try to estimate $\gamma_1 = \E[X_i X_{i+1}]$. An unbiased estimator that does this is:
+\[
+	\hat{\gamma_1} = \frac{1}{n-1} \prod_{i = 1}^{n-1} X_i X_{i+1}
+\]
+however, we generally use the estimator 
+\[
+	\hat{\gamma}_1 = \frac{1}{n} \prod_{i=1}^{n-1} X_iX_{i+1}
+\]
+instead. 
+\subsection{Covariance Matrix}
+Let $\Gamma_n = (\gamma_{j - k})_{j ,k \leq n}$. A natural way of estimating this would be $\hat{\Gamma}_n = (\hat{\gamma}_{j-k})_{j, k \leq n}$, but which estimator do we use for $\gamma_1$? We actually use the one with $\frac{1}{n}$. The reason is as follows. Let 
+\[
+A =
+\begin{bmatrix}
+X_1 & X_2 & \dots & X_n & \multicolumn{4}{c}{\underbrace{0 \;\; 0 \;\; \dots \;\; 0}_{n-1\text{ zeros}}} \\
+0   & X_1 & X_2 & \dots & X_n & 0 & \dots & 0 \\
+0   & 0   & X_1 & X_2 & \dots & X_n & \dots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+0 & \dots & 0 & X_1 & X_2 & \dots & X_n
+\end{bmatrix}
+\]
+where $A \in \R^{N \times 2N}$ Note that $(AA^T)_{(1,1)} = \left(\sum_{i=1}^{n-1}X_i\right)$ To stay consistent with the estimator of $\gamma_0$, we to let $\hat{\Gamma}_n = \frac{1}{n}AA^T$ which we know exists as $\Gamma_n$ itself is a nonnegative definite matrix. Therefore, we use the estimator $\frac{1}{n}$ to solve this problem. 
+\begin{remark}
+	Xiao and Wu in 2013 showed that $\hat{\Gamma_n}$ is non consistent. One can see this through the observation that 
+	\[
+		\rho(\hat{\Gamma}_n - \Gamma_n) \not \to 0
+	\]
+	and since $\hat{\gamma}_k = \frac{1}{n-k}\prod_{i = 1}^{n-k} X_1X_{n-i}$, we can see that $\hat{\gamma}_k$ is not consistent. For example, take $k = n-1$, this means that $\hat{\gamma}_k = X_1X_n$. However, we can see that this does not guarntee that $\E[(\hat{\gamma}_k - \gamma_k)^2] \to 0$ as this does not hold for all random variables. 
+\end{remark}
+\begin{remark}
+	Since we do not have enough data to estimate $\gamma_k$ for large k and those $\gamma_k$ are close to 0 when you compute the values, it actually suffices to 0 out any $\gamma_k$ for any $k \geq n^\frac{1}{3}$ and actually estimate $\gamma$ for all other values. 
+\end{remark}
+If we do not know $\mu$, it suffices to substitute $\hat{\mu}$ into the formula for $\gamma_k$, so the new formula is:
+\[
+\hat{\gamma_k} = \frac{1}{n} \sum_{i = 1}^{n-k} (X_i - \hat{\mu})(X_{i+k} - \hat{\mu})
+\]
+We can also compute the autocorrelation as follows:
+\[
+	\rho_k = \rho(X_0, X_k) = \frac{\gamma_k}{\gamma_0}
+\]
+and we simply can input our estimates for $\gamma$ to estimate $\rho$. More precisely:
+\[
+	\hat{\rho}_k = \frac{\hat{\gamma}_k}{\hat{\gamma}_0}
+\]
+\begin{remark}
+	If we were to view the auto correlation fucntion as a function of $k$, we can see that as $k \to \infty$, the autocorrelcation goes to 0 
+\end{remark}
+\section{Lecture 4}
+Honestly, a lot of this lecture was review of the last one. I will fill this in later. 
+\section{Lecture 5}
+A question is how do we do regression for time series data. We typically do regression in the following form:
+\[
+	X_i = \sum_{j = 1}^n Z_{ij} \beta_j + \epsilon_i 
+\]
+Where $X_i$ is the dependent variable we have and the right hand side is the dependent variable. $\beta_i$ are real numbers in which we consider coefficients. A natural question that arrises how we predict $\beta_1$ or $\beta_p$. A criteria that we can use is the least squares estimator, or 
+\[
+	\min_{\mathbf{\beta}} \sum_{i = 1}^n (x_i - (\sum_{j = 1}^p \beta_j z_{ji})
+\]
+and taking partial deriatives with respect to $\beta_j$, we can find that 
+\[
+	0 = \sum_{i = 1}^n (x_i - (\beta_i1 z_1 + \dots + \beta_{ip}z_p)(-2z_j)
+\]
+equivalently, we can model this in matrix notation, where 
+\[
+	\mathbf{X} = Z\mathbf{\beta} + \mathbf{\epsilon}
+\]
+where $\mathbf{Z}$ denotes the design matrix, or 
+\[
+	\mathbf{Z} = \begin{bmatrix}
+		z_{1i} & \dots & z_{1p} \\ 
+		\vdots & \ddots & \vdots \\ 
+		z_{n1} & \dots & z_{np} 
+	\end{bmatrix}
+\]
+We can see that the FOC can be expressed compactly 
+\[
+	ZZ^T \mathbf{\beta} = Z^T \mathbf{X}
+\]
+If we assume that $ZZ^T$ is invertible, than 
+\[
+	\hat{\beta} = (Z^TZ)^{-1}Z^Tx 
+\]
+is the least squares estimator to the data. 
+\subsection{Autoregressive}
+We can also do regression using many different terms. Say that we are interested in 
+\[
+	X_i = \beta_1 X_{i-1} + \dots \beta_p X_{i - p} + \epsilon_i 
+\]
+and we can see that the LSE of this:
+\[
+	\sum_{i = p+1}^n (x_i - (\beta_1x_{i-1} + \dots \beta_p(x_{i-p})))^2 
+\]
+where we can repeat the same case for the singular term case to arrive at the matrix form of $\mathbf{beta}$ or 
+\[
+	\mathbf{\beta} = (Z^TZ)^{-1} Z^T \mathbf{X}
+\]
+where 
+\[
+	Z = \begin{bmatrix}
+		X_p & \dots & \dots & X_1 \\ 
+		X_{p+1} &\vdots & \vdots & X_2\\ 
+		\vdots & \ddots & \ddots & \vdots \\
+		X_n & \dots & \dots & X_{n-p+1} 
+	\end{bmatrix}
+\]
+however, we do not know what a good value of $p$ is. We do not how far back into the past we need to look into, and even then, we do not know how correlated the data is. To do so, we can perform some model selection. Consider some arbitary model as follows:
+\[
+	w = X_{ij} = \sum_{i=1}^q Z_{ij}\beta_i \quad q < p
+\]
+and we want to compare it to a different model. To do so, we can perform the following hypothesis test 
+\[
+	H_0 : \beta_{q+1} = \beta_{q+2} \dots = \beta_p = 0 
+\]
+To perform it, we must compute the following:
+\[
+	RSS_W = \sum_{i = 1}^n \left( x_i - \sum_{j=1}^q z_{ij} \hat{\beta}_j\right)
+\]
+\[
+	RSS_\Omega = \sum_{i = 1}^n \left( x_i - \sum_{j=1}^p z_{ij} \hat{\beta}_j\right)
+\]
+where $RSS_w \geq RSS_\Omega$. This is the so called $F$ test, which is as follows:
+\[
+F = 	\frac{(RSS_W - RSS_\Omega)/(p-q)}{RSS_\Omega / (n-p)}
+\]
+where $F \sim F_{pq, n-p}$.
+\begin{remark}
+$RSS_w \geq RSS_\Omega$ as the $w$ model should have predictions that are at good or worse than the larger model. 
+\end{remark}
+\subsection{How to find the best model}
+However, we can have a better methodology to get models. Consider the AIC or \emph{Akaike Information Criterion} which is as follows:
+\[
+	\log \left( \hat{sigma}_k^2 + \frac{2k}{n} \right) = AIC(w)
+\]
+where $w$ denotes the parameters in the model. We want to pick the model with the lowest AIC. What the information criterion is doing is essentially balancing \emph{model complexity}, denoted by the $2k/n$ term, and \emph{goodness of fit} which is denoted by the $\hat{\sigma_k^2}$ 
+\begin{remark}
+	The probability that AIC picks the correct model is $1 - \frac{1}{e}$
+\end{remark}
+Another form of information criterion is the Bayesian Information criterion which is as follows:
+\[
+	\log \left( \hat{sigma}_k^2 + \log(n) \cdot \frac{k}{n} \right) = AIC(w)
+\]
+note that the BIC will be larger for all $n \geq 9$. However, we also have the $AIC_c$ which is 
+\[
+	\log \left( \hat{\sigma}_k^2 + 2 \cdot \frac{k+1}{n-k-2}\right)
+\]
+this information criterion is the one that apparently does the best. 
+\subsection{EDA}
+The goal of EDA is to transform a non-stationary time series to one that is stationary. An example of one is demeaning. 
+\subsubsection{De-meaning}
+Say that we have a time series that we believe to be of 
+\[
+	x_t = \mu_t + z_t 
+\]
+where $z_t$ is indeed a stationary time series with mean 0 and $\mu_t$ is the mean trend. An example of this is yearly global temperature. Due to global warming, we know that the global mean temperature is going up, but with some noise. Thus, this leaves us room to believe that the mean trend is going up linearly with respect of time, or more precisely 
+\[
+	\mu_t = \beta_0 + \beta_1t 
+\]
+However, some people believe that the true mean trend is actually quadratic, 
+\[
+	\mu_t = \beta_0 + \beta_1 t + \beta_2 t^2 
+\]
+Regardless of the form, we can estimate $\mu_t$ from the data and subtract it from the data. Hence, we call it a \emph{de-meaned} process. Hence, we have the following time series:
+\[
+	\hat{z}_t = x_t - \hat{\mu}_t 
+\]
+where we assume that $\E[\hat{z}_t] = 0$. If $\mu_t$ is indeed linear in time, we can use the LSE estimator to estimate it. 
+\subsubsection{Smoothing}
+Say we do not know the parametric form of $\mu_t$ is not known, we can use the smoothing method. In this method, we exploit the fact that $\mu_t \approx \mu_{t'}$ for $t$ and $t'$ sufficiently close enough to each other. We can estimate the $\mu_t$ by taking the average of local times. More specifcally, 
+\[
+	\hat{\mu_t} = \frac{\sum_{i = t-m}^{t+m} x_i}{1+2m} \quad \lim_{m \to \infty} \frac{m}{n} = 0
+\]
+where $m$ is called the bandwidth. However, we can exploit the fact that values near the time of interest are closer to the true mean. To do so, we can introduce a weighted average, whoose weights are drawn from a distribution whose mean is centered at 0, i.e Gaussain etc. 
+\subsubsection{Global Smoothing}
+Previously, we inrtdouced local smoothing. However, we can globally smooth by considering the following:
+\[
+	\sum_{i=1}^n (x_i - f(t))^2 + \lambda \int_1^h (f'(t))^2 dt \qquad \lambda \geq 0
+\]
+we want to choose the function that can minimize the above. Here, $\lambda$ is the smoothing parameter. A natural question is what $\lambda$ do we choose. 
+\begin{itemize}
+	\item $\lambda = \infty$. This implies that $f''(x) = 0$, which means that $f$ must be a linear function 
+	\item $\lambda = 0 $, this means that $f(t) = x_t$ which implies that we do not smooth at all.
+\end{itemize}
+Note that this is analogous of the AIC. $\sum_{i=1}^n (x_i - f(t))^2$ represents goodness of fit and $\int_1^h (f'(t))^2 dt$ represents the model complexity. The intuition is that if $f''(t)$ is greater, there is a higher order deriative. 
+\section{Lecture 6}
+In the previous lecture, we saw that we were concerned about regression with many prior terms. Two questions that arise from this:
+\begin{itemize}
+	\item How to choose the optimal value of $m$
+	\item How to choose the right model? 
+\end{itemize}
+The later is less of an issue compared to the first one. So, we fill focus on the first issue. Say that $m = 0$, we can see that we do zero smoothing, which means that our fit is simply the data point itself, which creates a zig zag and creates undersmoothing. Similarly, if $m = \infty$, we can see that $m$ is oversmoothing, and our regression would be a simple line. 
+\subsection{Series Expansion Method}
+Say that we believe that our mean trend follows the form:
+\[
+	\mu_t = \sum_{j = 0}^p \beta_j t^j 
+\]
+where $p$ is large. We can apply the weistrauss approximation theorem to find some function that approximates the above very well. More precisely, the weistrauss approximation theorem guarntees the existance of an function that approximates the mean trend well. Therefore, we can pick a function $f$ such that 
+\[
+	\sup_{t \in I} | f(t) -  \sum_{j = 0}^p \beta_j t^j | < \epsilon 
+\]
+which allows us to perform polynomial regression. 
+\subsubsection{Fourier Expansion}
+We can also see that the mean trend can be expressed as the sum of trignometric terms, which is the so called fourier expansion method. 
+\subsection{Differencing}
+Another method of converting non-stationary time series into a stationary series is by apply \emph{differencing}. For exampke, consider the following. Let 
+\[
+	x_t = \mu_t + z_t \qquad \mu_t = \beta_0 + \beta_1 t 
+\]
+where $z_t$ is a stationary process. We can see that $x_t$ itself is not a stationary process as $\E[x_t]$ is a function of time. However, we can see that:
+\begin{align*}
+	\Delta x_t &= x_t - x_{t-1} \\ 
+		   &= \delta \mu_t + \delta z_t \\ 
+		   &= \beta_1 + \Delta z_t 
+\end{align*}
+The above is an example of a first order difference. We can have higher order differences , which are defined as follows:
+\begin{definition}[Higher Order Differences]
+The backshift operator $B$ is defined as $Bx_t = x_{t-1}$. The $d$-th order difference is defined by applying $(1-B)$ repeatedly $d$ times:
+\[
+\nabla^d x_t = (1-B)^d x_t = \sum_{k=0}^{d} (-1)^k \binom{d}{k} x_{t-k}
+\]
+where the first few cases are given explicitly by
+\begin{align*}
+\nabla^1 x_t &= x_t - x_{t-1} \\
+\nabla^2 x_t &= x_t - 2x_{t-1} + x_{t-2} \\
+\nabla^3 x_t &= x_t - 3x_{t-1} + 3x_{t-2} - x_{t-3}
+\end{align*}
+and so forth. 
+\end{definition}
+\begin{remark}
+We can also have fractional differences, where we can see that by exploiting the fractinal definition of binomials, which is similarly defined to the integer valued case, where:
+\[
+	\binom{d}{k} = \frac{d(d-1)(d-2)\dots(d-k+1)}{k!} 
+\]
+and where 
+\[
+(1 - B)^x = \sum_{i = 1}^\infty \binom{x}{i}(-B^i)
+\]
+\end{remark}
+\subsection{Nonlinear transformations}
+We can also do non-linear transformations to convert non-stationary to stationary. Say we have 
+\[
+	x_t = e^{\delta t + B(t) \delta} 
+\]
+where $B(t)$ denotes brownian motion. We can see that 
+\[
+	\log(x_t) = \delta t + B(t) \delta 
+\]
+and thus 
+\[
+	\Delta \log(x_t) = \delta + \Delta B(t) \delta
+\]
+where $\Delta B(t) \delta \sim \mathcal{N}(0,1)$. \footnote{For poisson processes, you can take the square root}
+\subsection{How to estimate periodic components}
+Suppose 
+\[
+	x_t = \mu_t + z_t \qquad \mu_t = A\cos(\omega t  + \phi)
+\]
+where $A$ is amplitude and $\omega$ is frequency. 
+\end{document}

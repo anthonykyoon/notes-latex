@@ -5,8 +5,9 @@ These are my notes that I typed up from my time at the University of Chicago. Th
 - MATH 19620 Linear Algebra 
 - DATA 13600 Introduction to Data Engineering
 - STAT 24300 Numerical Linear Algebra
-- STAT 24310 Numerical Linear Algebra, Introduction to Computation. (WIP)
-- MATH 27300: Basic Theory of ODEs. (WIP)
+- STAT 24310 Numerical Linear Algebra, Introduction to Computation. (Incomplete)
+- MATH 27300: Basic Theory of ODEs. (Incomplete)
+- STAT 26100/33600: Time Dependent Data (WIP)
 
 These will have a lot of typos, so be advised. You can also see how my style of notes have evolved overtime. 
 
